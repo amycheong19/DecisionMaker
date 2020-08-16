@@ -11,12 +11,6 @@ struct Collection: Identifiable, Codable {
     var id: String
     var title: String
     var options: [Option] = []
-    
-    
-    
-    mutating func removeOption(at position: Int) {
-        options.remove(at: position)
-    }
 }
 
 extension Collection: Hashable {
@@ -34,6 +28,9 @@ extension Collection {
         .restaurants
     ]
     
-    static let restaurants = Collection(id: "restaurants",
-                                        title: "Restaurants", options: Option.all)
+    static let restaurants = Collection(id: "restaurants_____",
+                                        title: "Restaurants232323", options: Option.all)
+    
+    static let restaurants1 = Collection(id: "restaurants11",
+                                        title: "Restaurants11", options: Option.all)
 }

@@ -26,8 +26,10 @@ struct OptionList: View {
                 OptionRow(option: option)
             }
             .onDelete(perform: deleteOption)
-        }
-        .alert(isPresented: $presentingAddAlert) {
+        }.onAppear() {
+            model.selectCollection(collection)
+        
+        }.alert(isPresented: $presentingAddAlert) {
             
             Alert(
                 title: Text("Payments Disabled"),
@@ -81,7 +83,7 @@ struct OptionList: View {
         
         indexSet.forEach { i in
             let option = collection.options[i]
-            model.editOptionsToPick(option: option)
+            model.removeOption(option)
         }
 
     }
@@ -92,7 +94,7 @@ struct OptionList: View {
 struct OptionList_Previews: PreviewProvider {
     static let dataStore: DecisionMakerModel = {
         var dataStore = DecisionMakerModel()
-        dataStore.addOptionsToPick(collection: .restaurants)
+        dataStore.selectCollection(.restaurants)
         return dataStore
     }()
     

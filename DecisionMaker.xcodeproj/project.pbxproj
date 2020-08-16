@@ -26,6 +26,8 @@
 		751BA15924E1357B004EE1BB /* RandomPickButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BA15824E1357B004EE1BB /* RandomPickButton.swift */; };
 		751BA15B24E1361B004EE1BB /* SquishableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BA15A24E1361B004EE1BB /* SquishableButtonStyle.swift */; };
 		751BA15E24E146A7004EE1BB /* CircleToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BA15D24E146A7004EE1BB /* CircleToggleStyle.swift */; };
+		751BA16224E8E81E004EE1BB /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BA16124E8E81E004EE1BB /* JSONParser.swift */; };
+		751BA16324E8EF4B004EE1BB /* DecisionMakerDatabase.json in Resources */ = {isa = PBXBuildFile; fileRef = 751BA15F24E8E033004EE1BB /* DecisionMakerDatabase.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		751BA15824E1357B004EE1BB /* RandomPickButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPickButton.swift; sourceTree = "<group>"; };
 		751BA15A24E1361B004EE1BB /* SquishableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquishableButtonStyle.swift; sourceTree = "<group>"; };
 		751BA15D24E146A7004EE1BB /* CircleToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleToggleStyle.swift; sourceTree = "<group>"; };
+		751BA15F24E8E033004EE1BB /* DecisionMakerDatabase.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DecisionMakerDatabase.json; sourceTree = "<group>"; };
+		751BA16124E8E81E004EE1BB /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 				751BA11024DFBDC3004EE1BB /* Assets.xcassets */,
 				751BA11524DFBDC3004EE1BB /* Info.plist */,
 				751BA11224DFBDC3004EE1BB /* Preview Content */,
+				751BA15F24E8E033004EE1BB /* DecisionMakerDatabase.json */,
+				751BA16124E8E81E004EE1BB /* JSONParser.swift */,
 			);
 			path = DecisionMaker;
 			sourceTree = "<group>";
@@ -195,6 +201,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				751BA16324E8EF4B004EE1BB /* DecisionMakerDatabase.json in Resources */,
 				751BA11424DFBDC3004EE1BB /* Preview Assets.xcassets in Resources */,
 				751BA11124DFBDC3004EE1BB /* Assets.xcassets in Resources */,
 			);
@@ -207,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				751BA16224E8E81E004EE1BB /* JSONParser.swift in Sources */,
 				751BA10F24DFBDBF004EE1BB /* ContentView.swift in Sources */,
 				751BA14F24E109D3004EE1BB /* Collection.swift in Sources */,
 				751BA15324E10C92004EE1BB /* CollectionRow.swift in Sources */,

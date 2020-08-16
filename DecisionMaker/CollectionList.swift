@@ -21,10 +21,7 @@ struct CollectionList: View {
                     tag: collection,
                     selection: $selection) {
                     CollectionRow(collection: collection)
-                }.onAppear(){
-                    model.addOptionsToPick(collection: collection)
                 }
-                
             }
         }
 //        .navigationBarItems(trailing: AddOptionButton())

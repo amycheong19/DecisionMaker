@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct Menu: View {
-    
+    @EnvironmentObject private var model: DecisionMakerModel
+
     var body: some View {
-        CollectionList(collections: Collection.all)
+        CollectionList(collections: model.collections)
             .navigationTitle("Collections")
     }
 }
