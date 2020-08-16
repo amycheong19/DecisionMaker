@@ -15,16 +15,16 @@ struct CollectionList: View {
     
     var body: some View {
         List(selection: $selection) {
-            ForEach(collections) { collection in
+            ForEach(model.collections) { collection in
+            
                 NavigationLink(
-                    destination: OptionList(collection: collection),
+                    destination: OptionList(collection: selection),
                     tag: collection,
                     selection: $selection) {
                     CollectionRow(collection: collection)
                 }
             }
         }
-//        .navigationBarItems(trailing: AddOptionButton())
 
     }
 }

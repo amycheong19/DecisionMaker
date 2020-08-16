@@ -10,26 +10,30 @@ import SwiftUI
 struct OptionList: View {
     @EnvironmentObject private var model: DecisionMakerModel
 
-    var collection: Collection
+    var collection: Collection?
+    
     @State private var presentingAddAlert = false
     @State private var presentingRandomAlert = false
     
     var checkedOptions: [Option] {
-        model.checkedOptions.map { Option(for: $0)! }
+        let ttt = model.checkedOptions.compactMap {
+            Option(for: $0)
+        }
+        return ttt
     }
 
     
     var body: some View {
-        
         List {
-            ForEach(collection.options, id: \.id){ option in
-                OptionRow(option: option)
+            ForEach(model.collection.options, id: \.self){
+                OptionRow(option: $0)
             }
             .onDelete(perform: deleteOption)
-        }.onAppear() {
-            model.selectCollection(collection)
-        
-        }.alert(isPresented: $presentingAddAlert) {
+        }
+        .onAppear() {
+            model.selectCollection(collection!)
+        }
+        .alert(isPresented: $presentingAddAlert) {
             
             Alert(
                 title: Text("Payments Disabled"),
@@ -55,7 +59,7 @@ struct OptionList: View {
         
         .overlay(bottomBar, alignment: .bottom)
         .navigationBarItems(trailing: AddOptionButton(action: addOption))
-        .navigationTitle(collection.title)
+        .navigationTitle(model.collection.title)
         
     }
     
@@ -80,12 +84,9 @@ struct OptionList: View {
     }
     
     func deleteOption(indexSet: IndexSet){
-        
-        indexSet.forEach { i in
-            let option = collection.options[i]
-            model.removeOption(option)
+        indexSet.forEach{
+            model.removeOption($0)
         }
-
     }
 }
 

@@ -11,16 +11,10 @@ class DecisionMakerModel: ObservableObject {
     @Published private(set) var checkedOptions = Set<Option.ID>()
     @Published private(set) var collections: [Collection] = []
     @Published private(set) var selectedCollectionID: Collection.ID?
-
-//    let defaults = UserDefaults(suiteName: "group.example.decisionmaker")
-//
-//    private var userCredential: String? {
-//        get { defaults?.string(forKey: "DecisionCollections") }
-//        set { defaults?.setValue(newValue, forKey: "DecisionCollections") }
-//    }
+    
+    @Published var collection = Collection.restaurants
     
     init() {
-//        guard let _ = userCredential else { return }
         createCollection()
     }
 
@@ -28,17 +22,10 @@ class DecisionMakerModel: ObservableObject {
 
 extension DecisionMakerModel {
     
-    func selectedCollection() -> Collection? {
-        guard let indexSet = collections.firstIndex(where: { $0.id == selectedCollectionID }) else {
-            return nil
-        }
-        return collections[indexSet]
-    }
-    
     func createCollection(_ collection: Collection? = nil) {
         guard !collections.isEmpty else {
             // initial
-            if let jsonCollections = try? Collection.loadJSON(withFilename: "DecisionMakerDatabase") {
+            if let jsonCollections = try? Collection.loadJSON() {
                 collections.append(contentsOf: jsonCollections)
             }
             return
@@ -50,8 +37,24 @@ extension DecisionMakerModel {
     
     func selectCollection(_ collection: Collection) {
         selectedCollectionID = collection.id
+        self.collection = collection
         checkedOptions.removeAll()
         checkedOptions = checkedOptions.union(collection.options.compactMap{ $0.id })
+        debugPrint(checkedOptions)
+    }
+    
+    func setCollection(_ collection: Collection) {
+        guard let indexSet = collections.firstIndex(where: { $0.id == selectedCollectionID }) else {
+            return
+        }
+        collections[indexSet] = collection
+        
+        do {
+            _ = try Collection.save(jsonObject: collections)
+        } catch  {
+            print(error)
+        }
+        
     }
     
     func removeCollection(_ collection: Collection) {
@@ -59,7 +62,6 @@ extension DecisionMakerModel {
             collections.remove(at: index)
         }
     }
-    
     
 }
 
@@ -70,22 +72,17 @@ extension DecisionMakerModel {
         } else {
             checkedOptions.insert(option.id)
         }
+        debugPrint(checkedOptions)
     }
     
     func removeCheckedOptions(id: Option.ID){
         checkedOptions.remove(id)
     }
     
-    
-    func removeOption(_ option: Option) {
-                
-        guard let indexSet = collections.firstIndex(where: { $0.id == selectedCollectionID }) else {
-            return
-        }
-        
-        let filteredOptions = collections[indexSet].options.filter { $0.id != option.id }
-        collections[indexSet].options = filteredOptions
-        selectCollection(collections[indexSet])
-        
+    func removeOption(_ i: Int) {
+        let deleted = collection.options.remove(at: i)
+        checkedOptions.remove(deleted.id)
+        setCollection(collection)
     }
+    
 }

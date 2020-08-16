@@ -31,9 +31,13 @@ extension Option {
         .domino
     ]
     
+    static let dominoooo: [Option] = [
+        .domino
+    ]
+    
     static let allIDs: [Option.ID] = all.map { $0.id }
     
-    static let macdonald = Option(id: "macdonald", title: "MacDonald")
+    static let macdonald = Option(id: "mcdonald", title: "McDonald")
     
     static let pizzaHut = Option(id: "pizzahut", title: "Pizza Hut")
 
@@ -43,6 +47,7 @@ extension Option {
 
     
     init?(for id: Option.ID) {
+        
         guard let option = Option.all.first(where: { $0.id == id }) else { return nil }
         self = option
     }
