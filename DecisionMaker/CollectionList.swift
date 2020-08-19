@@ -12,16 +12,15 @@ struct CollectionList: View {
     
     @EnvironmentObject private var model: DecisionMakerModel
     @State private var selection: Collection?
-    
     var body: some View {
+        
         List(selection: $selection) {
             ForEach(model.collections) { collection in
-            
                 NavigationLink(
                     destination: OptionList(collection: selection),
                     tag: collection,
                     selection: $selection) {
-                    CollectionRow(collection: collection)
+                    CollectionRow(collection: .constant(collection))
                 }
             }
         }
