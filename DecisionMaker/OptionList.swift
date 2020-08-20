@@ -10,16 +10,14 @@ import SwiftUI
 struct OptionList: View {
     @EnvironmentObject private var model: DecisionMakerModel
 
-    var collection: Collection?
+    var collection: Collection
     
-    @State private var presentingAddAlert = false
     @State private var presentingRandomAlert = false
     
     var checkedOptions: [Option] {
-        let ttt = model.checkedOptions.compactMap {
+         return model.checkedOptions.compactMap {
             Option(for: $0)
         }
-        return ttt
     }
 
     
@@ -31,15 +29,7 @@ struct OptionList: View {
             .onDelete(perform: deleteOption)
         }
         .onAppear() {
-            model.selectCollection(collection!)
-        }
-        .alert(isPresented: $presentingAddAlert) {
-            
-            Alert(
-                title: Text("Payments Disabled"),
-                message: Text("The Fruta QR code was scanned too far from the shop, payments are disabled for your protection."),
-                dismissButton: .default(Text("OK"))
-            )
+            model.selectCollection(collection)
         }
         .alert(isPresented: $presentingRandomAlert) {
             guard let randomOptions = checkedOptions.randomElement() else {
@@ -49,17 +39,17 @@ struct OptionList: View {
                    dismissButton: .default(Text("OK"))
                )
             }
-            
+
             return Alert(
                 title: Text("Selected"),
                 message: Text("\(randomOptions.title)"),
                 dismissButton: .default(Text("OK"))
             )
         }
-        
+        .padding(.bottom, 30) 
         .overlay(bottomBar, alignment: .bottom)
-        .navigationBarItems(trailing: AddOptionButton(action: addOption))
-        .navigationTitle(model.collection.title)
+        .navigationBarItems(trailing: AddOptionButton())
+        .navigationTitle(collection.title)
         
     }
     
@@ -79,9 +69,7 @@ struct OptionList: View {
         presentingRandomAlert = true
     }
     
-    func addOption(){
-        presentingAddAlert = true
-    }
+
     
     func deleteOption(indexSet: IndexSet){
         indexSet.forEach{

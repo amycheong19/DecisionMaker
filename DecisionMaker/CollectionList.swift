@@ -17,7 +17,7 @@ struct CollectionList: View {
         List(selection: $selection) {
             ForEach(model.collections) { collection in
                 NavigationLink(
-                    destination: OptionList(collection: selection),
+                    destination: OptionList(collection: collection),
                     tag: collection,
                     selection: $selection) {
                     CollectionRow(collection: .constant(collection))

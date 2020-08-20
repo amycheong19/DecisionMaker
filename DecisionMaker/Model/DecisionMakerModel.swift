@@ -8,7 +8,7 @@
 import Foundation
 
 class DecisionMakerModel: ObservableObject {
-    @Published private(set) var checkedOptions = Set<Option.ID>()
+    @Published private(set) var checkedOptions = Array<Option.ID>()
     @Published private(set) var collections: [Collection] = []
     @Published private(set) var selectedCollectionID: Collection.ID?
     
@@ -39,7 +39,7 @@ extension DecisionMakerModel {
         selectedCollectionID = collection.id
         self.collection = collection
         checkedOptions.removeAll()
-        checkedOptions = checkedOptions.union(collection.options.compactMap{ $0.id })
+        _ = collection.options.compactMap{ addChecked($0) }
         debugPrint(checkedOptions)
     }
     
@@ -66,22 +66,37 @@ extension DecisionMakerModel {
 }
 
 extension DecisionMakerModel {
-    func editOptionsToPick(option: Option) {
-        if checkedOptions.contains(option.id) {
-            removeCheckedOptions(id: option.id)
+    func editOptionsToPick(option: Option, toggle: Bool) {
+        if toggle {
+            addChecked(option)
         } else {
-            checkedOptions.insert(option.id)
+            if checkedOptions.contains(option.id) {
+                removeCheckedOptions(id: option.id)
+            }
         }
-        debugPrint(checkedOptions)
+    }
+    
+    func addChecked(_ option: Option) {
+        checkedOptions.append(option.id)
     }
     
     func removeCheckedOptions(id: Option.ID){
-        checkedOptions.remove(id)
+        let firstIndex = checkedOptions.firstIndex(of: id)!
+        debugPrint(firstIndex)
+        debugPrint(checkedOptions)
+        checkedOptions.remove(at: firstIndex)
+        debugPrint(checkedOptions)
     }
     
     func removeOption(_ i: Int) {
-        let deleted = collection.options.remove(at: i)
-        checkedOptions.remove(deleted.id)
+        collection.options.remove(at: i)
+        checkedOptions.remove(at: i)
+        setCollection(collection)
+    }
+    
+    func addOption(_ option: Option) {
+        collection.options.append(option)
+        addChecked(option)
         setCollection(collection)
     }
     

@@ -21,7 +21,7 @@ struct OptionRow: View {
         
         Button(action: {
             checked.toggle()
-            model.editOptionsToPick(option: option)
+            model.editOptionsToPick(option: option, toggle: <#T##Bool#>)
         }) {
             HStack {
                 option.image
