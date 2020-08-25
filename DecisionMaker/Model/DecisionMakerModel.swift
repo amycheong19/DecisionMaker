@@ -8,11 +8,13 @@
 import Foundation
 
 class DecisionMakerModel: ObservableObject {
-    @Published private(set) var checkedOptions = Array<Option.ID>()
+    @Published private(set) var checkedOptions: [Option] = []
     @Published private(set) var collections: [Collection] = []
     @Published private(set) var selectedCollectionID: Collection.ID?
     
     @Published var collection = Collection.restaurants
+    
+    private var idCount = 1000
     
     init() {
         createCollection()
@@ -40,7 +42,6 @@ extension DecisionMakerModel {
         self.collection = collection
         checkedOptions.removeAll()
         _ = collection.options.compactMap{ addChecked($0) }
-        debugPrint(checkedOptions)
     }
     
     func setCollection(_ collection: Collection) {
@@ -70,22 +71,19 @@ extension DecisionMakerModel {
         if toggle {
             addChecked(option)
         } else {
-            if checkedOptions.contains(option.id) {
+            if checkedOptions.contains(option) {
                 removeCheckedOptions(id: option.id)
             }
         }
     }
     
     func addChecked(_ option: Option) {
-        checkedOptions.append(option.id)
+        checkedOptions.append(option)
     }
     
     func removeCheckedOptions(id: Option.ID){
-        let firstIndex = checkedOptions.firstIndex(of: id)!
-        debugPrint(firstIndex)
-        debugPrint(checkedOptions)
+        let firstIndex = checkedOptions.firstIndex(where: { $0.id == id })!
         checkedOptions.remove(at: firstIndex)
-        debugPrint(checkedOptions)
     }
     
     func removeOption(_ i: Int) {
@@ -95,8 +93,18 @@ extension DecisionMakerModel {
     }
     
     func addOption(_ option: Option) {
-        collection.options.append(option)
-        addChecked(option)
+        var tempOption = option
+        var optionID = tempOption.id
+
+        if checkedOptions.contains(option) {
+            optionID = "\(optionID)\(idCount)"
+            idCount += 1
+        }
+    
+        tempOption.id = optionID
+        
+        collection.options.append(tempOption)
+        addChecked(tempOption)
         setCollection(collection)
     }
     

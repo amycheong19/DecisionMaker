@@ -15,15 +15,14 @@ struct OptionList: View {
     @State private var presentingRandomAlert = false
     
     var checkedOptions: [Option] {
-         return model.checkedOptions.compactMap {
-            Option(for: $0)
-        }
+         return model.checkedOptions
     }
 
     
     var body: some View {
         List {
-            ForEach(model.collection.options, id: \.self){
+            ForEach(model.collection.options){
+                
                 OptionRow(option: $0)
             }
             .onDelete(perform: deleteOption)
@@ -46,7 +45,7 @@ struct OptionList: View {
                 dismissButton: .default(Text("OK"))
             )
         }
-        .padding(.bottom, 30) 
+        .padding(.bottom, 30)
         .overlay(bottomBar, alignment: .bottom)
         .navigationBarItems(trailing: AddOptionButton())
         .navigationTitle(collection.title)

@@ -23,63 +23,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FE421155-2DD7-4E2D-9832-9FA27901EB37"
+            uuid = "C11C7DE8-2E1C-49E3-85E4-06A65AA540A4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DecisionMaker/Model/DecisionMakerModel.swift"
+            filePath = "DecisionMaker/OptionList.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "removeCheckedOptions(id:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "BCB022E2-6980-4261-B952-0DACA85D0DAB"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DecisionMaker/Model/DecisionMakerModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "editOptionsToPick(option:toggle:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "944FC125-7833-431D-88BD-0DDD01AD9D8E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DecisionMaker/Model/DecisionMakerModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "addChecked(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "357DA06A-6DFE-4816-B81D-95BABD47A8FF"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DecisionMaker/OptionRow.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -87,7 +39,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "675017FD-C7B4-4CC2-99DC-30EB21AB26EF"
+            uuid = "E84BF4C0-370E-4909-B3A2-87E9FFDE717F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -100,7 +52,7 @@
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "675017FD-C7B4-4CC2-99DC-30EB21AB26EF - 6f7c87db72d642b6"
+                  uuid = "E84BF4C0-370E-4909-B3A2-87E9FFDE717F - 6f7c87db72d642b6"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -115,11 +67,11 @@
                   offsetFromSymbolStart = "31">
                </Location>
                <Location
-                  uuid = "675017FD-C7B4-4CC2-99DC-30EB21AB26EF - cd69a4310fd600fd"
+                  uuid = "E84BF4C0-370E-4909-B3A2-87E9FFDE717F - 125db0325e87572b"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.String) -&gt; Swift.Optional&lt;DecisionMaker.Option&gt; in DecisionMaker.OptionList.checkedOptions.getter : Swift.Array&lt;DecisionMaker.Option&gt;"
+                  symbolName = "closure #1 (DecisionMaker.Option) -&gt; Swift.Optional&lt;DecisionMaker.Option&gt; in DecisionMaker.OptionList.checkedOptions.getter : Swift.Array&lt;DecisionMaker.Option&gt;"
                   moduleName = "DecisionMaker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/amycheong/Documents/DecisionMaker/DecisionMaker/OptionList.swift"
@@ -127,41 +79,9 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "19"
                   endingLineNumber = "19"
-                  offsetFromSymbolStart = "27">
+                  offsetFromSymbolStart = "39">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5C44D2BD-EB73-42DD-8C66-1A0128671819"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DecisionMaker/OptionList.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D886E2FA-EEFE-4642-A781-1811D42E2E1E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DecisionMaker/OptionRow.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "body"
-            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

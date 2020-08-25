@@ -21,7 +21,7 @@ struct OptionRow: View {
         
         Button(action: {
             checked.toggle()
-            model.editOptionsToPick(option: option, toggle: <#T##Bool#>)
+            model.editOptionsToPick(option: option, toggle: checked)
         }) {
             HStack {
                 option.image
@@ -40,9 +40,8 @@ struct OptionRow: View {
                         .lineLimit(1)
                 }.padding(.vertical, metrics.textPadding)
 
-
                 Spacer()
-
+                
                 Toggle("Complete", isOn: $checked)
             }
             .contentShape(Rectangle())
