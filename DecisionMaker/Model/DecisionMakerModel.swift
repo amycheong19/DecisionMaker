@@ -92,17 +92,17 @@ extension DecisionMakerModel {
         setCollection(collection)
     }
     
-    func addOption(_ option: Option) {
-        var tempOption = option
-        var optionID = tempOption.id
+    func addOption(_ title: String) {
 
-        if checkedOptions.contains(option) {
-            optionID = "\(optionID)\(idCount)"
+        var tempOption = Option(id: "", title: title)
+        tempOption.id = tempOption.title.lowercased()
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+
+        if checkedOptions.contains(tempOption) {
+            tempOption.id = "\(tempOption.id)\(idCount)"
             idCount += 1
         }
-    
-        tempOption.id = optionID
-        
+            
         collection.options.append(tempOption)
         addChecked(tempOption)
         setCollection(collection)

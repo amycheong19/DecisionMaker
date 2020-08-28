@@ -20,17 +20,6 @@ extension Option: Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
-    
-//    init?(for id: Option.ID) {
-//
-//        guard let option = Option.all.first(where: { $0.id == id }) else { return nil }
-//        self = option
-//    }
-    
-//    init(id: String, title: String) {
-//        self.id = id
-//        self.title = title
-//    }
 }
 
 
@@ -55,6 +44,5 @@ extension Option {
     static let burgerKing = Option(id: "burgerking", title: "Burger King")
 
     static let domino = Option(id: "domino", title: "Domino")
-    
     
 }

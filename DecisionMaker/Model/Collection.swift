@@ -36,7 +36,6 @@ extension Collection {
         .restaurants
     ]
     
-    
     static let restaurants = Collection(id: "fastfoods",
                                         title: "Fast Foods",
                                         options: Option.all)

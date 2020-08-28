@@ -13,16 +13,11 @@ struct OptionList: View {
     var collection: Collection
     
     @State private var presentingRandomAlert = false
-    
-    var checkedOptions: [Option] {
-         return model.checkedOptions
-    }
 
     
     var body: some View {
         List {
             ForEach(model.collection.options){
-                
                 OptionRow(option: $0)
             }
             .onDelete(perform: deleteOption)
@@ -31,17 +26,17 @@ struct OptionList: View {
             model.selectCollection(collection)
         }
         .alert(isPresented: $presentingRandomAlert) {
-            guard let randomOptions = checkedOptions.randomElement() else {
+            guard let randomOption = model.checkedOptions.randomElement(), model.checkedOptions.count > 1 else {
                 return Alert(
                    title: Text("No option is selected"),
-                   message: Text("Select at least one"),
+                   message: Text("Select at least two"),
                    dismissButton: .default(Text("OK"))
                )
             }
 
             return Alert(
                 title: Text("Selected"),
-                message: Text("\(randomOptions.title)"),
+                message: Text("\(randomOption.title)"),
                 dismissButton: .default(Text("OK"))
             )
         }
@@ -56,7 +51,8 @@ struct OptionList: View {
         VStack(spacing: 0) {
             Divider()
             Group {
-                RandomPickButton(action: randomSelection)
+                BottomBarButton(action: randomSelection,
+                                 title: "Pick For Me!")
             }
             .padding(.horizontal, 40)
             .padding(.vertical, 16)
