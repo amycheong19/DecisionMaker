@@ -11,7 +11,6 @@ struct Collection: Identifiable, Codable {
     var id: String
     var title: String
     var options: [Option] = []
-
 }
 
 extension Collection {

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OptionRow: View {
     var option: Option
-
+    
     @EnvironmentObject private var model: DecisionMakerModel
     @State private var checked = true
     
@@ -24,13 +24,24 @@ struct OptionRow: View {
             model.editOptionsToPick(option: option, toggle: checked)
         }) {
             HStack {
-                option.image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
+                
+                if let urlString = option.imageURLString, let url = URL(string: urlString) {
+                    URLImage(url, expireAfter: Date(timeIntervalSinceNow: 31_556_926.0)) { proxy in
+                        proxy.image
+                            .resizable()                     // Make image resizable
+                            .clipShape(RoundedRectangle(cornerRadius: metrics.cornerRadius))
+                            .clipped()                       // Clip overlaping parts
+                    }
                     .frame(width: metrics.thumbnailSize, height: metrics.thumbnailSize)
-                    .clipShape(RoundedRectangle(cornerRadius: metrics.cornerRadius))
-                    .accessibility(hidden: true)
-
+                } else {
+                    option.image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: metrics.thumbnailSize, height: metrics.thumbnailSize)
+                        .clipShape(RoundedRectangle(cornerRadius: metrics.cornerRadius))
+                        .accessibility(hidden: true)
+                }
+                
                 VStack(alignment: .leading) {
                     Text(option.title)
                         .font(.headline)
@@ -39,7 +50,7 @@ struct OptionRow: View {
                         .foregroundColor(.secondary)
                         .lineLimit(1)
                 }.padding(.vertical, metrics.textPadding)
-
+                
                 Spacer()
                 
                 Toggle("Complete", isOn: $checked)
@@ -48,7 +59,7 @@ struct OptionRow: View {
             .font(.subheadline)
             .padding(.vertical, metrics.rowPadding)
             .accessibilityElement(children: .combine)
-
+            
         }
         .buttonStyle(PlainButtonStyle())
         .toggleStyle(CircleToggleStyle())

@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import Combine
 
 class DecisionMakerModel: ObservableObject {
     @Published private(set) var checkedOptions: [Option] = []
     @Published private(set) var collections: [Collection] = []
     @Published private(set) var selectedCollectionID: Collection.ID?
+
     
     @Published var collection = Collection.restaurants
     
@@ -19,10 +21,15 @@ class DecisionMakerModel: ObservableObject {
     init() {
         createCollection()
     }
-
+    
 }
 
 extension DecisionMakerModel {
+    
+    func addCollection(with title: String){
+        
+    }
+    
     
     func createCollection(_ collection: Collection? = nil) {
         guard !collections.isEmpty else {
@@ -92,20 +99,69 @@ extension DecisionMakerModel {
         setCollection(collection)
     }
     
-    func addOption(_ title: String) {
-
-        var tempOption = Option(id: "", title: title)
+    func addOption(with title: String, imageString: String? = nil) {
+        
+        var tempOption = Option(id: "", title: title, imageURLString: imageString)
         tempOption.id = tempOption.title.lowercased()
             .trimmingCharacters(in: .whitespacesAndNewlines)
-
+        
         if checkedOptions.contains(tempOption) {
             tempOption.id = "\(tempOption.id)\(idCount)"
             idCount += 1
         }
-            
+        
         collection.options.append(tempOption)
         addChecked(tempOption)
         setCollection(collection)
     }
     
+}
+
+class TextFieldModel: ObservableObject {    
+    private var cancellable: AnyCancellable?
+    @Published var searchText: String = ""
+    @Published var searchURL: URL?
+    private static let sessionProcessingQueue = DispatchQueue(label: "SessionProcessingQueue")
+    
+    func debounceText() {
+
+        cancellable = AnyCancellable(
+        $searchText
+            .removeDuplicates()
+            .debounce(for: 0.1, scheduler: DispatchQueue.main)
+            .sink { searchText in
+                if searchText.count > 3 {
+                    self.searchImage(with: searchText)
+                }
+          }
+        )
+      }
+    
+
+    func searchImage(with text: String = "random")  {
+        
+        if let url = URL.with(string: "search/photos?page=1&query=\(text)&per_page=10") {
+            var urlRequest = URLRequest(url: url)
+            urlRequest.setValue("Client-ID eAuZQdNO50kyz1haJeAlMS_sKa5J0JCBrvWUsLbKACA", forHTTPHeaderField: "Authorization")
+            
+            cancellable =
+                URLSession.shared.dataTaskPublisher(for: urlRequest)
+                .subscribe(on: TextFieldModel.sessionProcessingQueue)
+                .map({
+                    return $0.data
+                })
+                .decode(type: PhotoResults.self, decoder: JSONDecoder())
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { (suscriberCompletion) in
+                    switch suscriberCompletion {
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }, receiveValue: { [weak self] value in
+                    self?.searchURL = URL(string: value.results.randomElement()?.urls.thumb ?? "")
+                })
+        }
+    }
 }

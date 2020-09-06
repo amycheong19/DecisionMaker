@@ -9,14 +9,17 @@ import SwiftUI
 
 struct AddOptionButton: View {
     @State private var isPresented = false
+    @EnvironmentObject private var model: DecisionMakerModel
+
     
     var body: some View {
         Button(action: addOption, label: {
-            Label("Add", systemImage: "plus")
+            Label("", systemImage: "plus")
         })
-        .fullScreenCover(isPresented: $isPresented,
-                         content: NewOptionView.init)
-        .accessibility(label: Text("Add Option Button"))
+        .fullScreenCover(isPresented: $isPresented, content: {
+            NewOptionView().environmentObject(model)
+        })
+        .accessibility(label: Text("Add Button"))
         
     }
 

@@ -10,6 +10,7 @@ import Foundation
 struct Option: Identifiable, Codable {
     var id: String
     var title: String
+    var imageURLString: String?
 }
 
 extension Option: Hashable {

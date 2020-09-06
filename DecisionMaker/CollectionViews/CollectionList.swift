@@ -24,7 +24,7 @@ struct CollectionList: View {
                 }
             }
         }
-
+        .navigationBarItems(trailing: AddCollectionButton())
     }
 }
 
