@@ -14,19 +14,14 @@ struct NewOptionView: View {
     @ObservedObject  private var tfModel = TextFieldModel()
     
     @State private var title = ""
-    @State private var imageSearchText = ""
-    @State private var imageSearchURL: URL?
-    
-    var placeholderView: some View  {
-        return imageSearchText.isEmpty ? Text(" ") : Text("Loading ...")
-    }
     
     var body: some View {
         
         NavigationView(content: {
             Form{
                 Section {
-                    TextField("Title", text: $title)
+                    TextField("Title", text: $title).modifier(ClearButton(text: $title))
+
                     TextField("Image Search (Optional)", text: $tfModel.searchText)
                         .onChange(of: tfModel.searchText) { value in
                             tfModel.debounceText()
@@ -85,6 +80,3 @@ struct NewOptionView_Previews: PreviewProvider {
         NewOptionView()
     }
 }
-
-
-

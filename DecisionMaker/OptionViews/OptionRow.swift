@@ -28,9 +28,9 @@ struct OptionRow: View {
                 if let urlString = option.imageURLString, let url = URL(string: urlString) {
                     URLImage(url, expireAfter: Date(timeIntervalSinceNow: 31_556_926.0)) { proxy in
                         proxy.image
-                            .resizable()                     // Make image resizable
+                            .resizable()
                             .clipShape(RoundedRectangle(cornerRadius: metrics.cornerRadius))
-                            .clipped()                       // Clip overlaping parts
+                            .clipped()
                     }
                     .frame(width: metrics.thumbnailSize, height: metrics.thumbnailSize)
                 } else {
@@ -45,10 +45,10 @@ struct OptionRow: View {
                 VStack(alignment: .leading) {
                     Text(option.title)
                         .font(.headline)
-                        .lineLimit(1)
+                        .lineLimit(nil)
                     Text("Last updated: 12 July 2020")
                         .foregroundColor(.secondary)
-                        .lineLimit(1)
+                        .lineLimit(nil)
                 }.padding(.vertical, metrics.textPadding)
                 
                 Spacer()

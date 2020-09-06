@@ -147,7 +147,7 @@ class TextFieldModel: ObservableObject {
             .removeDuplicates()
             .debounce(for: 0.1, scheduler: DispatchQueue.main)
             .sink { searchText in
-                if searchText.count > 3 {
+                if searchText.count > 2 {
                     self.searchImage(with: searchText)
                 }
           }
@@ -157,7 +157,7 @@ class TextFieldModel: ObservableObject {
 
     func searchImage(with text: String = "random")  {
         
-        if let url = URL.with(string: "search/photos?page=1&query=\(text)&per_page=10") {
+        if let url = URL.with(query: text) {
             var urlRequest = URLRequest(url: url)
             urlRequest.setValue("Client-ID eAuZQdNO50kyz1haJeAlMS_sKa5J0JCBrvWUsLbKACA", forHTTPHeaderField: "Authorization")
             

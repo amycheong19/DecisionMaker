@@ -25,7 +25,7 @@ struct CollectionRow: View {
             VStack(alignment: .leading) {
                 Text(collection.title)
                     .font(.headline)
-                    .lineLimit(1)
+                    .lineLimit(nil)
                 Text("\(collection.options.count) option\(pluralizer)")
                     .foregroundColor(.secondary)
                     .lineLimit(1)

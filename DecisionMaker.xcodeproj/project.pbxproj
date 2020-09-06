@@ -74,6 +74,7 @@
 		75ACA25A2504A7120092BC15 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ACA2332504A7110092BC15 /* CircleProgressView.swift */; };
 		75C763832504C9DB009A52F9 /* AddCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763822504C9DB009A52F9 /* AddCollectionView.swift */; };
 		75C763852504CDB1009A52F9 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763842504CDB1009A52F9 /* UIAlertController+Extension.swift */; };
+		75C763872505A77E009A52F9 /* UITextField+ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763862505A77E009A52F9 /* UITextField+ClearButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -146,6 +147,7 @@
 		75ACA2332504A7110092BC15 /* CircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 		75C763822504C9DB009A52F9 /* AddCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollectionView.swift; sourceTree = "<group>"; };
 		75C763842504CDB1009A52F9 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
+		75C763862505A77E009A52F9 /* UITextField+ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+ClearButton.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,10 +184,11 @@
 				75ACA1FD2504A7110092BC15 /* URLImage */,
 				751BA12024E00160004EE1BB /* Model */,
 				751BA11F24E00145004EE1BB /* Navigation */,
-				75C763802504C99B009A52F9 /* OptionViews */,
 				75C763812504C9AA009A52F9 /* CollectionViews */,
+				75C763802504C99B009A52F9 /* OptionViews */,
 				75ACA1F524F92C3B0092BC15 /* URL+UnSplash.swift */,
 				759E7BF424F685F50093D548 /* TextfieldWithValidator.swift */,
+				75C763862505A77E009A52F9 /* UITextField+ClearButton.swift */,
 				751BA12324E004A2004EE1BB /* Menu.swift */,
 				751BA15824E1357B004EE1BB /* BottomBarButton.swift */,
 				751BA15C24E13630004EE1BB /* Styles */,
@@ -418,8 +421,8 @@
 		75C763812504C9AA009A52F9 /* CollectionViews */ = {
 			isa = PBXGroup;
 			children = (
-				751BA15224E10C92004EE1BB /* CollectionRow.swift */,
 				751BA15024E10AF4004EE1BB /* CollectionList.swift */,
+				751BA15224E10C92004EE1BB /* CollectionRow.swift */,
 				75C763822504C9DB009A52F9 /* AddCollectionView.swift */,
 				75C763842504CDB1009A52F9 /* UIAlertController+Extension.swift */,
 			);
@@ -539,6 +542,7 @@
 				75ACA25A2504A7120092BC15 /* CircleProgressView.swift in Sources */,
 				75ACA2352504A7110092BC15 /* FileIndex.swift in Sources */,
 				751BA14A24E0F57B004EE1BB /* Menu.swift in Sources */,
+				75C763872505A77E009A52F9 /* UITextField+ClearButton.swift in Sources */,
 				75ACA24D2504A7120092BC15 /* URLSessionDownloadDelegateWrapper.swift in Sources */,
 				751BA11E24E000E8004EE1BB /* AppTabNavigation.swift in Sources */,
 				75ACA1FA24F932680092BC15 /* ImageLoader.swift in Sources */,
@@ -689,7 +693,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"DecisionMaker/Preview Content\"";
-				DEVELOPMENT_TEAM = 98J78MN462;
+				DEVELOPMENT_TEAM = DDGFHKFC77;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DecisionMaker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -711,7 +715,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"DecisionMaker/Preview Content\"";
-				DEVELOPMENT_TEAM = 98J78MN462;
+				DEVELOPMENT_TEAM = DDGFHKFC77;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DecisionMaker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
