@@ -26,8 +26,17 @@ class DecisionMakerModel: ObservableObject {
 
 extension DecisionMakerModel {
     
-    func addCollection(with title: String){
+    func addCollection(with title: String) {
+        var tempCollection = Collection(id: "", title: title)
+        tempCollection.id = tempCollection.title.lowercased()
+            .trimmingCharacters(in: .whitespacesAndNewlines)
         
+        if collections.firstIndex(where: { $0.title == title }) != nil {
+            tempCollection.id = "\(tempCollection.id)\(idCount)"
+            idCount += 1
+        }
+        collections.append(tempCollection)
+        saveCollection()
     }
     
     
@@ -51,23 +60,17 @@ extension DecisionMakerModel {
         _ = collection.options.compactMap{ addChecked($0) }
     }
     
-    func setCollection(_ collection: Collection) {
-        guard let indexSet = collections.firstIndex(where: { $0.id == selectedCollectionID }) else {
-            return
+    func removeCollection(_ collection: Collection) {
+        if let index = collections.firstIndex(of: collection) {
+            collections.remove(at: index)
         }
-        collections[indexSet] = collection
-        
+    }
+    
+    func saveCollection() {
         do {
             _ = try Collection.save(jsonObject: collections)
         } catch  {
             print(error)
-        }
-        
-    }
-    
-    func removeCollection(_ collection: Collection) {
-        if let index = collections.firstIndex(of: collection) {
-            collections.remove(at: index)
         }
     }
     
@@ -96,7 +99,7 @@ extension DecisionMakerModel {
     func removeOption(_ i: Int) {
         collection.options.remove(at: i)
         checkedOptions.remove(at: i)
-        setCollection(collection)
+        saveOptions(with: collection)
     }
     
     func addOption(with title: String, imageString: String? = nil) {
@@ -112,9 +115,24 @@ extension DecisionMakerModel {
         
         collection.options.append(tempOption)
         addChecked(tempOption)
-        setCollection(collection)
+        saveOptions(with: collection)
     }
     
+    // Save options into JSON
+    func saveOptions(with collection: Collection) {
+        guard let indexSet = collections.firstIndex(where: { $0.id == selectedCollectionID }) else {
+            return
+        }
+        collections[indexSet] = collection
+        
+        do {
+            _ = try Collection.save(jsonObject: collections)
+        } catch  {
+            print(error)
+        }
+    }
+    
+
 }
 
 class TextFieldModel: ObservableObject {    

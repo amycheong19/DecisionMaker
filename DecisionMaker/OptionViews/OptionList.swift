@@ -40,7 +40,7 @@ struct OptionList: View {
                 dismissButton: .default(Text("OK"))
             )
         }
-        .padding(.bottom, 50)
+        .padding(.bottom, 100)
         .overlay(bottomBar, alignment: .bottom)
         .navigationBarItems(trailing: AddOptionButton())
         .navigationTitle(collection.title)
@@ -52,7 +52,8 @@ struct OptionList: View {
             Divider()
             Group {
                 BottomBarButton(action: randomSelection,
-                                 title: "Pick For Me!")
+                                title: "Pick For Me!")
+                    .disabled(disablePick)
             }
             .padding(.horizontal, 40)
             .padding(.vertical, 16)
@@ -63,8 +64,10 @@ struct OptionList: View {
     func randomSelection() {
         presentingRandomAlert = true
     }
-    
 
+    var disablePick: Bool {
+        return model.collection.options.count < 1
+    }
     
     func deleteOption(indexSet: IndexSet){
         indexSet.forEach{

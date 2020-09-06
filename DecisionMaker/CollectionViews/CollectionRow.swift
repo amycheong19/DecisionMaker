@@ -23,7 +23,6 @@ struct CollectionRow: View {
     var body: some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading) {
-                
                 Text(collection.title)
                     .font(.headline)
                     .lineLimit(1)
