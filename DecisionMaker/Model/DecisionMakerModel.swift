@@ -60,10 +60,9 @@ extension DecisionMakerModel {
         _ = collection.options.compactMap{ addChecked($0) }
     }
     
-    func removeCollection(_ collection: Collection) {
-        if let index = collections.firstIndex(of: collection) {
-            collections.remove(at: index)
-        }
+    func removeCollection(_ i: Int) {
+        collections.remove(at: i)
+        saveCollection()
     }
     
     func saveCollection() {

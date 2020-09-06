@@ -22,9 +22,15 @@ struct CollectionList: View {
                     selection: $selection) {
                     CollectionRow(collection: .constant(collection))
                 }
-            }
+            }.onDelete(perform: deleteCollection)
         }
         .navigationBarItems(trailing: AddCollectionButton())
+    }
+    
+    func deleteCollection(indexSet: IndexSet){
+        indexSet.forEach{
+            model.removeCollection($0)
+        }
     }
 }
 
