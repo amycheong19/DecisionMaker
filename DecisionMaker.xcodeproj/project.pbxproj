@@ -32,7 +32,6 @@
 		759E7BF524F685F50093D548 /* TextfieldWithValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759E7BF424F685F50093D548 /* TextfieldWithValidator.swift */; };
 		75ACA1F624F92C3B0092BC15 /* URL+UnSplash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ACA1F524F92C3B0092BC15 /* URL+UnSplash.swift */; };
 		75ACA1F824F92D880092BC15 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ACA1F724F92D880092BC15 /* Image.swift */; };
-		75ACA1FA24F932680092BC15 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ACA1F924F932680092BC15 /* ImageLoader.swift */; };
 		75ACA2342504A7110092BC15 /* URLImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ACA1FE2504A7110092BC15 /* URLImageService.swift */; };
 		75ACA2352504A7110092BC15 /* FileIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ACA2002504A7110092BC15 /* FileIndex.swift */; };
 		75ACA2362504A7110092BC15 /* RemoteFileCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ACA2012504A7110092BC15 /* RemoteFileCacheService.swift */; };
@@ -105,7 +104,6 @@
 		759E7BF424F685F50093D548 /* TextfieldWithValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldWithValidator.swift; sourceTree = "<group>"; };
 		75ACA1F524F92C3B0092BC15 /* URL+UnSplash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+UnSplash.swift"; sourceTree = "<group>"; };
 		75ACA1F724F92D880092BC15 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
-		75ACA1F924F932680092BC15 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		75ACA1FE2504A7110092BC15 /* URLImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLImageService.swift; sourceTree = "<group>"; };
 		75ACA2002504A7110092BC15 /* FileIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileIndex.swift; sourceTree = "<group>"; };
 		75ACA2012504A7110092BC15 /* RemoteFileCacheService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteFileCacheService.swift; sourceTree = "<group>"; };
@@ -225,7 +223,6 @@
 				751BA11B24DFC042004EE1BB /* DecisionMakerModel.swift */,
 				75ACA1F724F92D880092BC15 /* Image.swift */,
 				751BA12524E005FE004EE1BB /* Option.swift */,
-				75ACA1F924F932680092BC15 /* ImageLoader.swift */,
 				751BA14E24E109D3004EE1BB /* Collection.swift */,
 			);
 			path = Model;
@@ -545,7 +542,6 @@
 				75C763872505A77E009A52F9 /* UITextField+ClearButton.swift in Sources */,
 				75ACA24D2504A7120092BC15 /* URLSessionDownloadDelegateWrapper.swift in Sources */,
 				751BA11E24E000E8004EE1BB /* AppTabNavigation.swift in Sources */,
-				75ACA1FA24F932680092BC15 /* ImageLoader.swift in Sources */,
 				751BA10D24DFBDBF004EE1BB /* DecisionMakerApp.swift in Sources */,
 				751BA15E24E146A7004EE1BB /* CircleToggleStyle.swift in Sources */,
 				75ACA2532504A7120092BC15 /* ImageProxy.swift in Sources */,

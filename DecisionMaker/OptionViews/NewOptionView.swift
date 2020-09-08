@@ -13,22 +13,58 @@ struct NewOptionView: View {
     @EnvironmentObject private var model: DecisionMakerModel
     @ObservedObject  private var tfModel = TextFieldModel()
     
-    @State private var title = ""
     
     var body: some View {
         
         NavigationView(content: {
             Form{
                 Section {
-                    TextField("Title", text: $title).modifier(ClearButton(text: $title))
-
-                    TextField("Image Search (Optional)", text: $tfModel.searchText)
+                    TextField("Title", text: $tfModel.searchText)
+                        .modifier(ClearButton(text: $tfModel.searchText))
                         .onChange(of: tfModel.searchText) { value in
                             tfModel.debounceText()
                         }
-                    if let url = tfModel.searchURL {
+                    
+                    
+                    if let searched = tfModel.searchedPhoto,
+                       let url = URL(string: searched.urls.thumb), let user = searched.user {
                         URLImage(url, placeholder: Image(systemName: "circle"))
+
+                        HStack(spacing: 0) {
+                            Text("Photo by")
+                                .foregroundColor(.secondary)
+                                .font(.caption2)
+
+                            Text(" \(user.name)")
+                                .foregroundColor(.blue)
+                                .font(.caption2)
+                                .underline()
+                                .onTapGesture {
+                                    let url = URL(string: "https://unsplash.com/@\(user.username)?utm_source=your_app_name&utm_medium=referral")
+                                    guard let websiteURL = url, UIApplication.shared.canOpenURL(websiteURL)
+                                    else { return }
+                                    UIApplication.shared.open(websiteURL)
+                                }
+                            
+                            Text(" / ")
+                                .foregroundColor(.secondary)
+                                .font(.caption2)
+
+                            Text("Unsplash")
+                                .foregroundColor(.blue)
+                                .font(.caption2)
+                                .underline()
+                                .onTapGesture {
+                                    let url = URL(string: "https://unsplash.com/?utm_source=Pickr&utm_medium=referral")
+                                    guard let websiteURL = url, UIApplication.shared.canOpenURL(websiteURL)
+                                    else { return }
+                                    UIApplication.shared.open(websiteURL)
+                                }
+                        }
+                        
                     }
+                    
+                    
                 }
             }
             .navigationBarTitle("New Option")
@@ -61,12 +97,12 @@ struct NewOptionView: View {
     }
     
     var disableForm: Bool {
-        title.isEmpty || title.count < 3
+        tfModel.searchText.isEmpty || tfModel.searchText.count < 2
     }
     
     func createNewOption() {
-        model.addOption(with: title,
-                        imageString: tfModel.searchURL?.absoluteString)
+        model.addOption(with: tfModel.searchText,
+                        imageString: tfModel.searchedPhoto?.urls.thumb)
         dismissView()
     }
     

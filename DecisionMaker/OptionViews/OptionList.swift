@@ -40,7 +40,7 @@ struct OptionList: View {
                 dismissButton: .default(Text("OK"))
             )
         }
-        .padding(.bottom, 100)
+        .padding(.bottom, 80)
         .overlay(bottomBar, alignment: .bottom)
         .navigationBarItems(trailing: AddOptionButton())
         .navigationTitle(collection.title)

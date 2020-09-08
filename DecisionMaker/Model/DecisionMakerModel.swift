@@ -137,7 +137,7 @@ extension DecisionMakerModel {
 class TextFieldModel: ObservableObject {    
     private var cancellable: AnyCancellable?
     @Published var searchText: String = ""
-    @Published var searchURL: URL?
+    @Published var searchedPhoto: UnsplashPhoto?
     private static let sessionProcessingQueue = DispatchQueue(label: "SessionProcessingQueue")
     
     func debounceText() {
@@ -145,7 +145,7 @@ class TextFieldModel: ObservableObject {
         cancellable = AnyCancellable(
         $searchText
             .removeDuplicates()
-            .debounce(for: 0.1, scheduler: DispatchQueue.main)
+            .debounce(for: 0.3, scheduler: DispatchQueue.main)
             .sink { searchText in
                 if searchText.count > 2 {
                     self.searchImage(with: searchText)
@@ -159,7 +159,7 @@ class TextFieldModel: ObservableObject {
         
         if let url = URL.with(query: text) {
             var urlRequest = URLRequest(url: url)
-            urlRequest.setValue("Client-ID eAuZQdNO50kyz1haJeAlMS_sKa5J0JCBrvWUsLbKACA", forHTTPHeaderField: "Authorization")
+            urlRequest.setValue(PhotoConfiguration.shared.accessKey, forHTTPHeaderField: "Authorization")
             
             cancellable =
                 URLSession.shared.dataTaskPublisher(for: urlRequest)
@@ -177,8 +177,22 @@ class TextFieldModel: ObservableObject {
                         print(error.localizedDescription)
                     }
                 }, receiveValue: { [weak self] value in
-                    self?.searchURL = URL(string: value.results.randomElement()?.urls.thumb ?? "")
+                    self?.searchedPhoto = value.results.randomElement()
+                    if let downloadLocation = self?.searchedPhoto?.links?.download_location {
+                        self?.downloadImage(with: downloadLocation)
+                    }
                 })
+        }
+    }
+    
+    private func downloadImage(with urlString: String)  {
+        
+        if let url = URL(string: urlString) {
+            var urlRequest = URLRequest(url: url)
+            urlRequest.setValue(PhotoConfiguration.shared.accessKey, forHTTPHeaderField: "Authorization")
+            URLSession.shared.dataTask(with: urlRequest){ [weak self] data, response, error in
+                debugPrint("response: \(response) | error: \(error)")
+            }.resume()
         }
     }
 }
