@@ -11,6 +11,18 @@ struct Option: Identifiable, Codable {
     var id: String
     var title: String
     var imageURLString: String?
+    var picked = 0
+    
+    init(id: String, title: String, imageURLString: String? = nil, picked: Int? = 0) {
+        self.id = id
+        self.title = title
+        self.imageURLString = imageURLString
+        self.picked = picked ?? 0
+    }
+    
+    mutating func pickedIncrement() {
+        picked += 1
+    }
 }
 
 extension Option: Hashable {

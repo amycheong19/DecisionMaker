@@ -12,8 +12,6 @@ class DecisionMakerModel: ObservableObject {
     @Published private(set) var checkedOptions: [Option] = []
     @Published private(set) var collections: [Collection] = []
     @Published private(set) var selectedCollectionID: Collection.ID?
-
-    
     @Published var collection = Collection.restaurants
     
     private var idCount = 1000
@@ -36,7 +34,7 @@ extension DecisionMakerModel {
             idCount += 1
         }
         collections.append(tempCollection)
-        saveCollection()
+        saveCollections()
     }
     
     
@@ -62,10 +60,10 @@ extension DecisionMakerModel {
     
     func removeCollection(_ i: Int) {
         collections.remove(at: i)
-        saveCollection()
+        saveCollections()
     }
     
-    func saveCollection() {
+    func saveCollections() {
         do {
             _ = try Collection.save(jsonObject: collections)
         } catch  {
@@ -75,6 +73,7 @@ extension DecisionMakerModel {
     
 }
 
+// MARK: - Options
 extension DecisionMakerModel {
     func editOptionsToPick(option: Option, toggle: Bool) {
         if toggle {
@@ -84,6 +83,14 @@ extension DecisionMakerModel {
                 removeCheckedOptions(id: option.id)
             }
         }
+    }
+    
+    func edit(option: Option){
+        
+        let firstIndex = collection.options.firstIndex(where: { $0.id == option.id })!
+        
+        collection.options[firstIndex].pickedIncrement()
+        saveOptions(with: collection)
     }
     
     func addChecked(_ option: Option) {
@@ -123,12 +130,7 @@ extension DecisionMakerModel {
             return
         }
         collections[indexSet] = collection
-        
-        do {
-            _ = try Collection.save(jsonObject: collections)
-        } catch  {
-            print(error)
-        }
+        saveCollections()
     }
     
 

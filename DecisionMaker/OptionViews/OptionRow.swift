@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OptionRow: View {
-    var option: Option
+    @Binding var option: Option
     
     @EnvironmentObject private var model: DecisionMakerModel
     @State private var checked = true
@@ -46,7 +46,7 @@ struct OptionRow: View {
                     Text(option.title)
                         .font(.headline)
                         .lineLimit(nil)
-                    Text("Last updated: 12 July 2020")
+                    Text("Picked: \(option.picked)")
                         .foregroundColor(.secondary)
                         .lineLimit(nil)
                 }.padding(.vertical, metrics.textPadding)
@@ -75,7 +75,7 @@ struct OptionRow: View {
 
 struct OptionRow_Previews: PreviewProvider {
     static var previews: some View {
-        OptionRow(option: .macdonald)
+        OptionRow(option: .constant(.macdonald))
             .environmentObject(DecisionMakerModel())
     }
 }

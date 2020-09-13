@@ -9,23 +9,22 @@ import SwiftUI
 
 struct OptionList: View {
     @EnvironmentObject private var model: DecisionMakerModel
-
     var collection: Collection
-    
     @State private var presentingRandomAlert = false
-
+    
+    @ObservedObject var alertModel = AlertModel()
     
     var body: some View {
         List {
             ForEach(model.collection.options){
-                OptionRow(option: $0)
+                OptionRow(option: .constant($0))
             }
             .onDelete(perform: deleteOption)
         }
         .onAppear() {
             model.selectCollection(collection)
         }
-        .alert(isPresented: $presentingRandomAlert) {
+        .alert(isPresented: $alertModel.flag) {
             guard let randomOption = model.checkedOptions.randomElement(), model.checkedOptions.count > 1 else {
                 return Alert(
                    title: Text("No option is selected"),
@@ -34,11 +33,16 @@ struct OptionList: View {
                )
             }
 
-            return Alert(
-                title: Text("Selected"),
-                message: Text("\(randomOption.title)"),
-                dismissButton: .default(Text("OK"))
-            )
+            return
+                Alert(title: Text("We have PICKED for you!"), message: Text("Are you going to choose \(randomOption.title)?"),
+                    primaryButton: Alert.Button.default(Text("Yes, I 'll follow!"), action: {
+                        model.edit(option: randomOption)
+                        alertModel.flag = false
+                    }),
+                    secondaryButton: Alert.Button.destructive(Text("No, I have second thought"), action: {
+                        alertModel.flag = false
+                    })
+                )
         }
         .padding(.bottom, 80)
         .overlay(bottomBar, alignment: .bottom)
@@ -62,6 +66,7 @@ struct OptionList: View {
     }
     
     func randomSelection() {
+        alertModel.flag = true
         presentingRandomAlert = true
     }
 
@@ -76,6 +81,9 @@ struct OptionList: View {
     }
 }
 
+class AlertModel: ObservableObject {
+    @Published var flag = false
+}
 
 
 struct OptionList_Previews: PreviewProvider {
