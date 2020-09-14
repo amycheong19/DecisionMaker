@@ -27,21 +27,22 @@ struct OptionList: View {
         .alert(isPresented: $alertModel.flag) {
             guard let randomOption = model.checkedOptions.randomElement(), model.checkedOptions.count > 1 else {
                 return Alert(
-                   title: Text("No option is selected"),
-                   message: Text("Select at least two"),
-                   dismissButton: .default(Text("OK"))
-               )
+                    title: Text("No option is selected"),
+                    message: Text("Select at least two"),
+                    dismissButton: .default(Text("OK"))
+                )
             }
-
+            
             return
                 Alert(title: Text("We have PICKED for you!"), message: Text("Are you going to choose \(randomOption.title)?"),
-                    primaryButton: Alert.Button.default(Text("Yes, I 'll follow!"), action: {
-                        model.edit(option: randomOption)
+                      primaryButton: Alert.Button.default(Text("Yes, I 'll choose \(randomOption.title)!"),
+                                                          action: {
+                                                            model.edit(option: randomOption)
+                                                            alertModel.flag = false
+                                                          }),
+                      secondaryButton: Alert.Button.destructive(Text("No, I have second thought"), action: {
                         alertModel.flag = false
-                    }),
-                    secondaryButton: Alert.Button.destructive(Text("No, I have second thought"), action: {
-                        alertModel.flag = false
-                    })
+                      })
                 )
         }
         .padding(.bottom, 80)
@@ -69,7 +70,7 @@ struct OptionList: View {
         alertModel.flag = true
         presentingRandomAlert = true
     }
-
+    
     var disablePick: Bool {
         return model.collection.options.count < 1
     }

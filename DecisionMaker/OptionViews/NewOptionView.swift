@@ -12,8 +12,8 @@ struct NewOptionView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject private var model: DecisionMakerModel
     @ObservedObject  private var tfModel = TextFieldModel()
-    
-    
+    let ciContext = CIContext()
+
     var body: some View {
         
         NavigationView(content: {
@@ -27,23 +27,49 @@ struct NewOptionView: View {
                     
                     
                     if let searched = tfModel.searchedPhoto,
-                       let url = URL(string: searched.urls.thumb), let user = searched.user {
-                        URLImage(url, placeholder: Image(systemName: "circle"))
+                       let url = URL(string: searched.urls.thumb),
+                       let user = searched.user {
 
+                        URLImage(url,
+                                 placeholder: {
+                                    ProgressView($0) { progress in
+                                        ZStack {
+                                            if progress > 0.0 {
+                                                CircleProgressView(progress).stroke(lineWidth: 8.0)
+                                            }
+                                            else {
+                                                CircleActivityView().stroke(lineWidth: 50.0)
+                                            }
+                                        }
+                                    }
+                                    .frame(width: 50.0, height: 50.0)
+                                 },
+                                 content: {
+                                    $0.image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: metrics.thumbnailSize, height: metrics.thumbnailSize)
+                                        .shadow(radius: 10.0)
+                                        .clipShape(RoundedRectangle(cornerRadius: metrics.cornerRadius))
+                                 })
+                        
                         HStack(spacing: 0) {
                             Text("Photo by")
                                 .foregroundColor(.secondary)
                                 .font(.caption2)
 
-                            Text(" \(user.name)")
+                            Text(" \(user.name ?? "Annonymous")")
                                 .foregroundColor(.blue)
                                 .font(.caption2)
                                 .underline()
                                 .onTapGesture {
-                                    let url = URL(string: "https://unsplash.com/@\(user.username)?utm_source=your_app_name&utm_medium=referral")
-                                    guard let websiteURL = url, UIApplication.shared.canOpenURL(websiteURL)
+                                    
+                                    guard let username = user.username,
+                                          let url = URL(string: "https://unsplash.com/@\(username)?utm_source=your_app_name&utm_medium=referral"),
+                                          UIApplication.shared.canOpenURL(url)
                                     else { return }
-                                    UIApplication.shared.open(websiteURL)
+                                    
+                                    UIApplication.shared.open(url)
                                 }
                             
                             Text(" / ")
@@ -98,6 +124,17 @@ struct NewOptionView: View {
     
     var disableForm: Bool {
         tfModel.searchText.isEmpty || tfModel.searchText.count < 2
+    }
+    
+    var metrics: Metrics {
+        return Metrics(thumbnailSize: 200, cornerRadius: 16, rowPadding: 0, textPadding: 8)
+    }
+    
+    struct Metrics {
+        var thumbnailSize: CGFloat
+        var cornerRadius: CGFloat
+        var rowPadding: CGFloat
+        var textPadding: CGFloat
     }
     
     func createNewOption() {

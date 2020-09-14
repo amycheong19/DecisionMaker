@@ -29,10 +29,10 @@ struct OptionRow: View {
                     URLImage(url, expireAfter: Date(timeIntervalSinceNow: 31_556_926.0)) { proxy in
                         proxy.image
                             .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: metrics.thumbnailSize, height: metrics.thumbnailSize)
                             .clipShape(RoundedRectangle(cornerRadius: metrics.cornerRadius))
-                            .clipped()
                     }
-                    .frame(width: metrics.thumbnailSize, height: metrics.thumbnailSize)
                 } else {
                     option.image
                         .resizable()
