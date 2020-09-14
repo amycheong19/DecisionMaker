@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct AppTabNavigation: View {
-    @State private var selection: Tab = .DecisionMaker
+    @State private var selection: Tab = .Pickr
     
     var body: some View {
         TabView(selection: $selection) {
             NavigationView {
                 Menu()
             }.tabItem {
-                Label("Where to Eat", systemImage: "list.bullet")
-                    .accessibility(label: Text("Where to Eat"))
-            }.tag(Tab.DecisionMaker)
+                Label("Pickr", systemImage: "list.bullet")
+                    .accessibility(label: Text("Picker"))
+            }.tag(Tab.Pickr)
             
         }
     }
@@ -25,7 +25,7 @@ struct AppTabNavigation: View {
 
 extension AppTabNavigation {
     enum Tab {
-        case DecisionMaker
+        case Pickr
         case settings
     }
 }

@@ -130,13 +130,6 @@ struct NewOptionView: View {
         return Metrics(thumbnailSize: 200, cornerRadius: 16, rowPadding: 0, textPadding: 8)
     }
     
-    struct Metrics {
-        var thumbnailSize: CGFloat
-        var cornerRadius: CGFloat
-        var rowPadding: CGFloat
-        var textPadding: CGFloat
-    }
-    
     func createNewOption() {
         model.addOption(with: tfModel.searchText,
                         imageString: tfModel.searchedPhoto?.urls.thumb)

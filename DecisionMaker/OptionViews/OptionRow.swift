@@ -24,7 +24,6 @@ struct OptionRow: View {
             model.editOptionsToPick(option: option, toggle: checked)
         }) {
             HStack {
-                
                 if let urlString = option.imageURLString, let url = URL(string: urlString) {
                     URLImage(url, expireAfter: Date(timeIntervalSinceNow: 31_556_926.0)) { proxy in
                         proxy.image
@@ -33,13 +32,6 @@ struct OptionRow: View {
                             .frame(width: metrics.thumbnailSize, height: metrics.thumbnailSize)
                             .clipShape(RoundedRectangle(cornerRadius: metrics.cornerRadius))
                     }
-                } else {
-                    option.image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: metrics.thumbnailSize, height: metrics.thumbnailSize)
-                        .clipShape(RoundedRectangle(cornerRadius: metrics.cornerRadius))
-                        .accessibility(hidden: true)
                 }
                 
                 VStack(alignment: .leading) {
@@ -63,13 +55,6 @@ struct OptionRow: View {
         }
         .buttonStyle(PlainButtonStyle())
         .toggleStyle(CircleToggleStyle())
-    }
-    
-    struct Metrics {
-        var thumbnailSize: CGFloat
-        var cornerRadius: CGFloat
-        var rowPadding: CGFloat
-        var textPadding: CGFloat
     }
 }
 
