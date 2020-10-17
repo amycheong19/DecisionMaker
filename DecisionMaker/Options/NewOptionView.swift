@@ -18,8 +18,8 @@ struct NewOptionView: View {
         
         NavigationView(content: {
             Form{
-                Section {
-                    TextField("Title", text: $tfModel.searchText)
+                Section(header: Text("The more options to pickr, the merrier! ☀️")){
+                    TextField("New option", text: $tfModel.searchText)
                         .modifier(ClearButton(text: $tfModel.searchText))
                         .onChange(of: tfModel.searchText) { value in
                             tfModel.debounceText()
