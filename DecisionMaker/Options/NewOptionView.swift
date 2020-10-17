@@ -132,7 +132,7 @@ struct NewOptionView: View {
     
     func createNewOption() {
         model.addOption(with: tfModel.searchText,
-                        imageString: tfModel.searchedPhoto?.urls.regular)
+                        origin: tfModel.searchedPhoto)
         dismissView()
     }
     

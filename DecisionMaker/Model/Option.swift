@@ -7,17 +7,16 @@
 
 import Foundation
 
-struct Option: Identifiable, Codable {
-    var id: String
+public struct Option: Identifiable, Codable {
+    public var id: String
     var title: String
     var picked = 0
-    var imageURLString: String?
+    var origin: UnsplashPhoto?
     
-    
-    init(id: String, title: String, imageURLString: String? = nil, picked: Int? = 0) {
+    init(id: String, title: String, origin: UnsplashPhoto? = nil, picked: Int? = 0) {
         self.id = id
         self.title = title
-        self.imageURLString = imageURLString
+        self.origin = origin
         self.picked = picked ?? 0
     }
     
@@ -27,13 +26,17 @@ struct Option: Identifiable, Codable {
 }
 
 extension Option: Hashable {
-    static func == (lhs: Option, rhs: Option) -> Bool {
+    public static func == (lhs: Option, rhs: Option) -> Bool {
         lhs.id == rhs.id
     }
 
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
+}
+
+extension Option {
+    var pluralizer: String { self.picked <= 1 ? "" : "s" }
 }
 
 
@@ -44,14 +47,12 @@ extension Option {
         .burgerKing,
         .domino
     ]
-    
-    static let dominoooo: [Option] = [
-        .domino
-    ]
-    
+
     static let allIDs: [Option.ID] = all.map { $0.id }
     
     static let macdonald = Option(id: "mcdonald", title: "McDonald")
+//    Option(id: "mcdonald", title: "McDonald", origin: <#T##UnsplashPhoto?#>,
+    
     
     static let pizzaHut = Option(id: "pizzahut", title: "Pizza Hut")
 

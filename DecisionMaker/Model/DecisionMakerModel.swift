@@ -39,6 +39,10 @@ extension DecisionMakerModel {
     
     
     func createCollection(_ collection: Collection? = nil) {
+        if let jsonCollections = try? Collection.loadJSON() {
+            collections.append(contentsOf: jsonCollections)
+        }
+        
         guard !collections.isEmpty else {
             // initial
             if let jsonCollections = try? Collection.loadJSON() {
@@ -108,9 +112,9 @@ extension DecisionMakerModel {
         saveOptions(with: collection)
     }
     
-    func addOption(with title: String, imageString: String? = nil) {
+    func addOption(with title: String, origin: UnsplashPhoto? = nil) {
         
-        var tempOption = Option(id: "", title: title, imageURLString: imageString)
+        var tempOption = Option(id: "", title: title, origin: origin)
         tempOption.id = tempOption.title.lowercased()
             .trimmingCharacters(in: .whitespacesAndNewlines)
         

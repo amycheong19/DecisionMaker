@@ -12,7 +12,7 @@ struct Menu: View {
 
     var body: some View {
         CollectionList(collections: model.collections)
-            .navigationTitle("Collections 🧳")
+            .navigationTitle("Pickr Collections 🧳")
     }
 }
 

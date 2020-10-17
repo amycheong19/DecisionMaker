@@ -25,7 +25,7 @@ struct OptionRow: View {
             model.editOptionsToPick(option: option, toggle: checked)
         }) {
             HStack {
-                if let urlString = option.imageURLString, let url = URL(string: urlString) {
+                if let urlString = option.origin?.urls.regular, let url = URL(string: urlString) {
                     URLImage(url, expireAfter: Date(timeIntervalSinceNow: 31_556_926.0)) { proxy in
                         proxy.image
                             .resizable()
@@ -51,7 +51,7 @@ struct OptionRow: View {
                     Text(option.title)
                         .font(.headline)
                         .lineLimit(nil)
-                    Text("Picked: \(option.picked)")
+                    Text("Pickr for \(option.picked) time\(option.pluralizer)")
                         .foregroundColor(.secondary)
                         .lineLimit(nil)
                 }.padding(.vertical, metrics.textPadding)

@@ -48,41 +48,13 @@ struct OptionList: View {
                 }
         }
         
-        
-       
-//        .alert(isPresented: $alertModel.flag) {
-//            guard let randomOption = model.checkedOptions.randomElement(), model.checkedOptions.count > 1 else {
-//                return Alert(
-//                    title: Text("No option is selected"),
-//                    message: Text("Select at least two"),
-//                    dismissButton: .default(Text("OK"))
-//                )
-//            }
-//
-//            return
-//                Alert(title: Text("We have PICKED for you!"), message: Text("Are you going to choose \(randomOption.title)?"),
-//                      primaryButton: Alert.Button.default(Text("Yes, I 'll choose \(randomOption.title)!"),
-//                                                          action: {
-//                                                            model.edit(option: randomOption)
-//                                                            alertModel.flag = false
-//                                                          }),
-//                      secondaryButton: Alert.Button.destructive(Text("No, I have second thought"), action: {
-//                        alertModel.flag = false
-//                      })
-//                )
-//        }
-//        .padding(.bottom, 80)
-//        .overlay(bottomBar, alignment: .bottom)
-//        .navigationBarItems(trailing: AddOptionButton())
-//        .navigationTitle(collection.title)
-        
     }
     
     var bottomBar: some View {
         VStack(spacing: 0) {
             Divider()
             BottomBarButton(action: randomSelection,
-                            title: "Pick For Me!")
+                            title: "Pickr For Me!")
             .disabled(disablePick)
             .padding(.horizontal, 40)
             .padding(.vertical, 16)
