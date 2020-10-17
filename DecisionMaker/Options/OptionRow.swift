@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct OptionRow: View {
     @Binding var option: Option
@@ -31,7 +32,19 @@ struct OptionRow: View {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: metrics.thumbnailSize, height: metrics.thumbnailSize)
                             .clipShape(RoundedRectangle(cornerRadius: metrics.cornerRadius))
+                            .accessibility(hidden: true)
                     }
+                } else {
+
+                    if let uiImage = UIImage(named: option.id) ?? UIImage(named: "placeholder") {
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: metrics.thumbnailSize, height: metrics.thumbnailSize)
+                            .clipShape(RoundedRectangle(cornerRadius: metrics.cornerRadius, style: .continuous))
+                            .accessibility(hidden: true)
+                    }
+                    
                 }
                 
                 VStack(alignment: .leading) {

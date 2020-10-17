@@ -10,8 +10,9 @@ import Foundation
 struct Option: Identifiable, Codable {
     var id: String
     var title: String
-    var imageURLString: String?
     var picked = 0
+    var imageURLString: String?
+    
     
     init(id: String, title: String, imageURLString: String? = nil, picked: Int? = 0) {
         self.id = id

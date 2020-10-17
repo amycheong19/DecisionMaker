@@ -12,11 +12,11 @@ struct Menu: View {
 
     var body: some View {
         CollectionList(collections: model.collections)
-            .navigationTitle("Collections")
+            .navigationTitle("Collections 🧳")
     }
 }
 
-struct OptionCollection_Previews: PreviewProvider {
+struct Menu_Previews: PreviewProvider {
     static var previews: some View {
         Menu()
             .environmentObject(DecisionMakerModel())

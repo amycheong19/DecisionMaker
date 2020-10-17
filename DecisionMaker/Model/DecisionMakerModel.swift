@@ -85,9 +85,9 @@ extension DecisionMakerModel {
         }
     }
     
-    func edit(option: Option){
+    func edit(optionID: String){
         
-        let firstIndex = collection.options.firstIndex(where: { $0.id == option.id })!
+        guard let firstIndex = collection.options.firstIndex(where: { $0.id == optionID }) else { return }
         
         collection.options[firstIndex].pickedIncrement()
         saveOptions(with: collection)

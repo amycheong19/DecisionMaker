@@ -27,7 +27,7 @@ struct NewOptionView: View {
                     
                     
                     if let searched = tfModel.searchedPhoto,
-                       let url = URL(string: searched.urls.thumb),
+                       let url = URL(string: searched.urls.regular),
                        let user = searched.user {
 
                         URLImage(url,
@@ -132,7 +132,7 @@ struct NewOptionView: View {
     
     func createNewOption() {
         model.addOption(with: tfModel.searchText,
-                        imageString: tfModel.searchedPhoto?.urls.thumb)
+                        imageString: tfModel.searchedPhoto?.urls.regular)
         dismissView()
     }
     

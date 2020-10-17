@@ -16,9 +16,16 @@ struct AppTabNavigation: View {
                 Menu()
             }.tabItem {
                 Label("Pickr", systemImage: "list.bullet")
-                    .accessibility(label: Text("Picker"))
-            }.tag(Tab.Pickr)
+                    .accessibility(label: Text("Tab.Pickr.title"))
+            }.tag(Tab.Pickr.title)
             
+            NavigationView {
+                Settings()
+//                WebContentView()
+            }.tabItem {
+                Label("Settings", systemImage: "gear")
+                    .accessibility(label: Text("Tab.settings.title"))
+            }.tag(Tab.settings.title)
         }
     }
 }
@@ -27,5 +34,14 @@ extension AppTabNavigation {
     enum Tab {
         case Pickr
         case settings
+        
+        var title: String {
+            switch self {
+            case .Pickr:
+                return "Pickr"
+            case .settings:
+                return "Settings"
+            }
+        }
     }
 }
