@@ -37,6 +37,18 @@ extension DecisionMakerModel {
         saveCollections()
     }
     
+    func editCollection(with newTitle: String) {
+        
+        guard let indexSet = collections.firstIndex(where: { $0.id == selectedCollectionID }) else {
+            return
+        }
+        var tempCollection = collections[indexSet]
+        tempCollection.title = newTitle
+        collections[indexSet] = tempCollection
+        
+        saveCollections()
+    }
+    
     
     func createCollection(_ collection: Collection? = nil) {
         if let jsonCollections = try? Collection.loadJSON() {

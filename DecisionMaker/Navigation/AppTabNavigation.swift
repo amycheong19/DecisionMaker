@@ -21,7 +21,6 @@ struct AppTabNavigation: View {
             
             NavigationView {
                 Settings()
-//                WebContentView()
             }.tabItem {
                 Label("Settings", systemImage: "gear")
                     .accessibility(label: Text("Tab.settings.title"))
