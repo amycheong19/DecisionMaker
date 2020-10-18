@@ -72,7 +72,7 @@
 		75ACA2592504A7120092BC15 /* CircleActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ACA2322504A7110092BC15 /* CircleActivityView.swift */; };
 		75ACA25A2504A7120092BC15 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ACA2332504A7110092BC15 /* CircleProgressView.swift */; };
 		75C763832504C9DB009A52F9 /* AddCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763822504C9DB009A52F9 /* AddCollectionView.swift */; };
-		75C763852504CDB1009A52F9 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763842504CDB1009A52F9 /* UIAlertController+Extension.swift */; };
+		75C763852504CDB1009A52F9 /* AlertControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763842504CDB1009A52F9 /* AlertControl.swift */; };
 		75C763872505A77E009A52F9 /* UITextField+ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763862505A77E009A52F9 /* UITextField+ClearButton.swift */; };
 		75C763AC250F8F37009A52F9 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763AB250F8F37009A52F9 /* Metrics.swift */; };
 		75C763B0251206DD009A52F9 /* FlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763AF251206DD009A52F9 /* FlipView.swift */; };
@@ -85,6 +85,9 @@
 		75C763DA25172AE0009A52F9 /* HTMLStringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763D925172AE0009A52F9 /* HTMLStringView.swift */; };
 		75C763DC25172B45009A52F9 /* SettingsContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763DB25172B45009A52F9 /* SettingsContent.swift */; };
 		75C763DE253AC0A8009A52F9 /* SampleSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763DD253AC0A8009A52F9 /* SampleSettings.swift */; };
+		75C763E6253BBFE4009A52F9 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763E5253BBFE4009A52F9 /* View+Extension.swift */; };
+		75C763E8253BC08B009A52F9 /* BackFactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763E7253BC08B009A52F9 /* BackFactView.swift */; };
+		75C763EA253BC0E7009A52F9 /* PickedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763E9253BC0E7009A52F9 /* PickedCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -155,10 +158,10 @@
 		75ACA2322504A7110092BC15 /* CircleActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleActivityView.swift; sourceTree = "<group>"; };
 		75ACA2332504A7110092BC15 /* CircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 		75C763822504C9DB009A52F9 /* AddCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollectionView.swift; sourceTree = "<group>"; };
-		75C763842504CDB1009A52F9 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
+		75C763842504CDB1009A52F9 /* AlertControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertControl.swift; sourceTree = "<group>"; };
 		75C763862505A77E009A52F9 /* UITextField+ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UITextField+ClearButton.swift"; path = "../Extensions/UITextField+ClearButton.swift"; sourceTree = "<group>"; };
 		75C763AB250F8F37009A52F9 /* Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
-		75C763AF251206DD009A52F9 /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlipView.swift; path = ../../FlipView/FlipView.swift; sourceTree = "<group>"; };
+		75C763AF251206DD009A52F9 /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlipView.swift; path = ../FlipView/FlipView.swift; sourceTree = "<group>"; };
 		75C763B125120792009A52F9 /* Animation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+Extension.swift"; sourceTree = "<group>"; };
 		75C763B325120828009A52F9 /* FlipCardGraphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipCardGraphic.swift; sourceTree = "<group>"; };
 		75C763B5251208B7009A52F9 /* CardActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardActionButton.swift; sourceTree = "<group>"; };
@@ -168,6 +171,9 @@
 		75C763D925172AE0009A52F9 /* HTMLStringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringView.swift; sourceTree = "<group>"; };
 		75C763DB25172B45009A52F9 /* SettingsContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContent.swift; sourceTree = "<group>"; };
 		75C763DD253AC0A8009A52F9 /* SampleSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SampleSettings.swift; path = ../../SampleSettings.swift; sourceTree = "<group>"; };
+		75C763E5253BBFE4009A52F9 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		75C763E7253BC08B009A52F9 /* BackFactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackFactView.swift; sourceTree = "<group>"; };
+		75C763E9253BC0E7009A52F9 /* PickedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickedCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +260,8 @@
 				75ACA1FD2504A7110092BC15 /* URLImage */,
 				75C763862505A77E009A52F9 /* UITextField+ClearButton.swift */,
 				759E7BF424F685F50093D548 /* TextfieldWithValidator.swift */,
+				75C763AF251206DD009A52F9 /* FlipView.swift */,
+				75C763842504CDB1009A52F9 /* AlertControl.swift */,
 				751BA15424E129FD004EE1BB /* AddOptionButton.swift */,
 				751BA15824E1357B004EE1BB /* BottomBarButton.swift */,
 				751BA15A24E1361B004EE1BB /* SquishableButtonStyle.swift */,
@@ -264,6 +272,7 @@
 				75C763B725120E46009A52F9 /* AnimatableFontModifier.swift */,
 				75C763B925161A0B009A52F9 /* CardTitle.swift */,
 				75C763D925172AE0009A52F9 /* HTMLStringView.swift */,
+				75C763E7253BC08B009A52F9 /* BackFactView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -271,7 +280,6 @@
 		75ACA1FD2504A7110092BC15 /* URLImage */ = {
 			isa = PBXGroup;
 			children = (
-				75C763AF251206DD009A52F9 /* FlipView.swift */,
 				75ACA1FE2504A7110092BC15 /* URLImageService.swift */,
 				75ACA1FF2504A7110092BC15 /* ImageCache */,
 				75ACA2022504A7110092BC15 /* Utils */,
@@ -441,6 +449,7 @@
 				751BA12124E003A8004EE1BB /* OptionList.swift */,
 				751BA12924E0E262004EE1BB /* OptionRow.swift */,
 				751BA16A24F5DEFE004EE1BB /* NewOptionView.swift */,
+				75C763E9253BC0E7009A52F9 /* PickedCard.swift */,
 			);
 			path = Options;
 			sourceTree = "<group>";
@@ -451,7 +460,6 @@
 				751BA15024E10AF4004EE1BB /* CollectionList.swift */,
 				751BA15224E10C92004EE1BB /* CollectionRow.swift */,
 				75C763822504C9DB009A52F9 /* AddCollectionView.swift */,
-				75C763842504CDB1009A52F9 /* UIAlertController+Extension.swift */,
 			);
 			path = CollectionViews;
 			sourceTree = "<group>";
@@ -463,6 +471,7 @@
 				75ACA1F524F92C3B0092BC15 /* URL+UnSplash.swift */,
 				751BA16124E8E81E004EE1BB /* Collection+JSONParser.swift */,
 				75C763B125120792009A52F9 /* Animation+Extension.swift */,
+				75C763E5253BBFE4009A52F9 /* View+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -559,6 +568,8 @@
 				75ACA23D2504A7110092BC15 /* CoreDataModelDescription.swift in Sources */,
 				75ACA2572504A7120092BC15 /* ProgressView.swift in Sources */,
 				751BA15B24E1361B004EE1BB /* SquishableButtonStyle.swift in Sources */,
+				75C763E8253BC08B009A52F9 /* BackFactView.swift in Sources */,
+				75C763E6253BBFE4009A52F9 /* View+Extension.swift in Sources */,
 				751BA14B24E0F57B004EE1BB /* OptionRow.swift in Sources */,
 				751BA15524E129FD004EE1BB /* AddOptionButton.swift in Sources */,
 				75C763B225120792009A52F9 /* Animation+Extension.swift in Sources */,
@@ -566,7 +577,7 @@
 				75ACA1F824F92D880092BC15 /* Image.swift in Sources */,
 				75ACA2542504A7120092BC15 /* DownloadProgressWrapper.swift in Sources */,
 				75ACA2592504A7120092BC15 /* CircleActivityView.swift in Sources */,
-				75C763852504CDB1009A52F9 /* UIAlertController+Extension.swift in Sources */,
+				75C763852504CDB1009A52F9 /* AlertControl.swift in Sources */,
 				751BA12624E005FE004EE1BB /* Option.swift in Sources */,
 				75C763DE253AC0A8009A52F9 /* SampleSettings.swift in Sources */,
 				75ACA23B2504A7110092BC15 /* Version.swift in Sources */,
@@ -576,6 +587,7 @@
 				751BA15724E1342F004EE1BB /* VisualEffectBlur.swift in Sources */,
 				75ACA2462504A7120092BC15 /* CoreImageFilterProcessor.swift in Sources */,
 				75C763B6251208B7009A52F9 /* CardActionButton.swift in Sources */,
+				75C763EA253BC0E7009A52F9 /* PickedCard.swift in Sources */,
 				75ACA2342504A7110092BC15 /* URLImageService.swift in Sources */,
 				75ACA2512504A7120092BC15 /* ImageLoaderView.swift in Sources */,
 				75ACA24A2504A7120092BC15 /* DownloadCoordinator.swift in Sources */,

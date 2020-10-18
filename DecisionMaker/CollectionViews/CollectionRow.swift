@@ -53,11 +53,3 @@ struct CollectionRow_Previews: PreviewProvider {
         CollectionRow(collection: .constant(.restaurants))
     }
 }
-
-
-extension View {
-    func Print(_ vars: Any...) -> some View {
-        for v in vars { print(v) }
-        return EmptyView()
-    }
-}

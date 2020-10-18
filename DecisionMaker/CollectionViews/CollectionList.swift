@@ -17,26 +17,29 @@ struct CollectionList: View {
     
     var body: some View {
         
-        Form{
-            ForEach(model.collections) { collection in
-                if self.editMode == .active {
-                    Text(collection.title)
-                        .onTapGesture {
-                            showAlert.toggle()
-                            tempTitle = collection.title
-                            model.selectCollection(collection)
+        Form {
+            Section(footer: Text("Decision making, like coffee, \nneeds cooling process ☕️ - George Washington")){
+                ForEach(model.collections) { collection in
+                    if self.editMode == .active {
+                        Text(collection.title)
+                            .onTapGesture {
+                                showAlert.toggle()
+                                tempTitle = collection.title
+                                model.selectCollection(collection)
+                            }
+                            
+                    } else  {
+                        NavigationLink(
+                            destination: OptionList(collection: collection),
+                            tag: collection,
+                            selection: $selection) {
+                            CollectionRow(collection: .constant(collection))
                         }
-                        
-                } else  {
-                    NavigationLink(
-                        destination: OptionList(collection: collection),
-                        tag: collection,
-                        selection: $selection) {
-                        CollectionRow(collection: .constant(collection))
                     }
                 }
+                .onDelete(perform: deleteCollection)
             }
-            .onDelete(perform: deleteCollection)
+            
         }
         .background(alertControl)
         .navigationBarItems(leading: EditButton(),
