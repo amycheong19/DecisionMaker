@@ -119,6 +119,7 @@ struct NewOptionView: View {
         return Button(action: dismissView) {
             Image(systemName: "xmark")
                 .frame(height: 36)
+                .imageScale(.large)
         }
     }
     

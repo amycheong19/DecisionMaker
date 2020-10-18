@@ -16,6 +16,7 @@ struct AddCollectionButton: View {
     var body: some View {
         Button(action: add, label: {
             Label("", systemImage: "plus")
+                .imageScale(.large)
         })
         .background(alertControl)
         .accessibility(label: Text("Add Button"))

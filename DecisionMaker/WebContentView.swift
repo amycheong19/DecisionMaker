@@ -19,12 +19,14 @@ struct WebContentView: View {
                                         self.webViewStateModel.goBack.toggle()
                                     }, label: {
                                         Image(systemName: "chevron.left")
+                                            .imageScale(.large)
                                     }).disabled(!webViewStateModel.canGoBack)
                                 , trailing:
                                     Button(action: {
                                         self.presentationMode.wrappedValue.dismiss()
                                     }, label: {
                                         Image(systemName: "xmark")
+                                            .imageScale(.large)
                                     })
             )
         }
