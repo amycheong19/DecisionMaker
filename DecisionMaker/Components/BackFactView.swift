@@ -22,7 +22,7 @@ public struct BackFactView: View {
                     .bold()
                 
                 HStack {
-                    Text("Has been Pickr for ")
+                    Text("Pickr ")
                         .foregroundColor(.secondary)
                         .font(.body)
                         .fontWeight(.semibold)

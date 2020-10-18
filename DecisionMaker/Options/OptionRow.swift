@@ -10,7 +10,6 @@ import UIKit
 
 struct OptionRow: View {
     @Binding var option: Option
-    
     @EnvironmentObject private var model: DecisionMakerModel
     @State private var checked = true
     
@@ -51,7 +50,7 @@ struct OptionRow: View {
                     Text(option.title)
                         .font(.headline)
                         .lineLimit(nil)
-                    Text("Pickr for \(option.picked) time\(option.pluralizer)")
+                    Text("Pickr \(option.picked) time\(option.pluralizer)")
                         .foregroundColor(.secondary)
                         .lineLimit(nil)
                 }.padding(.vertical, metrics.textPadding)

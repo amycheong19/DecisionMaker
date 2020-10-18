@@ -75,7 +75,7 @@ struct PickedCard: View {
                 
             }
             
-            Text(hasVoted ? "Like what we have pickr for you?  " : "Voted!")
+            Text(hasVoted ? "Voted!" : "Like what we have pickr for you?  " )
                 .foregroundColor(.primary)
                 .font(.body)
                 .fontWeight(.bold)

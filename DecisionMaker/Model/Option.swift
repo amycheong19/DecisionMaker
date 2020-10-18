@@ -36,7 +36,7 @@ extension Option: Hashable {
 }
 
 extension Option {
-    var pluralizer: String { self.picked <= 1 ? "" : "s" }
+    var pluralizer: String { self.picked == 1 ? "" : "s" }
 }
 
 
