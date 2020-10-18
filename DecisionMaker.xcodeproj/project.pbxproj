@@ -88,6 +88,9 @@
 		75C763E8253BC08B009A52F9 /* BackFactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763E7253BC08B009A52F9 /* BackFactView.swift */; };
 		75C763EA253BC0E7009A52F9 /* PickedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763E9253BC0E7009A52F9 /* PickedCard.swift */; };
 		75C763EC253BC5A6009A52F9 /* WebContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763EB253BC5A6009A52F9 /* WebContentView.swift */; };
+		75C763EE253C7AC9009A52F9 /* NewOptionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763ED253C7AC9009A52F9 /* NewOptionListView.swift */; };
+		75C763F0253C812F009A52F9 /* OptionEditRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763EF253C812F009A52F9 /* OptionEditRowView.swift */; };
+		75C763F2253C8437009A52F9 /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763F1253C8437009A52F9 /* Image+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -174,6 +177,9 @@
 		75C763E7253BC08B009A52F9 /* BackFactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackFactView.swift; sourceTree = "<group>"; };
 		75C763E9253BC0E7009A52F9 /* PickedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickedCard.swift; sourceTree = "<group>"; };
 		75C763EB253BC5A6009A52F9 /* WebContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebContentView.swift; sourceTree = "<group>"; };
+		75C763ED253C7AC9009A52F9 /* NewOptionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOptionListView.swift; sourceTree = "<group>"; };
+		75C763EF253C812F009A52F9 /* OptionEditRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionEditRowView.swift; sourceTree = "<group>"; };
+		75C763F1253C8437009A52F9 /* Image+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -448,8 +454,10 @@
 			children = (
 				751BA12124E003A8004EE1BB /* OptionList.swift */,
 				751BA12924E0E262004EE1BB /* OptionRow.swift */,
+				75C763EF253C812F009A52F9 /* OptionEditRowView.swift */,
 				751BA16A24F5DEFE004EE1BB /* NewOptionView.swift */,
 				75C763E9253BC0E7009A52F9 /* PickedCard.swift */,
+				75C763ED253C7AC9009A52F9 /* NewOptionListView.swift */,
 			);
 			path = Options;
 			sourceTree = "<group>";
@@ -472,6 +480,7 @@
 				751BA16124E8E81E004EE1BB /* Collection+JSONParser.swift */,
 				75C763B125120792009A52F9 /* Animation+Extension.swift */,
 				75C763E5253BBFE4009A52F9 /* View+Extension.swift */,
+				75C763F1253C8437009A52F9 /* Image+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -548,6 +557,7 @@
 			files = (
 				75ACA2482504A7120092BC15 /* Resize.swift in Sources */,
 				75C763B0251206DD009A52F9 /* FlipView.swift in Sources */,
+				75C763F2253C8437009A52F9 /* Image+Extension.swift in Sources */,
 				751BA16B24F5DEFE004EE1BB /* NewOptionView.swift in Sources */,
 				751BA16224E8E81E004EE1BB /* Collection+JSONParser.swift in Sources */,
 				75ACA2392504A7110092BC15 /* Log.swift in Sources */,
@@ -571,6 +581,7 @@
 				75C763E8253BC08B009A52F9 /* BackFactView.swift in Sources */,
 				75C763E6253BBFE4009A52F9 /* View+Extension.swift in Sources */,
 				751BA14B24E0F57B004EE1BB /* OptionRow.swift in Sources */,
+				75C763EE253C7AC9009A52F9 /* NewOptionListView.swift in Sources */,
 				751BA15524E129FD004EE1BB /* AddOptionButton.swift in Sources */,
 				75C763B225120792009A52F9 /* Animation+Extension.swift in Sources */,
 				75ACA2402504A7110092BC15 /* CoreDataAttributeDescription.swift in Sources */,
@@ -597,6 +608,7 @@
 				75ACA23C2504A7110092BC15 /* ImageSource.swift in Sources */,
 				75ACA25A2504A7120092BC15 /* CircleProgressView.swift in Sources */,
 				75ACA2352504A7110092BC15 /* FileIndex.swift in Sources */,
+				75C763F0253C812F009A52F9 /* OptionEditRowView.swift in Sources */,
 				751BA14A24E0F57B004EE1BB /* Menu.swift in Sources */,
 				75C763872505A77E009A52F9 /* UITextField+ClearButton.swift in Sources */,
 				75ACA24D2504A7120092BC15 /* URLSessionDownloadDelegateWrapper.swift in Sources */,

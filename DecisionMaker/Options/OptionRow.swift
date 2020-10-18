@@ -12,11 +12,7 @@ struct OptionRow: View {
     @Binding var option: Option
     @EnvironmentObject private var model: DecisionMakerModel
     @State private var checked = true
-    
-    var metrics: Metrics {
-        return Metrics(thumbnailSize: 96, cornerRadius: 16, rowPadding: 0, textPadding: 8)
-    }
-    
+
     var body: some View {
         
         Button(action: {
@@ -25,23 +21,17 @@ struct OptionRow: View {
         }) {
             HStack {
                 if let urlString = option.origin?.urls.regular, let url = URL(string: urlString) {
-                    URLImage(url, expireAfter: Date(timeIntervalSinceNow: 31_556_926.0)) { proxy in
+                    URLImage(url,
+                             expireAfter: Date(timeIntervalSinceNow: 31_556_926.0)) { proxy in
                         proxy.image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: metrics.thumbnailSize, height: metrics.thumbnailSize)
-                            .clipShape(RoundedRectangle(cornerRadius: metrics.cornerRadius))
-                            .accessibility(hidden: true)
+                            .listThumbnailStyle
                     }
+
                 } else {
 
                     if let uiImage = UIImage(named: option.id) ?? UIImage(named: "placeholder") {
                         Image(uiImage: uiImage)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: metrics.thumbnailSize, height: metrics.thumbnailSize)
-                            .clipShape(RoundedRectangle(cornerRadius: metrics.cornerRadius, style: .continuous))
-                            .accessibility(hidden: true)
+                            .listThumbnailStyle
                     }
                     
                 }
@@ -53,7 +43,8 @@ struct OptionRow: View {
                     Text("Pickr \(option.picked) time\(option.pluralizer)")
                         .foregroundColor(.secondary)
                         .lineLimit(nil)
-                }.padding(.vertical, metrics.textPadding)
+                }
+                .padding(.vertical, 8.0)
                 
                 Spacer()
                 
@@ -61,7 +52,7 @@ struct OptionRow: View {
             }
             .contentShape(Rectangle())
             .font(.subheadline)
-            .padding(.vertical, metrics.rowPadding)
+            .frame(height: 96)
             .accessibilityElement(children: .combine)
             
         }

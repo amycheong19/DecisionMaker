@@ -12,8 +12,7 @@ struct NewOptionView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject private var model: DecisionMakerModel
     @ObservedObject  private var tfModel = TextFieldModel()
-    let ciContext = CIContext()
-
+    
     var body: some View {
         
         NavigationView(content: {
@@ -29,7 +28,7 @@ struct NewOptionView: View {
                     if let searched = tfModel.searchedPhoto,
                        let url = URL(string: searched.urls.regular),
                        let user = searched.user {
-
+                        
                         URLImage(url,
                                  placeholder: {
                                     ProgressView($0) { progress in
@@ -48,16 +47,16 @@ struct NewOptionView: View {
                                     $0.image
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
-                                        .frame(width: metrics.thumbnailSize, height: metrics.thumbnailSize)
+                                        .frame(width: 200, height: 200)
                                         .shadow(radius: 10.0)
-                                        .clipShape(RoundedRectangle(cornerRadius: metrics.cornerRadius))
+                                        .clipShape(RoundedRectangle(cornerRadius: 16))
                                  })
                         
                         HStack(spacing: 0) {
                             Text("Photo by")
                                 .foregroundColor(.secondary)
                                 .font(.caption2)
-
+                            
                             Text(" \(user.name ?? "Annonymous")")
                                 .foregroundColor(.blue)
                                 .font(.caption2)
@@ -75,7 +74,7 @@ struct NewOptionView: View {
                             Text(" / ")
                                 .foregroundColor(.secondary)
                                 .font(.caption2)
-
+                            
                             Text("Unsplash")
                                 .foregroundColor(.blue)
                                 .font(.caption2)
@@ -125,10 +124,6 @@ struct NewOptionView: View {
     
     var disableForm: Bool {
         tfModel.searchText.isEmpty || tfModel.searchText.count < 2
-    }
-    
-    var metrics: Metrics {
-        return Metrics(thumbnailSize: 200, cornerRadius: 16, rowPadding: 0, textPadding: 8)
     }
     
     func createNewOption() {

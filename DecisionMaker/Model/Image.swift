@@ -19,7 +19,7 @@ struct UnsplashPhoto: Codable {
     let id: String?
     let width: Int
     let height: Int
-    let color: String
+    let color: String?
     let user: PhotoUser?
     let urls: URLs
     let links: PhotoLinks?

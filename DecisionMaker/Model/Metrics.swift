@@ -10,6 +10,4 @@ import SwiftUI
 struct Metrics {
     var thumbnailSize: CGFloat
     var cornerRadius: CGFloat
-    var rowPadding: CGFloat
-    var textPadding: CGFloat
 }

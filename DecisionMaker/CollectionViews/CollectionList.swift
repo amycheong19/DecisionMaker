@@ -30,7 +30,9 @@ struct CollectionList: View {
                             
                     } else  {
                         NavigationLink(
-                            destination: OptionList(collection: collection),
+                            destination:
+                                NewOptionListView(collection: collection),
+//                                OptionList(collection: collection),
                             tag: collection,
                             selection: $selection) {
                             CollectionRow(collection: .constant(collection))
