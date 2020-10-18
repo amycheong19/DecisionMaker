@@ -52,7 +52,11 @@ struct PickedCard: View {
                                         .fill(Color.white)
                                         .frame(width: 60.0, height: 60.0))
                     
-                }.padding(.horizontal, 30)
+                }
+                .offset(y: hasVoted ? 0 : -10)
+                .animation(.interpolatingSpring(mass: 1, stiffness: 350, damping: 5, initialVelocity: 5))
+                .disabled(hasVoted)
+                .padding(.horizontal, 30)
                 
                 Button {
                     guard !hasVoted else { //user only has one vote
@@ -69,13 +73,15 @@ struct PickedCard: View {
                                         .fill(Color.white)
                                         .frame(width: 60.0, height: 60.0))
                 }
-                
-                
+                .offset(y: hasVoted ? 0 : -10)
+                .animation(.interpolatingSpring(mass: 1, stiffness: 350, damping: 5, initialVelocity: 5))
+                .disabled(hasVoted)
+
                 Spacer()
                 
             }
             
-            Text(hasVoted ? "Voted!" : "Like what we have pickr for you?  " )
+            Text(hasVoted ? "📮 Voted!" : "🤓 Like what we have pickr for you? " )
                 .foregroundColor(.primary)
                 .font(.body)
                 .fontWeight(.bold)
