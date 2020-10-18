@@ -84,10 +84,10 @@
 		75C763BC2517036D009A52F9 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763BB2517036D009A52F9 /* Settings.swift */; };
 		75C763DA25172AE0009A52F9 /* HTMLStringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763D925172AE0009A52F9 /* HTMLStringView.swift */; };
 		75C763DC25172B45009A52F9 /* SettingsContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763DB25172B45009A52F9 /* SettingsContent.swift */; };
-		75C763DE253AC0A8009A52F9 /* SampleSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763DD253AC0A8009A52F9 /* SampleSettings.swift */; };
 		75C763E6253BBFE4009A52F9 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763E5253BBFE4009A52F9 /* View+Extension.swift */; };
 		75C763E8253BC08B009A52F9 /* BackFactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763E7253BC08B009A52F9 /* BackFactView.swift */; };
 		75C763EA253BC0E7009A52F9 /* PickedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763E9253BC0E7009A52F9 /* PickedCard.swift */; };
+		75C763EC253BC5A6009A52F9 /* SampleSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C763EB253BC5A6009A52F9 /* SampleSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -170,10 +170,10 @@
 		75C763BB2517036D009A52F9 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		75C763D925172AE0009A52F9 /* HTMLStringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringView.swift; sourceTree = "<group>"; };
 		75C763DB25172B45009A52F9 /* SettingsContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContent.swift; sourceTree = "<group>"; };
-		75C763DD253AC0A8009A52F9 /* SampleSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SampleSettings.swift; path = ../../SampleSettings.swift; sourceTree = "<group>"; };
 		75C763E5253BBFE4009A52F9 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		75C763E7253BC08B009A52F9 /* BackFactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackFactView.swift; sourceTree = "<group>"; };
 		75C763E9253BC0E7009A52F9 /* PickedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickedCard.swift; sourceTree = "<group>"; };
+		75C763EB253BC5A6009A52F9 /* SampleSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,7 +209,7 @@
 				751BA10C24DFBDBF004EE1BB /* DecisionMakerApp.swift */,
 				751BA12324E004A2004EE1BB /* Menu.swift */,
 				75C763BB2517036D009A52F9 /* Settings.swift */,
-				75C763DD253AC0A8009A52F9 /* SampleSettings.swift */,
+				75C763EB253BC5A6009A52F9 /* SampleSettings.swift */,
 				75C763DB25172B45009A52F9 /* SettingsContent.swift */,
 				751BA12024E00160004EE1BB /* Model */,
 				751BA11F24E00145004EE1BB /* Navigation */,
@@ -579,7 +579,6 @@
 				75ACA2592504A7120092BC15 /* CircleActivityView.swift in Sources */,
 				75C763852504CDB1009A52F9 /* AlertControl.swift in Sources */,
 				751BA12624E005FE004EE1BB /* Option.swift in Sources */,
-				75C763DE253AC0A8009A52F9 /* SampleSettings.swift in Sources */,
 				75ACA23B2504A7110092BC15 /* Version.swift in Sources */,
 				75C763832504C9DB009A52F9 /* AddCollectionView.swift in Sources */,
 				751BA15124E10AF4004EE1BB /* CollectionList.swift in Sources */,
@@ -605,6 +604,7 @@
 				751BA10D24DFBDBF004EE1BB /* DecisionMakerApp.swift in Sources */,
 				751BA15E24E146A7004EE1BB /* CircleToggleStyle.swift in Sources */,
 				75ACA2532504A7120092BC15 /* ImageProxy.swift in Sources */,
+				75C763EC253BC5A6009A52F9 /* SampleSettings.swift in Sources */,
 				75C763DA25172AE0009A52F9 /* HTMLStringView.swift in Sources */,
 				75C763B425120828009A52F9 /* FlipCardGraphic.swift in Sources */,
 				75ACA2422504A7110092BC15 /* FileManager+Extensions.swift in Sources */,
