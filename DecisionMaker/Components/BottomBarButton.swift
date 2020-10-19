@@ -10,7 +10,7 @@ import SwiftUI
 struct BottomBarButton: View {
     var action: () -> Void
     var height: CGFloat {
-        return 45
+        return 35
     }
     
     var title: String

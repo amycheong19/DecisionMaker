@@ -103,38 +103,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "61F386B0-33F1-44AF-A355-072A1E96203A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DecisionMaker/Components/URLImage/URLImage.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "324"
-            endingLineNumber = "324"
-            landmarkName = "init(_:fileIdentifier:delay:incremental:animated:expireAfter:processors:placeholder:failure:content:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A49B3B15-14D0-485B-98A5-E5B3C2178DA9"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DecisionMaker/Components/URLImage/URLImage.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
-            landmarkName = "init(_:fileIdentifier:delay:incremental:animated:expireAfter:processors:placeholder:failure:content:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "3B567071-F5FB-4C94-B6BA-8F9FFC8A0937"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -177,6 +145,22 @@
             startingLineNumber = "167"
             endingLineNumber = "167"
             landmarkName = "init(_:fileIdentifier:delay:incremental:animated:expireAfter:processors:placeholder:failure:content:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C8C42AC1-880F-4E1C-A0B9-CF32C3BA4331"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DecisionMaker/Model/DecisionMakerModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "addOption(with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

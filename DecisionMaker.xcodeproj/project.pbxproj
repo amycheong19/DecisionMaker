@@ -453,11 +453,11 @@
 			isa = PBXGroup;
 			children = (
 				751BA12124E003A8004EE1BB /* OptionList.swift */,
+				75C763ED253C7AC9009A52F9 /* NewOptionListView.swift */,
 				751BA12924E0E262004EE1BB /* OptionRow.swift */,
 				75C763EF253C812F009A52F9 /* OptionEditRowView.swift */,
 				751BA16A24F5DEFE004EE1BB /* NewOptionView.swift */,
 				75C763E9253BC0E7009A52F9 /* PickedCard.swift */,
-				75C763ED253C7AC9009A52F9 /* NewOptionListView.swift */,
 			);
 			path = Options;
 			sourceTree = "<group>";

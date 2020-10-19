@@ -130,7 +130,7 @@ extension DecisionMakerModel {
         tempOption.id = tempOption.title.lowercased()
             .trimmingCharacters(in: .whitespacesAndNewlines)
         
-        if checkedOptions.contains(tempOption) {
+        if collection.options.contains(tempOption) {
             tempOption.id = "\(tempOption.id)\(idCount)"
             idCount += 1
         }
@@ -138,6 +138,31 @@ extension DecisionMakerModel {
         collection.options.append(tempOption)
         addChecked(tempOption)
         saveOptions(with: collection)
+    }
+    
+    func addOption(with option: Option) {
+        
+        var tempOption = option
+        tempOption.id = tempOption.title.lowercased()
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if collection.options.contains(tempOption) {
+            tempOption.id = "\(tempOption.id)\(idCount)"
+            idCount += 1
+        }
+        
+        collection.options.append(tempOption)
+        addChecked(tempOption)
+        saveOptions(with: collection)
+
+    }
+    
+    func editOption(with option: Option) {
+        guard let firstIndex = collection.options.firstIndex(where: { $0.id == option.id }) else { return }
+        
+        collection.options[firstIndex] = option
+        saveOptions(with: collection)
+
     }
     
     // Save options into JSON
@@ -211,6 +236,75 @@ class TextFieldModel: ObservableObject {
             URLSession.shared.dataTask(with: urlRequest){ [weak self] data, response, error in
                 debugPrint("response: \(response) | error: \(error)")
             }.resume()
+        }
+    }
+}
+
+
+class NewTextFieldModel: ObservableObject {
+    private var cancellable: AnyCancellable?
+    @Published var searchText: String = ""
+    @Published var option: Option
+    
+    static let sessionProcessingQueue = DispatchQueue(label: "SessionProcessingQueue")
+    
+    static func newOption() -> Option {
+      Option(id: "", title: "")
+    }
+    
+    init(option: Option = NewTextFieldModel.newOption()) {
+        self.option = option
+        searchText = option.title
+    }
+    
+    func debounceText() {
+
+        cancellable = AnyCancellable(
+        $searchText
+            .removeDuplicates()
+            .debounce(for: 0.3, scheduler: DispatchQueue.main)
+            .sink { searchText in
+                if searchText.count > 2 && self.searchText != self.option.title {
+                    self.searchImage(with: searchText)
+                }
+          }
+        )
+      }
+    
+
+    func searchImage(with text: String = "random")  {
+        
+        if let url = URL.with(query: text) {
+            var urlRequest = URLRequest(url: url)
+            urlRequest.setValue(PhotoConfiguration.shared.accessKey, forHTTPHeaderField: "Authorization")
+
+            cancellable =
+                URLSession.shared.dataTaskPublisher(for: urlRequest)
+                .subscribe(on: NewTextFieldModel.sessionProcessingQueue)
+                .map({
+                    return $0.data
+                })
+                .decode(type: PhotoResults.self, decoder: JSONDecoder())
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { (suscriberCompletion) in
+                    switch suscriberCompletion {
+                    case .finished:
+                        
+                        break
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }, receiveValue: { [weak self] value in
+                    guard let `self` = self else { return }
+                    if let origin = value.results.randomElement() {
+                        if self.option.id.isEmpty {
+                            self.option.id = text
+                        }
+                        self.option.title = text
+                        self.option.origin = origin
+                    }
+                    
+                })
         }
     }
 }

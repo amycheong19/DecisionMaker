@@ -14,7 +14,7 @@ struct CircleToggleStyle: ToggleStyle {
             Image(systemName: configuration.isOn ? "checkmark.circle.fill" : "circle")
                 .accessibility(label: Text(configuration.isOn ? "Checked" : "Unchecked"))
                 .foregroundColor(configuration.isOn ? .accentColor : .secondary)
-                .imageScale(.large)
+                .imageScale(.small)
                 .font(Font.title)
         }
     }
