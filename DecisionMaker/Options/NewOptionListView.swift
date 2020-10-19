@@ -45,6 +45,7 @@ struct NewOptionListView: View {
                     }
                     .onDelete(perform: deleteOption)
 
+                    // When user press on new option
                     if presentAddNewItem {
                         // Only for newly add option
                         OptionEditRowView(tfModel: NewTextFieldModel()) { result in
@@ -68,7 +69,7 @@ struct NewOptionListView: View {
                         Image(systemName: "plus.circle.fill")
                             .resizable()
                             .frame(width: 20, height: 20)
-                        Text("New Task")
+                        Text("New Option")
                     }
                 }
                 .padding()
@@ -107,6 +108,7 @@ struct NewOptionListView: View {
     }
     
     func randomSelection() {
+        UIApplication.shared.endEditing()
         alertModel.flag = true
     }
     
@@ -121,12 +123,8 @@ struct NewOptionListView: View {
     func deselectIngredient() {
         withAnimation(.closeCard) {
             alertModel.flag = false
-            model.edit(optionID: selectedID ?? "")
+            model.addOptionPickedCount(optionID: selectedID ?? "")
         }
-    }
-    
-    var disablePick: Bool {
-        return model.collection.options.count < 1 || model.checkedOptions.count < 2
     }
     
     func deleteOption(indexSet: IndexSet){
@@ -152,3 +150,8 @@ struct NewOptionListView_Previews: PreviewProvider {
     }
 }
 
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}

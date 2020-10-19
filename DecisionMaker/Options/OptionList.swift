@@ -76,7 +76,7 @@ struct OptionList: View {
     func deselectIngredient() {
         withAnimation(.closeCard) {
             alertModel.flag = false
-            model.edit(optionID: selectedID ?? "")
+            model.addOptionPickedCount(optionID: selectedID ?? "")
         }
     }
     

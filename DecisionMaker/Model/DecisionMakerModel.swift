@@ -14,7 +14,7 @@ class DecisionMakerModel: ObservableObject {
     @Published private(set) var selectedCollectionID: Collection.ID?
     @Published var collection = Collection.restaurants
     
-    private var idCount = 1000
+    private var idCount = 1
     
     init() {
         createCollection()
@@ -25,13 +25,14 @@ class DecisionMakerModel: ObservableObject {
 extension DecisionMakerModel {
     
     func addCollection(with title: String) {
-        var tempCollection = Collection(id: "", title: title)
-        tempCollection.id = tempCollection.title.lowercased()
-            .trimmingCharacters(in: .whitespacesAndNewlines)
+        let id = "New Collection".lowercased()
+        let tempTitle = title.isEmpty ? "New Collection - \(idCount)": title
+        var tempCollection = Collection(id: id, title: tempTitle)
         
-        if collections.firstIndex(where: { $0.title == title }) != nil {
+        if collections.firstIndex(where: { $0.id == tempCollection.id }) != nil {
             tempCollection.id = "\(tempCollection.id)\(idCount)"
             idCount += 1
+            tempCollection.title = title.isEmpty ? "New Collection - \(idCount)": title
         }
         collections.append(tempCollection)
         saveCollections()
@@ -101,10 +102,12 @@ extension DecisionMakerModel {
         }
     }
     
-    func edit(optionID: String){
+    func addOptionPickedCount(optionID: String){
         
         guard let firstIndex = collection.options.firstIndex(where: { $0.id == optionID }) else { return }
-        
+        guard let checkIndex = checkedOptions.firstIndex(where: { $0.id == optionID }) else { return }
+
+        checkedOptions[checkIndex].pickedIncrement()
         collection.options[firstIndex].pickedIncrement()
         saveOptions(with: collection)
     }
@@ -159,6 +162,7 @@ extension DecisionMakerModel {
     
     func editOption(with option: Option) {
         guard let firstIndex = collection.options.firstIndex(where: { $0.id == option.id }) else { return }
+        
         
         collection.options[firstIndex] = option
         saveOptions(with: collection)
@@ -298,7 +302,7 @@ class NewTextFieldModel: ObservableObject {
                     guard let `self` = self else { return }
                     if let origin = value.results.randomElement() {
                         if self.option.id.isEmpty {
-                            self.option.id = text
+                            self.option.id = text.trimmingCharacters(in: .whitespacesAndNewlines)
                         }
                         self.option.title = text
                         self.option.origin = origin
