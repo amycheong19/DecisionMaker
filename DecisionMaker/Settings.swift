@@ -70,7 +70,7 @@ struct Settings: View {
             Spacer()
             VStack(alignment: .center) {
                 Text("Made by @amycheong 🤓")
-                    .foregroundColor(.blue)
+                    .foregroundColor(.pinkG)
                     .onTapGesture {
                         guard let url = URL(string: "https://twitter.com/amycheong19"),
                               UIApplication.shared.canOpenURL(url)

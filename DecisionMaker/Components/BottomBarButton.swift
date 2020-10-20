@@ -22,7 +22,7 @@ struct BottomBarButton: View {
                 .frame(height: height)
                 .frame(minWidth: 100, maxWidth: 400)
                 .foregroundColor(.white)
-                .background(Color.accentColor)
+                .background(Color.primaryGradientColor)
                 .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
                 .contentShape(Rectangle())
         }

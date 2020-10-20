@@ -58,7 +58,7 @@ struct NewOptionView: View {
                                 .font(.caption2)
                             
                             Text(" \(user.name ?? "Annonymous")")
-                                .foregroundColor(.blue)
+                                .foregroundColor(.pinkG)
                                 .font(.caption2)
                                 .underline()
                                 .onTapGesture {
@@ -76,7 +76,7 @@ struct NewOptionView: View {
                                 .font(.caption2)
                             
                             Text("Unsplash")
-                                .foregroundColor(.blue)
+                                .foregroundColor(.pinkG)
                                 .font(.caption2)
                                 .underline()
                                 .onTapGesture {

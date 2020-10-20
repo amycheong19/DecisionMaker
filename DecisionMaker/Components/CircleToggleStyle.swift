@@ -13,7 +13,7 @@ struct CircleToggleStyle: ToggleStyle {
             configuration.label.hidden()
             Image(systemName: configuration.isOn ? "checkmark.circle.fill" : "circle")
                 .accessibility(label: Text(configuration.isOn ? "Checked" : "Unchecked"))
-                .foregroundColor(configuration.isOn ? .accentColor : .secondary)
+                .foregroundColor(configuration.isOn ? .pinkG : .secondary)
                 .imageScale(.small)
                 .font(Font.title)
         }

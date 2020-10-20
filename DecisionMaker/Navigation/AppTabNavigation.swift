@@ -26,6 +26,7 @@ struct AppTabNavigation: View {
                     .accessibility(label: Text("Tab.settings.title"))
             }.tag(Tab.settings.title)
         }
+        .accentColor(.orangeG)
     }
 }
 

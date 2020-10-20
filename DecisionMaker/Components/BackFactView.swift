@@ -28,7 +28,7 @@ public struct BackFactView: View {
                         .fontWeight(.semibold)
 
                     Text("\(option.picked) time\(option.pluralizer)")
-                        .foregroundColor(.blue)
+                        .foregroundColor(.pinkG)
                         .font(.body)
                         .fontWeight(.semibold)
                 }
@@ -39,7 +39,7 @@ public struct BackFactView: View {
                         .font(.body)
 
                     Text(" \(user.name ?? "Annonymous")")
-                        .foregroundColor(.blue)
+                        .foregroundColor(.pinkG)
                         .font(.body)
                         .underline()
                         .onTapGesture {
@@ -59,7 +59,7 @@ public struct BackFactView: View {
                         .font(.body)
 
                     Text("Unsplash")
-                        .foregroundColor(.blue)
+                        .foregroundColor(.pinkG)
                         .font(.body)
                         .underline()
                         .onTapGesture {

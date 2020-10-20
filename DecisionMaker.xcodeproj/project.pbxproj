@@ -29,6 +29,7 @@
 		751BA16224E8E81E004EE1BB /* Collection+JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BA16124E8E81E004EE1BB /* Collection+JSONParser.swift */; };
 		751BA16324E8EF4B004EE1BB /* DecisionMakerDatabase.json in Resources */ = {isa = PBXBuildFile; fileRef = 751BA15F24E8E033004EE1BB /* DecisionMakerDatabase.json */; };
 		751BA16B24F5DEFE004EE1BB /* NewOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BA16A24F5DEFE004EE1BB /* NewOptionView.swift */; };
+		75525EBB253EAABF0058A57B /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75525EBA253EAABF0058A57B /* Color+Extension.swift */; };
 		759E7BF524F685F50093D548 /* TextfieldWithValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759E7BF424F685F50093D548 /* TextfieldWithValidator.swift */; };
 		75ACA1F624F92C3B0092BC15 /* URL+UnSplash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ACA1F524F92C3B0092BC15 /* URL+UnSplash.swift */; };
 		75ACA1F824F92D880092BC15 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ACA1F724F92D880092BC15 /* Image.swift */; };
@@ -118,6 +119,7 @@
 		751BA15F24E8E033004EE1BB /* DecisionMakerDatabase.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DecisionMakerDatabase.json; sourceTree = "<group>"; };
 		751BA16124E8E81E004EE1BB /* Collection+JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+JSONParser.swift"; sourceTree = "<group>"; };
 		751BA16A24F5DEFE004EE1BB /* NewOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOptionView.swift; sourceTree = "<group>"; };
+		75525EBA253EAABF0058A57B /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		759E7BF424F685F50093D548 /* TextfieldWithValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TextfieldWithValidator.swift; path = ../Extensions/TextfieldWithValidator.swift; sourceTree = "<group>"; };
 		75ACA1F524F92C3B0092BC15 /* URL+UnSplash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+UnSplash.swift"; sourceTree = "<group>"; };
 		75ACA1F724F92D880092BC15 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -481,6 +483,7 @@
 				75C763B125120792009A52F9 /* Animation+Extension.swift */,
 				75C763E5253BBFE4009A52F9 /* View+Extension.swift */,
 				75C763F1253C8437009A52F9 /* Image+Extension.swift */,
+				75525EBA253EAABF0058A57B /* Color+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -616,6 +619,7 @@
 				751BA10D24DFBDBF004EE1BB /* DecisionMakerApp.swift in Sources */,
 				751BA15E24E146A7004EE1BB /* CircleToggleStyle.swift in Sources */,
 				75ACA2532504A7120092BC15 /* ImageProxy.swift in Sources */,
+				75525EBB253EAABF0058A57B /* Color+Extension.swift in Sources */,
 				75C763EC253BC5A6009A52F9 /* WebContentView.swift in Sources */,
 				75C763DA25172AE0009A52F9 /* HTMLStringView.swift in Sources */,
 				75C763B425120828009A52F9 /* FlipCardGraphic.swift in Sources */,
