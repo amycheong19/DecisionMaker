@@ -92,6 +92,11 @@ extension DecisionMakerModel {
 
 // MARK: - Options
 extension DecisionMakerModel {
+    
+    func isChecked(option: Option) -> Bool {
+        return checkedOptions.contains(option)
+    }
+    
     func editOptionsToPick(option: Option, toggle: Bool) {
         if toggle {
             addChecked(option)

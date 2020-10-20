@@ -11,12 +11,12 @@ struct PickedCard: View {
     var option: Option
     var presenting: Bool
     var closeAction: () -> Void = {}
-    
+    @EnvironmentObject private var model: DecisionMakerModel
+
     @State private var like: Bool = false
     @State private var dislike: Bool = false
     
     private var hasVoted: Bool {
-        debugPrint("hasVoted? \(like || dislike)")
         return like || dislike
     }
     
@@ -63,6 +63,7 @@ struct PickedCard: View {
                         return
                     }
                     debugPrint("DISLIKE")
+                    model.editOptionsToPick(option: option, toggle: false)
                     dislike.toggle()
                 } label: {
                     

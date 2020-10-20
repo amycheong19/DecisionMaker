@@ -26,6 +26,7 @@ struct NewOptionListView: View {
                                 title: "Pickr For Me!")
                     .padding(.horizontal, 40)
                     .padding(.vertical, 5)
+                    .disabled(disablePick)
                     .background(VisualEffectBlur().edgesIgnoringSafeArea(.all))
                 
              
@@ -33,7 +34,6 @@ struct NewOptionListView: View {
                     ForEach (model.collection.options) { option in
                         OptionEditRowView(tfModel: NewTextFieldModel(option: option)) {
                             result in
-
                             switch result {
                             case .success(let option):
                                 model.editOption(with: option)
@@ -102,17 +102,17 @@ struct NewOptionListView: View {
     
     
     
-    func addNewOption() {
+    private func addNewOption() {
         debugPrint("addNewOption")
         presentAddNewItem.toggle()
     }
     
-    func randomSelection() {
+    private func randomSelection() {
         UIApplication.shared.endEditing()
         alertModel.flag = true
     }
     
-    func randomOptions() -> Option? {
+    private func randomOptions() -> Option? {
         guard let option = model.checkedOptions.randomElement() else { return nil }
         DispatchQueue.main.async {
             selectedID = option.id
@@ -120,14 +120,18 @@ struct NewOptionListView: View {
         return option
     }
     
-    func deselectIngredient() {
+    private func deselectIngredient() {
         withAnimation(.closeCard) {
             alertModel.flag = false
             model.addOptionPickedCount(optionID: selectedID ?? "")
         }
     }
     
-    func deleteOption(indexSet: IndexSet){
+    private var disablePick: Bool {
+        return model.collection.options.count < 1 || model.checkedOptions.count < 1
+    }
+    
+    private func deleteOption(indexSet: IndexSet){
         indexSet.forEach{
             model.removeOption($0)
         }

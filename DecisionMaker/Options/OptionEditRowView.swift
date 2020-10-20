@@ -17,7 +17,6 @@ struct OptionEditRowView: View {
     @State private var checked = true
     @State var isFirstResponder = false
     
-    
     var onCommit: (Result<Option, InputError>) -> Void = { _ in }
     
     private func returnCommitStatus() {
@@ -41,7 +40,10 @@ struct OptionEditRowView: View {
                 Toggle("Complete", isOn: $checked)
                     .frame(width: 40)
                 
-            }
+            }.onChange(of: model.checkedOptions, perform: { value in
+                checked = model.isChecked(option: tfModel.option)
+                debugPrint("ON CHANGE: \(value) \(checked)")
+            })
             .buttonStyle(PlainButtonStyle())
             .toggleStyle(CircleToggleStyle())
             
@@ -123,15 +125,16 @@ struct OptionEditRowView: View {
     }
 }
 
-struct OptionEditRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        
-        Group {
-            OptionEditRowView(tfModel: NewTextFieldModel(option: .macdonald))
-        }
-        .padding(.horizontal)
-        .previewLayout(.sizeThatFits)
-        .environmentObject(DecisionMakerModel())
-        
-    }
-}
+//struct OptionEditRowView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        
+//        Group {
+//            OptionEditRowView(tfModel: NewTextFieldModel(option: .macdonald),
+//                              checked: true)
+//        }
+//        .padding(.horizontal)
+//        .previewLayout(.sizeThatFits)
+//        .environmentObject(DecisionMakerModel())
+//        
+//    }
+//}

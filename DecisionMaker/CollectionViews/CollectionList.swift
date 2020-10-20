@@ -18,7 +18,7 @@ struct CollectionList: View {
     var body: some View {
         
         Form {
-            Section(footer: Text("Decision making, like coffee, \nneeds cooling process ☕️ - George Washington")){
+            Section(footer: Text("Decision making, like coffee, \nneeds cooling process - George Washington ☕️")){
                 ForEach(model.collections) { collection in
                     if self.editMode == .active {
                         Text(collection.title)
