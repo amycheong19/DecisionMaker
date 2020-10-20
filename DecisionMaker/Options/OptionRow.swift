@@ -40,7 +40,7 @@ struct OptionRow: View {
                     Text(option.title)
                         .font(.headline)
                         .lineLimit(nil)
-                    Text("Pickr \(option.picked) time\(option.pluralizer)")
+                    Text("Pickr-ed \(option.picked) time\(option.pluralizer)")
                         .foregroundColor(.secondary)
                         .lineLimit(nil)
                 }

@@ -26,7 +26,7 @@ struct BottomBarButton: View {
                 .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
                 .contentShape(Rectangle())
         }
-        .buttonStyle(SquishableButtonStyle())
+        .buttonStyle(PlainButtonStyle())
     }
 }
 

@@ -29,6 +29,11 @@
 		751BA16224E8E81E004EE1BB /* Collection+JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BA16124E8E81E004EE1BB /* Collection+JSONParser.swift */; };
 		751BA16324E8EF4B004EE1BB /* DecisionMakerDatabase.json in Resources */ = {isa = PBXBuildFile; fileRef = 751BA15F24E8E033004EE1BB /* DecisionMakerDatabase.json */; };
 		751BA16B24F5DEFE004EE1BB /* NewOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BA16A24F5DEFE004EE1BB /* NewOptionView.swift */; };
+		7525781D253EDC880083F1F2 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75257816253EDC880083F1F2 /* ViewExtensions.swift */; };
+		7525781E253EDC880083F1F2 /* UIKitIntrospectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75257817253EDC880083F1F2 /* UIKitIntrospectionViewController.swift */; };
+		7525781F253EDC880083F1F2 /* AppKitIntrospectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75257818253EDC880083F1F2 /* AppKitIntrospectionView.swift */; };
+		75257820253EDC880083F1F2 /* UIKitIntrospectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7525781A253EDC880083F1F2 /* UIKitIntrospectionView.swift */; };
+		75257822253EDC880083F1F2 /* Introspect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7525781C253EDC880083F1F2 /* Introspect.swift */; };
 		75525EBB253EAABF0058A57B /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75525EBA253EAABF0058A57B /* Color+Extension.swift */; };
 		759E7BF524F685F50093D548 /* TextfieldWithValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759E7BF424F685F50093D548 /* TextfieldWithValidator.swift */; };
 		75ACA1F624F92C3B0092BC15 /* URL+UnSplash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ACA1F524F92C3B0092BC15 /* URL+UnSplash.swift */; };
@@ -119,6 +124,12 @@
 		751BA15F24E8E033004EE1BB /* DecisionMakerDatabase.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DecisionMakerDatabase.json; sourceTree = "<group>"; };
 		751BA16124E8E81E004EE1BB /* Collection+JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+JSONParser.swift"; sourceTree = "<group>"; };
 		751BA16A24F5DEFE004EE1BB /* NewOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOptionView.swift; sourceTree = "<group>"; };
+		75257816253EDC880083F1F2 /* ViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		75257817253EDC880083F1F2 /* UIKitIntrospectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitIntrospectionViewController.swift; sourceTree = "<group>"; };
+		75257818253EDC880083F1F2 /* AppKitIntrospectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppKitIntrospectionView.swift; sourceTree = "<group>"; };
+		75257819253EDC880083F1F2 /* Introspect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Introspect.h; sourceTree = "<group>"; };
+		7525781A253EDC880083F1F2 /* UIKitIntrospectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitIntrospectionView.swift; sourceTree = "<group>"; };
+		7525781C253EDC880083F1F2 /* Introspect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Introspect.swift; sourceTree = "<group>"; };
 		75525EBA253EAABF0058A57B /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		759E7BF424F685F50093D548 /* TextfieldWithValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TextfieldWithValidator.swift; path = ../Extensions/TextfieldWithValidator.swift; sourceTree = "<group>"; };
 		75ACA1F524F92C3B0092BC15 /* URL+UnSplash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+UnSplash.swift"; sourceTree = "<group>"; };
@@ -265,6 +276,7 @@
 		751BA15C24E13630004EE1BB /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				75257815253EDC880083F1F2 /* Introspect */,
 				75ACA1FD2504A7110092BC15 /* URLImage */,
 				75C763862505A77E009A52F9 /* UITextField+ClearButton.swift */,
 				759E7BF424F685F50093D548 /* TextfieldWithValidator.swift */,
@@ -283,6 +295,19 @@
 				75C763E7253BC08B009A52F9 /* BackFactView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		75257815253EDC880083F1F2 /* Introspect */ = {
+			isa = PBXGroup;
+			children = (
+				75257816253EDC880083F1F2 /* ViewExtensions.swift */,
+				75257817253EDC880083F1F2 /* UIKitIntrospectionViewController.swift */,
+				75257818253EDC880083F1F2 /* AppKitIntrospectionView.swift */,
+				75257819253EDC880083F1F2 /* Introspect.h */,
+				7525781A253EDC880083F1F2 /* UIKitIntrospectionView.swift */,
+				7525781C253EDC880083F1F2 /* Introspect.swift */,
+			);
+			path = Introspect;
 			sourceTree = "<group>";
 		};
 		75ACA1FD2504A7110092BC15 /* URLImage */ = {
@@ -564,6 +589,7 @@
 				751BA16B24F5DEFE004EE1BB /* NewOptionView.swift in Sources */,
 				751BA16224E8E81E004EE1BB /* Collection+JSONParser.swift in Sources */,
 				75ACA2392504A7110092BC15 /* Log.swift in Sources */,
+				7525781F253EDC880083F1F2 /* AppKitIntrospectionView.swift in Sources */,
 				75ACA23F2504A7110092BC15 /* CoreDataFetchIndexDescription.swift in Sources */,
 				751BA10F24DFBDBF004EE1BB /* ContentView.swift in Sources */,
 				75ACA2372504A7110092BC15 /* CGContext+Extensions.swift in Sources */,
@@ -614,9 +640,13 @@
 				75C763F0253C812F009A52F9 /* OptionEditRowView.swift in Sources */,
 				751BA14A24E0F57B004EE1BB /* Menu.swift in Sources */,
 				75C763872505A77E009A52F9 /* UITextField+ClearButton.swift in Sources */,
+				75257820253EDC880083F1F2 /* UIKitIntrospectionView.swift in Sources */,
 				75ACA24D2504A7120092BC15 /* URLSessionDownloadDelegateWrapper.swift in Sources */,
 				751BA11E24E000E8004EE1BB /* AppTabNavigation.swift in Sources */,
 				751BA10D24DFBDBF004EE1BB /* DecisionMakerApp.swift in Sources */,
+				7525781E253EDC880083F1F2 /* UIKitIntrospectionViewController.swift in Sources */,
+				7525781D253EDC880083F1F2 /* ViewExtensions.swift in Sources */,
+				75257822253EDC880083F1F2 /* Introspect.swift in Sources */,
 				751BA15E24E146A7004EE1BB /* CircleToggleStyle.swift in Sources */,
 				75ACA2532504A7120092BC15 /* ImageProxy.swift in Sources */,
 				75525EBB253EAABF0058A57B /* Color+Extension.swift in Sources */,

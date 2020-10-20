@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+enum OptionListState {
+    case new
+    case existing
+}
+
 struct NewOptionListView: View {
     @EnvironmentObject private var model: DecisionMakerModel
     @ObservedObject var alertModel = AlertModel()
@@ -16,6 +21,7 @@ struct NewOptionListView: View {
     @State private var editMode = EditMode.inactive
     @State var presentAddNewItem = false
     @State var selectedID: String?
+    @State var state: OptionListState = .existing
     
     var collection: Collection
     
@@ -23,7 +29,7 @@ struct NewOptionListView: View {
         ZStack {
             VStack(alignment: .leading) {
                 BottomBarButton(action: randomSelection,
-                                title: "Pickr For Me!")
+                                title: state == .new ? "Pickr For Me!": "Pickr For Me!")
                     .padding(.horizontal, 40)
                     .padding(.vertical, 5)
                     .disabled(disablePick)
@@ -32,13 +38,13 @@ struct NewOptionListView: View {
              
                 List {
                     ForEach (model.collection.options) { option in
-                        OptionEditRowView(tfModel: NewTextFieldModel(option: option)) {
+                        OptionEditRowView(tfModel: NewTextFieldModel(option: option), state: $state) {
                             result in
                             switch result {
                             case .success(let option):
+                                state = .existing
                                 model.editOption(with: option)
-                            default:
-                                debugPrint(result)
+                            default: break
                             }
 
                         }
@@ -48,14 +54,14 @@ struct NewOptionListView: View {
                     // When user press on new option
                     if presentAddNewItem {
                         // Only for newly add option
-                        OptionEditRowView(tfModel: NewTextFieldModel()) { result in
+                        OptionEditRowView(tfModel: NewTextFieldModel(), state: $state) { result in
                             switch result {
                             case .success(let option):
                                 debugPrint(option)
                                 model.addOption(with: option)
-                            default:
-                                debugPrint(result)
+                            default: break
                             }
+                            state = .existing
                             self.presentAddNewItem.toggle()
                         }
                     }
@@ -71,9 +77,10 @@ struct NewOptionListView: View {
                             .frame(width: 20, height: 20)
                         Text("New Option")
                     }
+                    
                 }
                 .padding()
-                .accentColor(Color(UIColor.systemRed))
+                .accentColor(.pinkG)
                 
             }
             .navigationBarTitle(collection.title)
@@ -103,12 +110,11 @@ struct NewOptionListView: View {
     
     
     private func addNewOption() {
-        debugPrint("addNewOption")
+        state = .new
         presentAddNewItem.toggle()
     }
     
     private func randomSelection() {
-        UIApplication.shared.endEditing()
         alertModel.flag = true
     }
     
@@ -128,7 +134,7 @@ struct NewOptionListView: View {
     }
     
     private var disablePick: Bool {
-        return model.collection.options.count < 1 || model.checkedOptions.count < 1
+        return model.collection.options.count < 1 || model.checkedOptions.count < 1 || state == .new
     }
     
     private func deleteOption(indexSet: IndexSet){

@@ -12,7 +12,7 @@ struct PickedCard: View {
     var presenting: Bool
     var closeAction: () -> Void = {}
     @EnvironmentObject private var model: DecisionMakerModel
-
+    
     @State private var like: Bool = false
     @State private var dislike: Bool = false
     
@@ -73,11 +73,12 @@ struct PickedCard: View {
                         .background(Circle()
                                         .fill(Color.white)
                                         .frame(width: 60.0, height: 60.0))
+                        
                 }
                 .offset(y: hasVoted ? 0 : -10)
                 .animation(.interpolatingSpring(mass: 1, stiffness: 350, damping: 5, initialVelocity: 5))
                 .disabled(hasVoted)
-
+                
                 Spacer()
                 
             }

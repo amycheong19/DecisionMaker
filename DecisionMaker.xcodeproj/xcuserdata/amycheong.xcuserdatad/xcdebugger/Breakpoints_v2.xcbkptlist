@@ -215,233 +215,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2265D1A4-392F-41A2-B79D-43840DE36731"
+            uuid = "C2DC8139-1E64-4315-A248-E365EC2155C1"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DecisionMaker/Options/NewOptionListView.swift"
+            filePath = "DecisionMaker/Options/OptionEditRowView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "randomSelection()"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "returnCommitStatus()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1AFB2896-A43C-4D31-B810-30E982B4750B"
+            uuid = "398F01D2-4248-453F-9830-3F3D62D17466"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DecisionMaker/Options/NewOptionListView.swift"
+            filePath = "DecisionMaker/Options/OptionEditRowView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "randomOptions()"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "returnCommitStatus()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4358FFBA-77E6-412E-96C1-E7E16D13C356"
+            uuid = "848FDDA5-9395-4D9C-8218-D340866DC4D2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DecisionMaker/Options/NewOptionListView.swift"
+            filePath = "DecisionMaker/Options/OptionEditRowView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "deselectIngredient()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "324587DC-7D8A-4534-BDBF-574E7039F599"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DecisionMaker/Options/OptionList.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "deselectIngredient()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "6EFFFE9D-02B0-4508-B427-975ED01F5EA5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DecisionMaker/Options/OptionList.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "AlertModel"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "6EFFFE9D-02B0-4508-B427-975ED01F5EA5 - 14c5cc5f8e32bec2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "property wrapper backing initializer of Pickr.AlertModel.flag : Swift.Bool"
-                  moduleName = "Pickr"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/amycheong/Documents/DecisionMaker/DecisionMaker/Options/OptionList.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "20">
-               </Location>
-               <Location
-                  uuid = "6EFFFE9D-02B0-4508-B427-975ED01F5EA5 - a7e24b7a891cf5e8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Pickr.AlertModel.flag.getter : Swift.Bool"
-                  moduleName = "Pickr"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/amycheong/Documents/DecisionMaker/DecisionMaker/Options/OptionList.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "92">
-               </Location>
-               <Location
-                  uuid = "6EFFFE9D-02B0-4508-B427-975ED01F5EA5 - 79d1ef6d66700614"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Pickr.AlertModel.flag.setter : Swift.Bool"
-                  moduleName = "Pickr"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/amycheong/Documents/DecisionMaker/DecisionMaker/Options/OptionList.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "106">
-               </Location>
-               <Location
-                  uuid = "6EFFFE9D-02B0-4508-B427-975ED01F5EA5 - 6355cef1e92f3528"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Pickr.AlertModel.flag.modify : Swift.Bool"
-                  moduleName = "Pickr"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/amycheong/Documents/DecisionMaker/DecisionMaker/Options/OptionList.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "52">
-               </Location>
-               <Location
-                  uuid = "6EFFFE9D-02B0-4508-B427-975ED01F5EA5 - ffc6a644e7c66014"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Pickr.AlertModel.flag.modify : Swift.Bool with unmangled suffix &quot;.resume.0&quot;"
-                  moduleName = "Pickr"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/amycheong/Documents/DecisionMaker/DecisionMaker/Options/OptionList.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "34">
-               </Location>
-               <Location
-                  uuid = "6EFFFE9D-02B0-4508-B427-975ED01F5EA5 - b950db794253d90d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Pickr.AlertModel.$flag.getter : Combine.Published&lt;Swift.Bool&gt;.Publisher"
-                  moduleName = "Pickr"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/amycheong/Documents/DecisionMaker/DecisionMaker/Options/OptionList.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "110">
-               </Location>
-               <Location
-                  uuid = "6EFFFE9D-02B0-4508-B427-975ED01F5EA5 - d0ab4fed249ba339"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Pickr.AlertModel.$flag.setter : Combine.Published&lt;Swift.Bool&gt;.Publisher"
-                  moduleName = "Pickr"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/amycheong/Documents/DecisionMaker/DecisionMaker/Options/OptionList.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "233">
-               </Location>
-               <Location
-                  uuid = "6EFFFE9D-02B0-4508-B427-975ED01F5EA5 - 499028f757968e12"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Pickr.AlertModel.$flag.modify : Combine.Published&lt;Swift.Bool&gt;.Publisher"
-                  moduleName = "Pickr"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/amycheong/Documents/DecisionMaker/%3Ccompiler-generated%3E"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "53">
-               </Location>
-               <Location
-                  uuid = "6EFFFE9D-02B0-4508-B427-975ED01F5EA5 - a94b6fcaea26dec0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Pickr.AlertModel.$flag.modify : Combine.Published&lt;Swift.Bool&gt;.Publisher with unmangled suffix &quot;.resume.0&quot;"
-                  moduleName = "Pickr"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/amycheong/Documents/DecisionMaker/DecisionMaker/Options/OptionList.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "17">
-               </Location>
-               <Location
-                  uuid = "6EFFFE9D-02B0-4508-B427-975ED01F5EA5 - 5ef465d1ea438e3a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Pickr.AlertModel.init() -&gt; Pickr.AlertModel"
-                  moduleName = "Pickr"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/amycheong/Documents/DecisionMaker/DecisionMaker/Options/OptionList.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "124">
-               </Location>
-            </Locations>
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "body"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

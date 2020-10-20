@@ -15,16 +15,15 @@ struct OptionEditRowView: View {
     @EnvironmentObject private var model: DecisionMakerModel
     @ObservedObject var tfModel: NewTextFieldModel
     @State private var checked = true
-    @State var isFirstResponder = false
+    @Binding var state: OptionListState
+    
     
     var onCommit: (Result<Option, InputError>) -> Void = { _ in }
     
     private func returnCommitStatus() {
-        if !tfModel.searchText.isEmpty {
+        if !tfModel.searchText.isEmpty && !tfModel.option.title.isEmpty {
             self.onCommit(.success(tfModel.option))
-        } else if !tfModel.option.title.isEmpty {
-            self.onCommit(.success(tfModel.option))
-        }else {
+        } else {
             self.onCommit(.failure(.empty))
         }
     }
@@ -44,6 +43,7 @@ struct OptionEditRowView: View {
                 checked = model.isChecked(option: tfModel.option)
                 debugPrint("ON CHANGE: \(value) \(checked)")
             })
+            .disabled(state == .new)
             .buttonStyle(PlainButtonStyle())
             .toggleStyle(CircleToggleStyle())
             
@@ -64,29 +64,36 @@ struct OptionEditRowView: View {
             
             VStack(alignment: .leading) {
                 
-                TextField("New option",
-                          text: $tfModel.searchText,
-                          onEditingChanged: { (editingChanged) in
-                            if editingChanged {
-                                print("TextField focused")
-                            } else {
-                                print("TextField focus removed")
+                if tfModel.option.id.isEmpty {
+                    TextField("New option",
+                              text: $tfModel.searchText,
+                              onCommit: {
                                 returnCommitStatus()
-                                
-                            }
-                          },
-                          onCommit: {
-                            
-                            returnCommitStatus()
-                          })
-                    .font(.headline)
-//                    .onAppear {
-//                        tfModel.searchText = option.title
-//                    }
-                    .modifier(ClearButton(text: $tfModel.searchText))
-                    .onChange(of: tfModel.searchText) { value in
-                        tfModel.debounceText()
+                              }).introspectTextField(customize: { (textfield) in
+                                textfield.returnKeyType = .done
+                                textfield.becomeFirstResponder()
+                    
+                              })
+                        .disableAutocorrection(true)
+                        .font(.headline)
+                        .modifier(ClearButton(text: $tfModel.searchText))
+                        .onChange(of: tfModel.searchText) { value in
+                            tfModel.debounceText()
+                        }
+                } else {
+                    Text(tfModel.option.title)
+                            .font(.headline)
+                            .lineLimit(nil)
+                    
+                    HStack{
+                        Text("Pickr-ed")
+                            .foregroundColor(.secondary)
+                        Text("\(tfModel.option.picked) time\(tfModel.option.pluralizer)")
+                                .foregroundColor(.secondary)
+                                .lineLimit(nil)
                     }
+                    
+                }
                 
                 // Add Unsplash user link
                 if let origin = tfModel.option.origin,
@@ -112,11 +119,13 @@ struct OptionEditRowView: View {
                     }
                 }
             }
+            
             .padding(.vertical, 8.0)
             
             Spacer()
             
         }
+        
         .frame(height: 96)
         .contentShape(Rectangle())
         .font(.subheadline)

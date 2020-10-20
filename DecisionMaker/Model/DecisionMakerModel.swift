@@ -254,6 +254,7 @@ class NewTextFieldModel: ObservableObject {
     private var cancellable: AnyCancellable?
     @Published var searchText: String = ""
     @Published var option: Option
+
     
     static let sessionProcessingQueue = DispatchQueue(label: "SessionProcessingQueue")
     
@@ -271,17 +272,17 @@ class NewTextFieldModel: ObservableObject {
         cancellable = AnyCancellable(
         $searchText
             .removeDuplicates()
-            .debounce(for: 0.3, scheduler: DispatchQueue.main)
+            .debounce(for: 0.5, scheduler: DispatchQueue.main)
             .sink { searchText in
                 if searchText.count > 2 && self.searchText != self.option.title {
-                    self.searchImage(with: searchText)
+                    self.searchImage(with: searchText) { _ in }
                 }
           }
         )
       }
     
 
-    func searchImage(with text: String = "random")  {
+    func searchImage(with text: String = "random", completionHandler: @escaping (Option?) -> Void)  {
         
         if let url = URL.with(query: text) {
             var urlRequest = URLRequest(url: url)
@@ -298,21 +299,19 @@ class NewTextFieldModel: ObservableObject {
                 .sink(receiveCompletion: { (suscriberCompletion) in
                     switch suscriberCompletion {
                     case .finished:
-                        
                         break
                     case .failure(let error):
+                        completionHandler(nil)
                         print(error.localizedDescription)
                     }
                 }, receiveValue: { [weak self] value in
                     guard let `self` = self else { return }
                     if let origin = value.results.randomElement() {
-                        if self.option.id.isEmpty {
-                            self.option.id = text.trimmingCharacters(in: .whitespacesAndNewlines)
-                        }
                         self.option.title = text
                         self.option.origin = origin
                     }
                     
+                    completionHandler(self.option)
                 })
         }
     }
