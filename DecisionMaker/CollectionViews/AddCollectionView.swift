@@ -32,7 +32,7 @@ struct AddCollectionButton: View {
                      show: self.$showAlert,
                      mode: $mode,
                      title: "Create Pickr collection",
-                     message: "What do you want us to pickr for you? (More than 3 characters)")
+                     message: "What do you want us to pickr for you?")
         
     }
     

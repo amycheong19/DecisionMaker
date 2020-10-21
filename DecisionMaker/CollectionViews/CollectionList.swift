@@ -60,8 +60,8 @@ struct CollectionList: View {
         AlertControl(textString: $tempTitle,
                      show: $showAlert,
                      mode: .constant(.edit),
-                     title: "Edit Collection Name",
-                     message: "What do you want us to pickr for you? (More than 3 characters)")
+                     title: "Edit Pickr Collection",
+                     message: "What do you want us to pickr for you?")
     }
 }
 

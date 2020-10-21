@@ -141,7 +141,7 @@ struct OptionEditRowView_Previews: PreviewProvider {
     static var previews: some View {
         
         Group {
-            OptionEditRowView(tfModel: NewTextFieldModel(option: .macdonald))
+            OptionEditRowView(tfModel: NewTextFieldModel(option: .macdonald), state: .constant(.new))
         }
         .padding(.horizontal)
         .previewLayout(.sizeThatFits)
