@@ -108,7 +108,6 @@ extension DecisionMakerModel {
     }
     
     func addOptionPickedCount(optionID: String){
-        
         guard let firstIndex = collection.options.firstIndex(where: { $0.id == optionID }) else { return }
         guard let checkIndex = checkedOptions.firstIndex(where: { $0.id == optionID }) else { return }
 
@@ -307,12 +306,24 @@ class NewTextFieldModel: ObservableObject {
                 }, receiveValue: { [weak self] value in
                     guard let `self` = self else { return }
                     if let origin = value.results.randomElement() {
-                        self.option.title = text
                         self.option.origin = origin
+                        if let downloadLocation = origin.links?.download_location {
+                            self.downloadImage(with: downloadLocation)
+                        }
                     }
-                    
                     completionHandler(self.option)
                 })
+        }
+    }
+    
+    private func downloadImage(with urlString: String)  {
+        
+        if let url = URL(string: urlString) {
+            var urlRequest = URLRequest(url: url)
+            urlRequest.setValue(PhotoConfiguration.shared.accessKey, forHTTPHeaderField: "Authorization")
+            URLSession.shared.dataTask(with: urlRequest){ [weak self] data, response, error in
+                debugPrint("response: \(response) | error: \(error)")
+            }.resume()
         }
     }
 }

@@ -90,9 +90,11 @@ struct NewOptionListView: View {
                 .edgesIgnoringSafeArea(.all)
                 .opacity(alertModel.flag ? 1 : 0)
             
-                if let randomOption = randomOptions(), alertModel.flag {
-                    PickedCard(option: randomOption, presenting: alertModel.flag, closeAction: deselectIngredient)
-                        .matchedGeometryEffect(id: randomOption.id, in: namespace, isSource: alertModel.flag)
+            if let randomOption = randomOptions(), alertModel.flag {
+                    PickedCard(option: randomOption, presenting: alertModel.flag,
+                               closeAction: deselectIngredient)
+                        .matchedGeometryEffect(id: randomOption.id, in: namespace,
+                                               isSource: alertModel.flag)
                         .aspectRatio(0.75, contentMode: .fit)
                         .shadow(color: Color.black.opacity(alertModel.flag ? 0.2 : 0), radius: 20, y: 10)
                         .padding(20)
@@ -101,14 +103,8 @@ struct NewOptionListView: View {
 
                 }
         }
-        
-        
-        
     }
-    
-    
-    
-    
+
     private func addNewOption() {
         state = .new
         presentAddNewItem.toggle()
@@ -127,9 +123,9 @@ struct NewOptionListView: View {
     }
     
     private func deselectIngredient() {
-        withAnimation(.closeCard) {
-            alertModel.flag = false
-            model.addOptionPickedCount(optionID: selectedID ?? "")
+        alertModel.flag = false
+        if let selectedID = selectedID {
+            model.addOptionPickedCount(optionID: selectedID)
         }
     }
     

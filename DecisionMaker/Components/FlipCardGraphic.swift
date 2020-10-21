@@ -37,18 +37,18 @@ struct FlipCardGraphic: View {
             if style != .cardBack {
                 title
             }
-            
+
             if style == .cardFront {
                 cardControls(for: .front)
                     .foregroundColor(card.color)
                     .opacity(card.opacity)
                     .blendMode(card.blendMode)
             }
-            
+
             if style == .cardBack {
                 VisualEffectBlur(blurStyle: .systemThinMaterial, vibrancyStyle: .fill) {
                     BackFactView(option: option)
-                        .padding(.bottom, 70)                        
+                        .padding(.bottom, 70)
                     cardControls(for: .back)
                 }
             }
@@ -71,8 +71,8 @@ struct FlipCardGraphic: View {
             
             if let urlString = option.origin?.urls.regular,
                let url = URL(string: urlString) {
-                
-                URLImage(url, expireAfter: Date(timeIntervalSinceNow: 31_556_926.0)) { proxy in
+
+                URLImage(url) { proxy in
                     proxy.image
                         .resizable()
                         .aspectRatio(contentMode: .fill)
@@ -81,11 +81,7 @@ struct FlipCardGraphic: View {
                         .offset(displayingAsCard ? cardCrop.offset : thumbnailCrop.offset)
                         .frame(width: geo.size.width, height: geo.size.height)
                         .scaleEffect(x: style == .cardBack ? -1 : 1)
-                        
-
                 }
-                
-                
             } else {
                 if let uiImage = UIImage(named: "placeholder") {
                     
@@ -98,7 +94,6 @@ struct FlipCardGraphic: View {
                         .frame(width: geo.size.width, height: geo.size.height)
                         .scaleEffect(x: style == .cardBack ? -1 : 1)
                 }
-                    
             }
             
         }

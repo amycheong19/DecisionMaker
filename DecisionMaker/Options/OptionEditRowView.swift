@@ -21,7 +21,11 @@ struct OptionEditRowView: View {
     var onCommit: (Result<Option, InputError>) -> Void = { _ in }
     
     private func returnCommitStatus() {
-        if !tfModel.searchText.isEmpty && !tfModel.option.title.isEmpty {
+        
+        if !tfModel.searchText.isEmpty {
+            if tfModel.option.title.isEmpty {
+                tfModel.option.title = tfModel.searchText
+            }
             self.onCommit(.success(tfModel.option))
         } else {
             self.onCommit(.failure(.empty))
@@ -41,7 +45,6 @@ struct OptionEditRowView: View {
                 
             }.onChange(of: model.checkedOptions, perform: { value in
                 checked = model.isChecked(option: tfModel.option)
-                debugPrint("ON CHANGE: \(value) \(checked)")
             })
             .disabled(state == .new)
             .buttonStyle(PlainButtonStyle())
@@ -134,16 +137,15 @@ struct OptionEditRowView: View {
     }
 }
 
-//struct OptionEditRowView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        
-//        Group {
-//            OptionEditRowView(tfModel: NewTextFieldModel(option: .macdonald),
-//                              checked: true)
-//        }
-//        .padding(.horizontal)
-//        .previewLayout(.sizeThatFits)
-//        .environmentObject(DecisionMakerModel())
-//        
-//    }
-//}
+struct OptionEditRowView_Previews: PreviewProvider {
+    static var previews: some View {
+        
+        Group {
+            OptionEditRowView(tfModel: NewTextFieldModel(option: .macdonald))
+        }
+        .padding(.horizontal)
+        .previewLayout(.sizeThatFits)
+        .environmentObject(DecisionMakerModel())
+        
+    }
+}

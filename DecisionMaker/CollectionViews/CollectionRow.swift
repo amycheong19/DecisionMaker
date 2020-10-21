@@ -14,7 +14,7 @@ struct CollectionRow: View {
         return Metrics(cornerRadius: 16, rowPadding: 0, textPadding: 8)
     }
     
-    var pluralizer: String { collection.options.count <= 1 ? "" : "s" }
+    var pluralizer: String { collection.options.count == 1 ? "" : "s" }
     
     public init(collection: Binding<Collection>) {
         self._collection = collection

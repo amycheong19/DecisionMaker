@@ -14,7 +14,7 @@ struct OptionList: View {
     @ObservedObject var alertModel = AlertModel()
     @Namespace private var namespace
     @State var selectedID: String?
-
+    
     var body: some View {
         ZStack {
             List {
@@ -35,16 +35,16 @@ struct OptionList: View {
                 .edgesIgnoringSafeArea(.all)
                 .opacity(alertModel.flag ? 1 : 0)
             
-                if let randomOption = randomOptions(), alertModel.flag {
-                    PickedCard(option: randomOption, presenting: alertModel.flag, closeAction: deselectIngredient)
-                        .matchedGeometryEffect(id: randomOption.id, in: namespace, isSource: alertModel.flag)
-                        .aspectRatio(0.75, contentMode: .fit)
-                        .shadow(color: Color.black.opacity(alertModel.flag ? 0.2 : 0), radius: 20, y: 10)
-                        .padding(20)
-                        .opacity(alertModel.flag ? 1 : 0)
-                        .zIndex(alertModel.flag ? 1 : 0)
-
-                }
+            if let randomOption = randomOptions(), alertModel.flag {
+                PickedCard(option: randomOption, presenting: alertModel.flag, closeAction: deselectIngredient)
+                    .matchedGeometryEffect(id: randomOption.id, in: namespace, isSource: alertModel.flag)
+                    .aspectRatio(0.75, contentMode: .fit)
+                    .shadow(color: Color.black.opacity(alertModel.flag ? 0.2 : 0), radius: 20, y: 10)
+                    .padding(20)
+                    .opacity(alertModel.flag ? 1 : 0)
+                    .zIndex(alertModel.flag ? 1 : 0)
+                
+            }
         }
         
     }
@@ -54,9 +54,9 @@ struct OptionList: View {
             Divider()
             BottomBarButton(action: randomSelection,
                             title: "Pickr For Me!")
-            .disabled(disablePick)
-            .padding(.horizontal, 40)
-            .padding(.vertical, 16)
+                .disabled(disablePick)
+                .padding(.horizontal, 40)
+                .padding(.vertical, 16)
         }
         .background(VisualEffectBlur().edgesIgnoringSafeArea(.all))
     }
@@ -74,10 +74,8 @@ struct OptionList: View {
     }
     
     func deselectIngredient() {
-        withAnimation(.closeCard) {
-            alertModel.flag = false
-            model.addOptionPickedCount(optionID: selectedID ?? "")
-        }
+        alertModel.flag = false
+        model.addOptionPickedCount(optionID: selectedID ?? "")
     }
     
     var disablePick: Bool {
