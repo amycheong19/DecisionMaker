@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Pickr.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>bitcode</key>
+			<true/>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>C409C5A49C7C1523B9EFD2D59BA7E2EB1F87047F</string>
+				<key>dateExpires</key>
+				<string>21/10/21</string>
+				<key>type</key>
+				<string>Apple Distribution</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>DTBHHX8RVL.com.amy.cheong.pickr</string>
+				<key>beta-reports-active</key>
+				<true/>
+				<key>com.apple.developer.team-identifier</key>
+				<string>DTBHHX8RVL</string>
+				<key>get-task-allow</key>
+				<false/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>DTBHHX8RVL.com.amy.cheong.pickr</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>Pickr.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>f664d2d7-dbc7-4653-a752-81702cff5014</string>
+				<key>name</key>
+				<string>iOS Team Store Provisioning Profile: com.amy.cheong.pickr</string>
+			</dict>
+			<key>symbols</key>
+			<true/>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>DTBHHX8RVL</string>
+				<key>name</key>
+				<string>Suk Mun Cheong</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

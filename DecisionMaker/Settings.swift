@@ -20,37 +20,33 @@ struct Settings: View {
         
                     Form {
                         Section(header: Text("ABOUT PICKR")) {
-                            // 1
-                            Button(action: { self.isPresented1.toggle() }) {
+                            
+                            NavigationLink(destination:  WebContentView(link: .constant(SettingsContent.Info.privacyPolicy.link))) {
                                 HStack {
                                     Image(systemName: SettingsContent.Info.privacyPolicy.iconString)
                                     Text(SettingsContent.Info.privacyPolicy.title)
-                                }
-                            }.sheet(isPresented: $isPresented1) {
-                                WebContentView(link: .constant(SettingsContent.Info.privacyPolicy.link))
+                                }.foregroundColor(.pinkG)
                             }
-                            // 2
-                            Button(action: { self.isPresented2.toggle() }) {
+                            
+                            NavigationLink(destination:  WebContentView(link: .constant(SettingsContent.Info.termsAndConditions.link))) {
                                 HStack {
                                     Image(systemName: SettingsContent.Info.termsAndConditions.iconString)
                                     Text(SettingsContent.Info.termsAndConditions.title)
-                                }
-                            }.sheet(isPresented: $isPresented2) {
-                                WebContentView(link: .constant(SettingsContent.Info.termsAndConditions.link))
+                                }.foregroundColor(.pinkG)
                             }
                             
-                            //3
-                            Button(action: { self.isPresented3.toggle() }) {
+                            Button(action: {
+                                openAppStore()
+                            }) {
                                 HStack {
                                     Text ("Rate Pickr in AppStore")
+                                        .foregroundColor(.pinkG)
                                     Spacer()
                                     Image(systemName: "chevron.right")
-                                        
+                                        .foregroundColor(.gray)
                                 }
-                            }.sheet(isPresented: $isPresented3) {
-                                Text("🦘")
-//                                openAppStore()
                             }
+
                         }
                         
                     }
@@ -60,7 +56,7 @@ struct Settings: View {
     }
     
     func openAppStore() {
-        if let url = URL(string: "itms-apps://apple.com/app/id839686104") {
+        if let url = URL(string: "itms-apps://apple.com/app/id1536699977") {
             UIApplication.shared.open(url)
         }
     }
@@ -96,13 +92,5 @@ struct Settings_Previews: PreviewProvider {
     static var previews: some View {
         Settings()
             .environmentObject(DecisionMakerModel())
-    }
-}
-
-extension View {
-    func hideNavigationBar() -> some View {
-        self
-            .navigationBarTitle("Settings", displayMode: .inline)
-            .navigationBarHidden(true)
     }
 }

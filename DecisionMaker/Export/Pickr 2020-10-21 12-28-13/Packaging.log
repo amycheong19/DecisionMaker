@@ -1,0 +1,134 @@
+2020-10-21 04:28:09 +0000  Initial pipeline context: <IDEDistributionProcessingPipelineContext: 0x7f8361e120a0; archive(resolved)='<IDEArchive: 0x7f8361a20440>', distributionTask(resolved)='2', distributionDestination(resolved)='1', distributionMethod(resolved)='<IDEDistributionMethodiOSAppStoreDistribution: 0x7f8361e68de0>', team(resolved)='<IDEProvisioningDisambiguatableBasicTeam: 0x7f8361ea2560; teamID='DTBHHX8RVL', teamName='Suk Mun Cheong', teamType='Individual', username='sukumunu@gmail.com', isFreeProvisioningTeam='0'>'>
+	Chain (12, self inclusive):
+	<IDEDistributionProcessingPipelineContext: 0x7f8361e120a0; archive = '<IDEArchive: 0x7f8361a20440>', distributionMethod='<IDEDistributionMethodiOSAppStoreDistribution: 0x7f8361e68de0>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7f8361ea2560; teamID='DTBHHX8RVL', teamName='Suk Mun Cheong', teamType='Individual', username='sukumunu@gmail.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionProcessingPipelineContext: 0x7f8360133a40; archive = '<IDEArchive: 0x7f8361a20440>', distributionMethod='<IDEDistributionMethodiOSAppStoreDistribution: 0x7f8361e68de0>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7f8361ea2560; teamID='DTBHHX8RVL', teamName='Suk Mun Cheong', teamType='Individual', username='sukumunu@gmail.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7f8361c543f0; archive = '<IDEArchive: 0x7f8361a20440>', distributionMethod='<IDEDistributionMethodiOSAppStoreDistribution: 0x7f8361e68de0>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7f8361ea2560; teamID='DTBHHX8RVL', teamName='Suk Mun Cheong', teamType='Individual', username='sukumunu@gmail.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7f8360249580; archive = '<IDEArchive: 0x7f8361a20440>', distributionMethod='<IDEDistributionMethodiOSAppStoreDistribution: 0x7f8361e68de0>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7f8361ea2560; teamID='DTBHHX8RVL', teamName='Suk Mun Cheong', teamType='Individual', username='sukumunu@gmail.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7f8360525240; archive = '<IDEArchive: 0x7f8361a20440>', distributionMethod='<IDEDistributionMethodiOSAppStoreDistribution: 0x7f8361e68de0>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7f8361ea2560; teamID='DTBHHX8RVL', teamName='Suk Mun Cheong', teamType='Individual', username='sukumunu@gmail.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7f834619d4e0; archive = '<IDEArchive: 0x7f8361a20440>', distributionMethod='<IDEDistributionMethodiOSAppStoreDistribution: 0x7f8361e68de0>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7f8361ea2560; teamID='DTBHHX8RVL', teamName='Suk Mun Cheong', teamType='Individual', username='sukumunu@gmail.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7f8344d119a0; archive = '<IDEArchive: 0x7f8361a20440>', distributionMethod='<IDEDistributionMethodiOSAppStoreDistribution: 0x7f8361e68de0>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7f8361ea2560; teamID='DTBHHX8RVL', teamName='Suk Mun Cheong', teamType='Individual', username='sukumunu@gmail.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7f8361dfb2f0; archive = '<IDEArchive: 0x7f8361a20440>', distributionMethod='<IDEDistributionMethodiOSAppStoreDistribution: 0x7f8361e68de0>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7f8361ea2560; teamID='DTBHHX8RVL', teamName='Suk Mun Cheong', teamType='Individual', username='sukumunu@gmail.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7f8360505750; archive = '<IDEArchive: 0x7f8361a20440>', distributionMethod='<IDEDistributionMethodiOSAppStoreDistribution: 0x7f8361e68de0>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7f8361ea2560; teamID='DTBHHX8RVL', teamName='Suk Mun Cheong', teamType='Individual', username='sukumunu@gmail.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7f8361a217a0; archive = '<IDEArchive: 0x7f8361a20440>', distributionMethod='<IDEDistributionMethodiOSAppStoreDistribution: 0x7f8361e68de0>', team='(null)'>
+	<IDEDistributionContext: 0x7f8345bb6f50; archive = '<IDEArchive: 0x7f8361a20440>', distributionMethod='<IDEDistributionMethodiOSAppStoreDistribution: 0x7f8361e68de0>', team='(null)'>
+	<IDEDistributionContext: 0x7f83473fd1a0; archive = '<IDEArchive: 0x7f8361a20440>', distributionMethod='(null)', team='(null)'>
+</IDEDistributionProcessingPipelineContext: 0x7f8361e120a0>
+2020-10-21 04:28:09 +0000  Processing step: IDEDistributionCreateDestRootStep
+2020-10-21 04:28:09 +0000  Processing step: IDEDistributionCopyItemStep
+2020-10-21 04:28:09 +0000  Running /usr/bin/ditto '-V' '/Users/amycheong/Library/Developer/Xcode/Archives/2020-10-21/Pickr 21-10-20, 11.58 AM.xcarchive/Products/Applications/Pickr.app' '/var/folders/n2/lj1156k52z32_vg85hn43h900000gn/T/XcodeDistPipeline.~~~iIntJJ/Root/Payload/Pickr.app'
+2020-10-21 04:28:09 +0000  >>> Copying /Users/amycheong/Library/Developer/Xcode/Archives/2020-10-21/Pickr 21-10-20, 11.58 AM.xcarchive/Products/Applications/Pickr.app 
+2020-10-21 04:28:09 +0000  copying file ./_CodeSignature/CodeResources ... 
+2020-10-21 04:28:09 +0000  3013 bytes for ./_CodeSignature/CodeResources
+2020-10-21 04:28:09 +0000  copying file ./Pickr ... 
+2020-10-21 04:28:09 +0000  5446464 bytes for ./Pickr
+2020-10-21 04:28:09 +0000  copying file ./AppIcon60x60@2x.png ... 
+3337 bytes for ./AppIcon60x60@2x.png
+copying file ./DecisionMakerDatabase.json ... 
+4818 bytes for ./DecisionMakerDatabase.json
+copying file ./Assets.car ... 
+2020-10-21 04:28:09 +0000  277935 bytes for ./Assets.car
+2020-10-21 04:28:09 +0000  copying file ./AppIcon76x76@2x~ipad.png ... 
+2020-10-21 04:28:09 +0000  4126 bytes for ./AppIcon76x76@2x~ipad.png
+2020-10-21 04:28:09 +0000  copying file ./embedded.mobileprovision ... 
+2020-10-21 04:28:09 +0000  7389 bytes for ./embedded.mobileprovision
+2020-10-21 04:28:09 +0000  copying file ./Info.plist ... 
+2020-10-21 04:28:09 +0000  1364 bytes for ./Info.plist
+2020-10-21 04:28:09 +0000  copying file ./PkgInfo ... 
+2020-10-21 04:28:09 +0000  8 bytes for ./PkgInfo
+2020-10-21 04:28:09 +0000  /usr/bin/ditto exited with 0
+2020-10-21 04:28:09 +0000  Processing step: IDEDistributionEmbedProfileStep
+2020-10-21 04:28:09 +0000  Processing step: IDEDistributionInfoPlistStep
+2020-10-21 04:28:09 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2020-10-21 04:28:09 +0000  Processing step: IDEDistributionItemRemovalStep
+2020-10-21 04:28:09 +0000  Processing step: IDEDistributionAppThinningPlistStep
+2020-10-21 04:28:09 +0000  Skipping step: IDEDistributionAppThinningPlistStep because it said so
+2020-10-21 04:28:09 +0000  Processing step: IDEDistributionCompileBitcodeStep
+2020-10-21 04:28:09 +0000  Skipping step: IDEDistributionCompileBitcodeStep because it said so
+2020-10-21 04:28:09 +0000  Processing step: IDEDistributionCodeSlimmingStep
+2020-10-21 04:28:09 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/n2/lj1156k52z32_vg85hn43h900000gn/T/XcodeDistPipeline.~~~iIntJJ/Root/Payload/Pickr.app/Pickr' '-l' '-o' '/var/folders/n2/lj1156k52z32_vg85hn43h900000gn/T/XcodeDistPipeline.~~~iIntJJ/Root/Payload/Pickr.app/Pickr'
+2020-10-21 04:28:09 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2020-10-21 04:28:09 +0000  Processing step: IDEDistributionCopyBCSymbolMapsStep
+2020-10-21 04:28:09 +0000  Running /usr/bin/ditto '-V' '/Users/amycheong/Library/Developer/Xcode/Archives/2020-10-21/Pickr 21-10-20, 11.58 AM.xcarchive/BCSymbolMaps/6ABC25A3-451F-3141-8464-FFA2CC265440.bcsymbolmap' '/var/folders/n2/lj1156k52z32_vg85hn43h900000gn/T/XcodeDistPipeline.~~~iIntJJ/Root/BCSymbolMaps/6ABC25A3-451F-3141-8464-FFA2CC265440.bcsymbolmap'
+2020-10-21 04:28:09 +0000  >>> Copying /Users/amycheong/Library/Developer/Xcode/Archives/2020-10-21/Pickr 21-10-20, 11.58 AM.xcarchive/BCSymbolMaps/6ABC25A3-451F-3141-8464-FFA2CC265440.bcsymbolmap 
+2020-10-21 04:28:09 +0000  copying file ./6ABC25A3-451F-3141-8464-FFA2CC265440.bcsymbolmap ... 
+2020-10-21 04:28:09 +0000  1008203 bytes for ./6ABC25A3-451F-3141-8464-FFA2CC265440.bcsymbolmap
+2020-10-21 04:28:09 +0000  /usr/bin/ditto exited with 0
+2020-10-21 04:28:09 +0000  Processing step: IDEDistributionSymbolsStep
+2020-10-21 04:28:09 +0000  Excluding symbols for Pickr.app
+2020-10-21 04:28:09 +0000  Processing step: IDEDistributionCopyAppleProvidedContentStep
+2020-10-21 04:28:09 +0000  Processing step: IDEDistributionAppThinningStep
+2020-10-21 04:28:09 +0000  Skipping step: IDEDistributionAppThinningStep because it said so
+2020-10-21 04:28:09 +0000  Processing step: IDEDistributionArchThinningStep
+2020-10-21 04:28:09 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/n2/lj1156k52z32_vg85hn43h900000gn/T/XcodeDistPipeline.~~~iIntJJ/Root/Payload/Pickr.app/Pickr' '-verify_arch' 'arm64e'
+2020-10-21 04:28:09 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2020-10-21 04:28:09 +0000  Skipping architecture thinning for item "Pickr" because arch "arm64e" wasn't found
+2020-10-21 04:28:09 +0000  Processing step: IDEDistributionODRStep
+2020-10-21 04:28:09 +0000  Processing step: IDEDistributionStripXattrsStep
+2020-10-21 04:28:09 +0000  Running /usr/bin/xattr '-crs' '/var/folders/n2/lj1156k52z32_vg85hn43h900000gn/T/XcodeDistPipeline.~~~iIntJJ/Root/Payload/Pickr.app'
+2020-10-21 04:28:09 +0000  /usr/bin/xattr exited with 0
+2020-10-21 04:28:09 +0000  Processing step: IDEDistributionCodesignStep
+2020-10-21 04:28:09 +0000  Entitlements for <IDEDistributionItem: 0x7f83486f84f0; bundleID='com.amy.cheong.pickr', path='<DVTFilePath:0x7f835b626800:'/Users/amycheong/Library/Developer/Xcode/Archives/2020-10-21/Pickr 21-10-20, 11.58 AM.xcarchive/Products/Applications/Pickr.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7f83605e1410; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7f8345bb6a00; name='Apple Development: Suk Mun Cheong (N9M6CYC65M)', hash='D43E8D325AA2589DBA607FACB881ABD1FE124590', serialNumber='<DVTSigningCertificateSerialNumber: 0x7f8345ad8120>', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2020-10-21 03:08:18 +0000''>', entitlements='{
+    "application-identifier" = "DTBHHX8RVL.com.amy.cheong.pickr";
+    "com.apple.developer.team-identifier" = DTBHHX8RVL;
+    "get-task-allow" = 1;
+    "keychain-access-groups" =     (
+        "DTBHHX8RVL.com.amy.cheong.pickr"
+    );
+}', teamID='DTBHHX8RVL', identifier='com.amy.cheong.pickr', executablePath='<DVTFilePath:0x7f8361a56fc0:'/Users/amycheong/Library/Developer/Xcode/Archives/2020-10-21/Pickr 21-10-20, 11.58 AM.xcarchive/Products/Applications/Pickr.app/Pickr'>', hardenedRuntime='0'>'>: {
+    "application-identifier" = "DTBHHX8RVL.com.amy.cheong.pickr";
+    "beta-reports-active" = 1;
+    "com.apple.developer.team-identifier" = DTBHHX8RVL;
+    "get-task-allow" = 0;
+    "keychain-access-groups" =     (
+        "DTBHHX8RVL.com.amy.cheong.pickr"
+    );
+}
+2020-10-21 04:28:09 +0000  Writing entitlements for <IDEDistributionItem: 0x7f83486f84f0; bundleID='com.amy.cheong.pickr', path='<DVTFilePath:0x7f835b626800:'/Users/amycheong/Library/Developer/Xcode/Archives/2020-10-21/Pickr 21-10-20, 11.58 AM.xcarchive/Products/Applications/Pickr.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7f83605e1410; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7f8361ace2e0; name='Apple Development: Suk Mun Cheong (N9M6CYC65M)', hash='D43E8D325AA2589DBA607FACB881ABD1FE124590', serialNumber='<DVTSigningCertificateSerialNumber: 0x7f8360480080>', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2020-10-21 03:08:18 +0000''>', entitlements='{
+    "application-identifier" = "DTBHHX8RVL.com.amy.cheong.pickr";
+    "com.apple.developer.team-identifier" = DTBHHX8RVL;
+    "get-task-allow" = 1;
+    "keychain-access-groups" =     (
+        "DTBHHX8RVL.com.amy.cheong.pickr"
+    );
+}', teamID='DTBHHX8RVL', identifier='com.amy.cheong.pickr', executablePath='<DVTFilePath:0x7f8361a56fc0:'/Users/amycheong/Library/Developer/Xcode/Archives/2020-10-21/Pickr 21-10-20, 11.58 AM.xcarchive/Products/Applications/Pickr.app/Pickr'>', hardenedRuntime='0'>'> to: /var/folders/n2/lj1156k52z32_vg85hn43h900000gn/T/XcodeDistPipeline.~~~iIntJJ/entitlements~~~zr8u1n
+2020-10-21 04:28:09 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'C409C5A49C7C1523B9EFD2D59BA7E2EB1F87047F' '--entitlements' '/var/folders/n2/lj1156k52z32_vg85hn43h900000gn/T/XcodeDistPipeline.~~~iIntJJ/entitlements~~~zr8u1n' '--preserve-metadata=identifier,flags,runtime' '/var/folders/n2/lj1156k52z32_vg85hn43h900000gn/T/XcodeDistPipeline.~~~iIntJJ/Root/Payload/Pickr.app'
+2020-10-21 04:28:10 +0000  /var/folders/n2/lj1156k52z32_vg85hn43h900000gn/T/XcodeDistPipeline.~~~iIntJJ/Root/Payload/Pickr.app: signed app bundle with Mach-O thin (arm64) [com.amy.cheong.pickr]
+2020-10-21 04:28:10 +0000  /usr/bin/codesign exited with 0
+2020-10-21 04:28:10 +0000  Processing step: IDEDistributionZipODRItemStep
+2020-10-21 04:28:10 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2020-10-21 04:28:10 +0000  Processing step: IDEDistributionCreateIPAStep
+2020-10-21 04:28:10 +0000  Running /usr/bin/ditto '-V' '-c' '-k' '--norsrc' '/var/folders/n2/lj1156k52z32_vg85hn43h900000gn/T/XcodeDistPipeline.~~~iIntJJ/Root' '/var/folders/n2/lj1156k52z32_vg85hn43h900000gn/T/XcodeDistPipeline.~~~iIntJJ/Packages/Pickr.ipa'
+2020-10-21 04:28:10 +0000  >>> Copying /var/folders/n2/lj1156k52z32_vg85hn43h900000gn/T/XcodeDistPipeline.~~~iIntJJ/Root 
+2020-10-21 04:28:10 +0000  copying file ./BCSymbolMaps/6ABC25A3-451F-3141-8464-FFA2CC265440.bcsymbolmap ... 
+2020-10-21 04:28:10 +0000  1008203 bytes for ./BCSymbolMaps/6ABC25A3-451F-3141-8464-FFA2CC265440.bcsymbolmap
+2020-10-21 04:28:10 +0000  copying file ./Payload/Pickr.app/_CodeSignature/CodeResources ... 
+2020-10-21 04:28:10 +0000  3013 bytes for ./Payload/Pickr.app/_CodeSignature/CodeResources
+copying file ./Payload/Pickr.app/Pickr ... 
+2020-10-21 04:28:10 +0000  4613248 bytes for ./Payload/Pickr.app/Pickr
+copying file ./Payload/Pickr.app/AppIcon60x60@2x.png ... 
+2020-10-21 04:28:10 +0000  3337 bytes for ./Payload/Pickr.app/AppIcon60x60@2x.png
+copying file ./Payload/Pickr.app/DecisionMakerDatabase.json ... 
+2020-10-21 04:28:10 +0000  4818 bytes for ./Payload/Pickr.app/DecisionMakerDatabase.json
+copying file ./Payload/Pickr.app/Assets.car ... 
+2020-10-21 04:28:10 +0000  277935 bytes for ./Payload/Pickr.app/Assets.car
+copying file ./Payload/Pickr.app/AppIcon76x76@2x~ipad.png ... 
+2020-10-21 04:28:10 +0000  4126 bytes for ./Payload/Pickr.app/AppIcon76x76@2x~ipad.png
+copying file ./Payload/Pickr.app/embedded.mobileprovision ... 
+2020-10-21 04:28:10 +0000  7394 bytes for ./Payload/Pickr.app/embedded.mobileprovision
+copying file ./Payload/Pickr.app/Info.plist ... 
+2020-10-21 04:28:10 +0000  1364 bytes for ./Payload/Pickr.app/Info.plist
+copying file ./Payload/Pickr.app/PkgInfo ... 
+2020-10-21 04:28:10 +0000  8 bytes for ./Payload/Pickr.app/PkgInfo
+2020-10-21 04:28:10 +0000  /usr/bin/ditto exited with 0
+2020-10-21 04:28:10 +0000  Processing step: IDEDistributionAppStoreInformationStep
+2020-10-21 04:28:10 +0000  Skipping step: IDEDistributionAppStoreInformationStep because it said so
+2020-10-21 04:28:10 +0000  Processing step: IDEDistributionGenerateProcessedDistributionItems
+2020-10-21 04:28:10 +0000  IDEDistributionItem init <DVTFilePath:0x7f835cc40990:'/var/folders/n2/lj1156k52z32_vg85hn43h900000gn/T/XcodeDistPipeline.~~~iIntJJ/Root/Payload/Pickr.app'>
+2020-10-21 04:28:10 +0000  Processing step: IDEDistributionCreateManifestStep
+2020-10-21 04:28:10 +0000  Skipping step: IDEDistributionCreateManifestStep because it said so
