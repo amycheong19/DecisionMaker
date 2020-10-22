@@ -5,16 +5,16 @@ DCODE="$1"
 
 if [ "$DCODE" = "5_5" ]
 then
-    DEVICE_TYPE="iPhone 12 Pro Max"
+    DEVICE_TYPE="iPhone 8 Plus"
 else
-    DEVICE_TYPE="iPhone SE (2nd generation)"
+    DEVICE_TYPE="iPhone Xs Max"
 fi
 
 cd "$(dirname "$0")/../"
 
 set -o xtrace
 
-DEVICE=$(xcrun simctl create "Tester" "$DEVICE_TYPE" "iOS14.1")
+DEVICE=$(xcrun simctl create "Tester 4" "$DEVICE_TYPE" "iOS14.1")
 
 xcrun simctl boot "$DEVICE"
 

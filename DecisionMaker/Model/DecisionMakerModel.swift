@@ -223,7 +223,7 @@ class OptionEditRowViewModel: ObservableObject {
         cancellable = AnyCancellable(
             $searchText
                 .removeDuplicates()
-                .debounce(for: 0.5, scheduler: DispatchQueue.main)
+                .debounce(for: 0.3, scheduler: DispatchQueue.main)
                 .sink { searchText in
                     if searchText.count > 2 && self.searchText != self.option.title {
                         self.searchImage(with: searchText) { _ in }

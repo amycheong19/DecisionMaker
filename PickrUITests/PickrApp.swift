@@ -16,7 +16,7 @@ class PickrApp: XCUIApplication {
 
     func tap(_ element: XCUIElement) {
         guard element.waitForExistence(timeout: 1.0) else { return XCTFail("\(element) does not exist") }
-        element.press(forDuration: 0.5) // Looks nicer in the App Preview recording
+        element.press(forDuration: 0.3) // Looks nicer in the App Preview recording
     }
     
     func forceTap(_ element: XCUIElement) {

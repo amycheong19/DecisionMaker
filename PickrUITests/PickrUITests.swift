@@ -28,39 +28,41 @@ class PickrUITests: XCTestCase {
     }
     
     func testPreview() throws {
+                                
         // Create new collection
         app.screenshot(filename: "screenshot_1.png")
         app.forceTap(collectionListView.addCollectionButton)
         app.textFields.element.tap()
         app.textFields.element.typeText("Present ideas 🎁")
         app.buttons["Submit"].tap()
-
+        
+        app.screenshot(filename: "screenshot_4.png")
+        
         //Tap the new collection
         app.tap(collectionListView.secondCollectionButton)
 
         // Add Option 1
         app.tap(optionListView.newOptionButton)
-        app.tap(optionListView.newOptionTextField)
+//        app.tap(optionListView.newOptionTextField)
         app.typeText("Toilet paper")
-        app.pause(for: shortDelay)
+        app.pause(for: tinyDelay)
         app.keyboards.buttons["done"].tap()
 
         // Add Option 2
         app.tap(optionListView.newOptionButton)
-        app.tap(optionListView.newOptionTextField)
+//        app.tap(optionListView.newOptionTextField)
         app.typeText("Wine")
-        app.pause(for: shortDelay)
+        app.pause(for: tinyDelay)
         app.keyboards.buttons["done"].tap()
 
         // Add Option 3
         app.tap(optionListView.newOptionButton)
-        app.tap(optionListView.newOptionTextField)
+//        app.tap(optionListView.newOptionTextField)
         app.typeText("Bag")
-        app.pause(for: shortDelay)
+        app.pause(for: tinyDelay)
         app.keyboards.buttons["done"].tap()
 
         app.screenshot(filename: "screenshot_2.png")
-
         
         // Pickr options
         app.tap(optionListView.pickrButton)
@@ -68,18 +70,15 @@ class PickrUITests: XCTestCase {
 
         // Select buttons at PickedCard
         app.tap(pickedCardView.voteLikeButton)
-        app.pause(for: tinyDelay)
         app.tap(pickedCardView.infoButton)
-        app.pause(for: tinyDelay)
         app.tap(pickedCardView.backButton)
         app.tap(pickedCardView.dismissButton)
-        app.screenshot(filename: "screenshot_4.png")
-
-        // Toggle buttons at PickedCard
-        app.tap(optionListView.firstOptionToggleButton)
-        app.tap(optionListView.secondOptionToggleButton)
-        app.tap(optionListView.thirdOptionToggleButton)
-        app.pause(for: tinyDelay)
+        
+//        // Toggle buttons at PickedCard
+//        app.tap(optionListView.firstOptionToggleButton)
+//        app.tap(optionListView.secondOptionToggleButton)
+//        app.tap(optionListView.thirdOptionToggleButton)
+//        app.pause(for: tinyDelay)
     }
     
 }
