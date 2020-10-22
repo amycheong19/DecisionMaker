@@ -15,12 +15,11 @@ struct AddCollectionButton: View {
     
     var body: some View {
         Button(action: add, label: {
-            Label("", systemImage: "plus")
-                .imageScale(.large)
+            Image(systemName: "plus").imageScale(.large)
         })
+        .accessibility(identifier: AI.CollectionListView.addButton)
         .background(alertControl)
         .accessibility(label: Text("Add Button"))
-        
     }
     
     func add() {

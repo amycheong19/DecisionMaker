@@ -17,7 +17,8 @@ struct AppTabNavigation: View {
             }.tabItem {
                 Label("Pickr", systemImage: "list.bullet")
                     .accessibility(label: Text("Tab.Pickr.title"))
-            }.tag(Tab.Pickr.title)
+            }
+            .tag(Tab.Pickr.title)
             
             NavigationView {
                 Settings()

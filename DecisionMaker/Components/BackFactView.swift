@@ -73,7 +73,6 @@ public struct BackFactView: View {
             }
         }
         .padding(20)
-        .accessibilityElement(children: .combine)
 
     }
 }

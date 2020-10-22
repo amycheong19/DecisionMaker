@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/amycheong/Documents/WhereToEat/DecisionMaker.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>

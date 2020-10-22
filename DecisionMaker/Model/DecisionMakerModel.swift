@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import Mixpanel
 
 class DecisionMakerModel: ObservableObject {
     @Published private(set) var checkedOptions: [Option] = []
@@ -17,7 +18,7 @@ class DecisionMakerModel: ObservableObject {
     private var idCount = 1
     
     init() {
-        createCollection()
+        initiateCollection()
     }
     
 }
@@ -35,6 +36,9 @@ extension DecisionMakerModel {
             tempCollection.title = title.isEmpty ? "New Collection - \(idCount)": title
         }
         collections.append(tempCollection)
+//        AnalyticsManager.shared.track(event: <#T##String?#>, properties: <#T##Properties?#>)
+        AnalyticsManager.shared.track(event: "Collection - Add new",
+                                      properties: AnalyticsManager.setCollection(collection: tempCollection) )
         saveCollections()
     }
     
@@ -47,11 +51,14 @@ extension DecisionMakerModel {
         tempCollection.title = newTitle
         collections[indexSet] = tempCollection
         
+        AnalyticsManager.shared.track(event: "Collection - Edit name",
+                                      properties: AnalyticsManager.setCollection(collection: tempCollection))
+        
         saveCollections()
     }
     
     
-    func createCollection(_ collection: Collection? = nil) {
+    func initiateCollection(_ collection: Collection? = nil) {
         if let jsonCollections = try? Collection.loadJSON() {
             collections.append(contentsOf: jsonCollections)
         }
@@ -72,10 +79,15 @@ extension DecisionMakerModel {
         selectedCollectionID = collection.id
         self.collection = collection
         checkedOptions.removeAll()
+        AnalyticsManager.shared.track(event: "Collection - Select",
+                                      properties: AnalyticsManager.setCollection(collection: collection))
+        
         _ = collection.options.compactMap{ addChecked($0) }
     }
     
     func removeCollection(_ i: Int) {
+        AnalyticsManager.shared.track(event: "Collection - Remove",
+                                      properties: AnalyticsManager.setCollection(collection: collections[i]))
         collections.remove(at: i)
         saveCollections()
     }
@@ -107,10 +119,14 @@ extension DecisionMakerModel {
         }
     }
     
+    func dislikePickedOption(option: Option, toggle: Bool) {
+        editOptionsToPick(option: option, toggle: false)
+    }
+    
     func addOptionPickedCount(optionID: String){
         guard let firstIndex = collection.options.firstIndex(where: { $0.id == optionID }) else { return }
         guard let checkIndex = checkedOptions.firstIndex(where: { $0.id == optionID }) else { return }
-
+        
         checkedOptions[checkIndex].pickedIncrement()
         collection.options[firstIndex].pickedIncrement()
         saveOptions(with: collection)
@@ -161,16 +177,15 @@ extension DecisionMakerModel {
         collection.options.append(tempOption)
         addChecked(tempOption)
         saveOptions(with: collection)
-
+        
     }
     
     func editOption(with option: Option) {
         guard let firstIndex = collection.options.firstIndex(where: { $0.id == option.id }) else { return }
         
-        
         collection.options[firstIndex] = option
         saveOptions(with: collection)
-
+        
     }
     
     // Save options into JSON
@@ -182,31 +197,43 @@ extension DecisionMakerModel {
         saveCollections()
     }
     
-
+    
 }
 
-class TextFieldModel: ObservableObject {    
+class OptionEditRowViewModel: ObservableObject {
     private var cancellable: AnyCancellable?
     @Published var searchText: String = ""
-    @Published var searchedPhoto: UnsplashPhoto?
-    private static let sessionProcessingQueue = DispatchQueue(label: "SessionProcessingQueue")
+    @Published var option: Option
+    var index: Int
+    
+    static let sessionProcessingQueue = DispatchQueue(label: "SessionProcessingQueue")
+    
+    static func newOption() -> Option {
+        Option(id: "", title: "")
+    }
+    
+    init(option: Option = OptionEditRowViewModel.newOption(), index: Int) {
+        self.option = option
+        self.index = index
+        searchText = option.title
+    }
     
     func debounceText() {
-
+        
         cancellable = AnyCancellable(
-        $searchText
-            .removeDuplicates()
-            .debounce(for: 0.3, scheduler: DispatchQueue.main)
-            .sink { searchText in
-                if searchText.count > 2 {
-                    self.searchImage(with: searchText)
+            $searchText
+                .removeDuplicates()
+                .debounce(for: 0.5, scheduler: DispatchQueue.main)
+                .sink { searchText in
+                    if searchText.count > 2 && self.searchText != self.option.title {
+                        self.searchImage(with: searchText) { _ in }
+                    }
                 }
-          }
         )
-      }
+    }
     
-
-    func searchImage(with text: String = "random")  {
+    
+    func searchImage(with text: String = "random", completionHandler: @escaping (Option?) -> Void)  {
         
         if let url = URL.with(query: text) {
             var urlRequest = URLRequest(url: url)
@@ -214,82 +241,7 @@ class TextFieldModel: ObservableObject {
             
             cancellable =
                 URLSession.shared.dataTaskPublisher(for: urlRequest)
-                .subscribe(on: TextFieldModel.sessionProcessingQueue)
-                .map({
-                    return $0.data
-                })
-                .decode(type: PhotoResults.self, decoder: JSONDecoder())
-                .receive(on: DispatchQueue.main)
-                .sink(receiveCompletion: { (suscriberCompletion) in
-                    switch suscriberCompletion {
-                    case .finished:
-                        break
-                    case .failure(let error):
-                        print(error.localizedDescription)
-                    }
-                }, receiveValue: { [weak self] value in
-                    self?.searchedPhoto = value.results.randomElement()
-                    if let downloadLocation = self?.searchedPhoto?.links?.download_location {
-                        self?.downloadImage(with: downloadLocation)
-                    }
-                })
-        }
-    }
-    
-    private func downloadImage(with urlString: String)  {
-        
-        if let url = URL(string: urlString) {
-            var urlRequest = URLRequest(url: url)
-            urlRequest.setValue(PhotoConfiguration.shared.accessKey, forHTTPHeaderField: "Authorization")
-            URLSession.shared.dataTask(with: urlRequest){ [weak self] data, response, error in
-                debugPrint("response: \(response) | error: \(error)")
-            }.resume()
-        }
-    }
-}
-
-
-class NewTextFieldModel: ObservableObject {
-    private var cancellable: AnyCancellable?
-    @Published var searchText: String = ""
-    @Published var option: Option
-
-    
-    static let sessionProcessingQueue = DispatchQueue(label: "SessionProcessingQueue")
-    
-    static func newOption() -> Option {
-      Option(id: "", title: "")
-    }
-    
-    init(option: Option = NewTextFieldModel.newOption()) {
-        self.option = option
-        searchText = option.title
-    }
-    
-    func debounceText() {
-
-        cancellable = AnyCancellable(
-        $searchText
-            .removeDuplicates()
-            .debounce(for: 0.5, scheduler: DispatchQueue.main)
-            .sink { searchText in
-                if searchText.count > 2 && self.searchText != self.option.title {
-                    self.searchImage(with: searchText) { _ in }
-                }
-          }
-        )
-      }
-    
-
-    func searchImage(with text: String = "random", completionHandler: @escaping (Option?) -> Void)  {
-        
-        if let url = URL.with(query: text) {
-            var urlRequest = URLRequest(url: url)
-            urlRequest.setValue(PhotoConfiguration.shared.accessKey, forHTTPHeaderField: "Authorization")
-
-            cancellable =
-                URLSession.shared.dataTaskPublisher(for: urlRequest)
-                .subscribe(on: NewTextFieldModel.sessionProcessingQueue)
+                .subscribe(on: OptionEditRowViewModel.sessionProcessingQueue)
                 .map({
                     return $0.data
                 })

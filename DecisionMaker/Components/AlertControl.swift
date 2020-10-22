@@ -30,16 +30,16 @@ struct AlertControl: UIViewControllerRepresentable {
         guard context.coordinator.alert == nil else { return }
         if self.show {
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.isAccessibilityElement = true
             context.coordinator.alert = alert
             
-            
-
             alert.addTextField { textField in
                 textField.placeholder = "Enter Name"
+                textField.accessibilityIdentifier = AI.AlertControlView.nameValueTextView
                 if mode == .edit {
                     textField.text = textString
                 }
-                
+                textField.isAccessibilityElement = true
                 textField.autocapitalizationType = .sentences
                 textField.clearButtonMode = .whileEditing
                 textField.delegate = context.coordinator
@@ -49,7 +49,6 @@ struct AlertControl: UIViewControllerRepresentable {
             })
             
             alert.addAction(UIAlertAction(title: "Submit", style: .default) { value in
-                
                 if mode == .add {
                     model.addCollection(with: textString)
                 } else {

@@ -36,7 +36,6 @@ struct CollectionRow: View {
         }
         .font(.subheadline)
         .padding(.vertical, 10)
-        .accessibilityElement(children: .combine)
     }
     
     struct Metrics {

@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import Mixpanel
 
 struct ContentView: View {
     var body: some View {
         AppTabNavigation()
+            .onAppear {
+                let uuid = UUID().uuidString
+                AnalyticsManager.shared.identify(distinctId: uuid)
+        }
     }
 }
 

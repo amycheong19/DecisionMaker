@@ -32,6 +32,7 @@ struct PickedCard: View {
         .contentShape(Rectangle())
         .animation(.flipCard, value: visibleSide)
         .overlay(rateBar, alignment: .bottom)
+        .offset(x: 0, y: -50)
     }
     
     var rateBar: some View {
@@ -53,6 +54,7 @@ struct PickedCard: View {
                                         .frame(width: 60.0, height: 60.0))
                     
                 }
+                .accessibility(identifier: AI.PickedCardView.likeButton)
                 .offset(y: hasVoted ? 0 : -10)
                 .animation(.interpolatingSpring(mass: 1, stiffness: 350, damping: 5, initialVelocity: 5))
                 .disabled(hasVoted)
@@ -66,7 +68,6 @@ struct PickedCard: View {
                     model.editOptionsToPick(option: option, toggle: false)
                     dislike.toggle()
                 } label: {
-                    
                     Image(systemName: dislike ? "hand.thumbsdown.fill" :"hand.thumbsdown")
                         .resizable()
                         .frame(width: 40.0, height: 40.0)
@@ -75,6 +76,7 @@ struct PickedCard: View {
                                         .frame(width: 60.0, height: 60.0))
                         
                 }
+                .accessibility(identifier: AI.PickedCardView.dislikeButton)
                 .offset(y: hasVoted ? 0 : -10)
                 .animation(.interpolatingSpring(mass: 1, stiffness: 350, damping: 5, initialVelocity: 5))
                 .disabled(hasVoted)

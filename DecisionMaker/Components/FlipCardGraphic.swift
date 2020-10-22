@@ -53,7 +53,7 @@ struct FlipCardGraphic: View {
                 }
             }
         }
-        .frame(minWidth: 130, maxWidth: 400, maxHeight: 500)
+        .frame(minWidth: 130, maxWidth: 300, maxHeight: 400)
         .clipShape(shape)
         .overlay(
             shape
@@ -61,8 +61,6 @@ struct FlipCardGraphic: View {
                 .stroke(Color.primary.opacity(0.1), lineWidth: 1)
         )
         .contentShape(shape)
-        .accessibilityElement(children: .contain)
-        
         
     }
     
@@ -97,7 +95,7 @@ struct FlipCardGraphic: View {
             }
             
         }
-        .accessibility(hidden: true)
+//        .accessibility(hidden: false)
     }
     
     var title: some View {
@@ -120,6 +118,7 @@ struct FlipCardGraphic: View {
                 CardActionButton(label: "Close", systemImage: "xmark.circle.fill", action: closeAction)
                     .scaleEffect(displayingAsCard ? 1 : 0.5)
                     .opacity(displayingAsCard ? 1 : 0)
+                    .accessibility(identifier: AI.PickedCardView.dismissButton)
             }
             Spacer()
             CardActionButton(
@@ -129,6 +128,7 @@ struct FlipCardGraphic: View {
             )
             .scaleEffect(displayingAsCard ? 1 : 0.5)
             .opacity(displayingAsCard ? 1 : 0)
+            .accessibility(identifier: side == .front ? AI.PickedCardView.infoButton : AI.PickedCardView.backButton)
         }
         .frame(maxWidth: .infinity, alignment: .trailing)
     }

@@ -20,7 +20,10 @@ struct CollectionList: View {
         Form {
             Section(header: Text("The more options to pickr, the merrier! ☀️"),
                     footer: Text("Decision making, like coffee, \nneeds cooling process - George Washington ☕️")){
-                ForEach(model.collections) { collection in
+
+                ForEach(model.collections.indices, id: \.self) { index in
+                    let collection = model.collections[index]
+                    
                     if self.editMode == .active {
                         Text(collection.title)
                             .onTapGesture {
@@ -28,24 +31,27 @@ struct CollectionList: View {
                                 tempTitle = collection.title
                                 model.selectCollection(collection)
                             }
-                            
                     } else  {
                         NavigationLink(
                             destination:
                                 NewOptionListView(collection: collection),
-//                                OptionList(collection: collection),
                             tag: collection,
                             selection: $selection) {
                             CollectionRow(collection: .constant(collection))
                         }
+                        .accessibility(identifier: AI.CollectionListView.collection(at: index))
                     }
                 }
                 .onDelete(perform: deleteCollection)
             }
             
+        }.onAppear{
+            AnalyticsManager.shared.track(event: "Collection List View",
+                                          properties: AnalyticsManager.setCollectionCount(collections: collections))
         }
         .background(alertControl)
-        .navigationBarItems(leading: EditButton(),
+        .navigationBarItems(leading: EditButton()
+                                .accessibility(identifier: AI.CollectionListView.editButton),
                             trailing: AddCollectionButton(mode: .constant(.add)))
         .environment(\.editMode, $editMode)
     }

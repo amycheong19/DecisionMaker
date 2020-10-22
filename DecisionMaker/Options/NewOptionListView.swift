@@ -29,16 +29,17 @@ struct NewOptionListView: View {
         ZStack {
             VStack(alignment: .leading) {
                 BottomBarButton(action: randomSelection,
-                                title: state == .new ? "Pickr For Me!": "Pickr For Me!")
+                                title: state == .new ? "Adding new option": "Pickr For Me!")
                     .padding(.horizontal, 40)
                     .padding(.vertical, 5)
                     .disabled(disablePick)
                     .background(VisualEffectBlur().edgesIgnoringSafeArea(.all))
-                
+                    .accessibility(identifier: AI.OptionListView.pickrButton)
              
                 List {
-                    ForEach (model.collection.options) { option in
-                        OptionEditRowView(tfModel: NewTextFieldModel(option: option), state: $state) {
+                    ForEach(model.collection.options.indices, id: \.self) { index in
+                        let option = model.collection.options[index]
+                        OptionEditRowView(rowModel: OptionEditRowViewModel(option: option, index: index), state: $state) {
                             result in
                             switch result {
                             case .success(let option):
@@ -46,15 +47,14 @@ struct NewOptionListView: View {
                                 model.editOption(with: option)
                             default: break
                             }
-
-                        }
+                        }.accessibility(identifier: AI.OptionListView.option(at: index))
                     }
                     .onDelete(perform: deleteOption)
 
                     // When user press on new option
                     if presentAddNewItem {
                         // Only for newly add option
-                        OptionEditRowView(tfModel: NewTextFieldModel(), state: $state) { result in
+                        OptionEditRowView(rowModel: OptionEditRowViewModel(index: model.collection.options.count), state: $state) { result in
                             switch result {
                             case .success(let option):
                                 debugPrint(option)
@@ -67,6 +67,7 @@ struct NewOptionListView: View {
                     }
                 }.onAppear() {
                     model.selectCollection(collection)
+                    AnalyticsManager.shared.track(event: "Option List View")
                 }
 
                 // Add Button
@@ -79,6 +80,7 @@ struct NewOptionListView: View {
                     }
                     
                 }
+                .accessibility(identifier: AI.OptionListView.newOptionButton)
                 .padding()
                 .accentColor(.pinkG)
                 

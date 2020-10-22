@@ -13,7 +13,7 @@ enum InputError: Error {
 
 struct OptionEditRowView: View {
     @EnvironmentObject private var model: DecisionMakerModel
-    @ObservedObject var tfModel: NewTextFieldModel
+    @ObservedObject var rowModel: OptionEditRowViewModel
     @State private var checked = true
     @Binding var state: OptionListState
     
@@ -22,11 +22,11 @@ struct OptionEditRowView: View {
     
     private func returnCommitStatus() {
         
-        if !tfModel.searchText.isEmpty {
-            if tfModel.option.title.isEmpty {
-                tfModel.option.title = tfModel.searchText
+        if !rowModel.searchText.isEmpty {
+            if rowModel.option.title.isEmpty {
+                rowModel.option.title = rowModel.searchText
             }
-            self.onCommit(.success(tfModel.option))
+            self.onCommit(.success(rowModel.option))
         } else {
             self.onCommit(.failure(.empty))
         }
@@ -36,23 +36,23 @@ struct OptionEditRowView: View {
     var body: some View {
         
         HStack {
+                    
             Button(action: {
                 checked.toggle()
-                model.editOptionsToPick(option: tfModel.option, toggle: checked)
+                model.editOptionsToPick(option: rowModel.option, toggle: checked)
             }) {
                 Toggle("Complete", isOn: $checked)
                     .frame(width: 40)
-                
             }.onChange(of: model.checkedOptions, perform: { value in
-                checked = model.isChecked(option: tfModel.option)
+                checked = model.isChecked(option: rowModel.option)
             })
             .disabled(state == .new)
             .buttonStyle(PlainButtonStyle())
             .toggleStyle(CircleToggleStyle())
-            
+
             
             // New option
-            if let origin = tfModel.option.origin {
+            if let origin = rowModel.option.origin {
                 if let urlString = origin.urls.regular,
                    let url = URL(string: urlString) {
                     URLImage(url,
@@ -67,31 +67,31 @@ struct OptionEditRowView: View {
             
             VStack(alignment: .leading) {
                 
-                if tfModel.option.id.isEmpty {
+                if rowModel.option.id.isEmpty {
                     TextField("New option",
-                              text: $tfModel.searchText,
+                              text: $rowModel.searchText,
                               onCommit: {
                                 returnCommitStatus()
                               }).introspectTextField(customize: { (textfield) in
                                 textfield.returnKeyType = .done
                                 textfield.becomeFirstResponder()
-                    
                               })
+                        .accessibility(identifier: AI.OptionRowView.newOptionTextField)
                         .disableAutocorrection(true)
                         .font(.headline)
-                        .modifier(ClearButton(text: $tfModel.searchText))
-                        .onChange(of: tfModel.searchText) { value in
-                            tfModel.debounceText()
+                        .modifier(ClearButton(text: $rowModel.searchText))
+                        .onChange(of: rowModel.searchText) { value in
+                            rowModel.debounceText()
                         }
                 } else {
-                    Text(tfModel.option.title)
+                    Text(rowModel.option.title)
                             .font(.headline)
                             .lineLimit(nil)
                     
                     HStack{
                         Text("Pickr-ed")
                             .foregroundColor(.secondary)
-                        Text("\(tfModel.option.picked) time\(tfModel.option.pluralizer)")
+                        Text("\(rowModel.option.picked) time\(rowModel.option.pluralizer)")
                                 .foregroundColor(.secondary)
                                 .lineLimit(nil)
                     }
@@ -99,7 +99,7 @@ struct OptionEditRowView: View {
                 }
                 
                 // Add Unsplash user link
-                if let origin = tfModel.option.origin,
+                if let origin = rowModel.option.origin,
                    let user = origin.user {
                     HStack(spacing: 0) {
                         Text("Photo by")
@@ -132,7 +132,6 @@ struct OptionEditRowView: View {
         .frame(height: 96)
         .contentShape(Rectangle())
         .font(.subheadline)
-        .accessibilityElement(children: .combine)
         
     }
 }
@@ -141,7 +140,7 @@ struct OptionEditRowView_Previews: PreviewProvider {
     static var previews: some View {
         
         Group {
-            OptionEditRowView(tfModel: NewTextFieldModel(option: .macdonald), state: .constant(.new))
+            OptionEditRowView(rowModel: OptionEditRowViewModel(option: .macdonald, index: 0), state: .constant(.new))
         }
         .padding(.horizontal)
         .previewLayout(.sizeThatFits)
