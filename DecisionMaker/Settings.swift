@@ -19,7 +19,7 @@ struct Settings: View {
     var body: some View {
         
                     Form {
-                        Section(header: Text("ABOUT PICKR")) {
+                        Section(header: Text("Things that you might want to know 🎈")) {
                             
                             NavigationLink(destination:  WebContentView(link: .constant(SettingsContent.Info.privacyPolicy.link))) {
                                 HStack {
@@ -35,10 +35,19 @@ struct Settings: View {
                                 }.foregroundColor(.pinkG)
                             }
                             
+                            NavigationLink(destination:  WebContentView(link: .constant(SettingsContent.Info.about.link))) {
+                                HStack {
+                                    Image(systemName: SettingsContent.Info.about.iconString)
+                                    Text(SettingsContent.Info.about.title)
+                                }.foregroundColor(.pinkG)
+                            }
+                            
                             Button(action: {
                                 openAppStore()
                             }) {
                                 HStack {
+                                    Image(systemName: "app.badge")
+                                        .foregroundColor(.pinkG)
                                     Text ("Rate Pickr in AppStore")
                                         .foregroundColor(.pinkG)
                                     Spacer()
@@ -75,8 +84,8 @@ struct Settings: View {
                         UIApplication.shared.open(url)
                     }
                 
-                if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-                    Text("App Version \(appVersion)")
+                if let build = Bundle.main.buildVersionNumber, let version = Bundle.main.releaseVersionNumber {
+                    Text("App Version \(version) (\(build))")
                         .font(.footnote)
                         .foregroundColor(.gray)
                 }

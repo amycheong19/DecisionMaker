@@ -33,6 +33,7 @@
 		75261A54254001EB00EAB89A /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75261A53254001EB00EAB89A /* AlertModel.swift */; };
 		75261B97254016AB00EAB89A /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75261B96254016AB00EAB89A /* AnalyticsManager.swift */; };
 		75261B9B25401EC100EAB89A /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 75261B9A25401EC100EAB89A /* Mixpanel */; };
+		7544AE142542563900146EA6 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544AE132542563900146EA6 /* Bundle+Extension.swift */; };
 		75525EBB253EAABF0058A57B /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75525EBA253EAABF0058A57B /* Color+Extension.swift */; };
 		759E7BF524F685F50093D548 /* TextfieldWithValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759E7BF424F685F50093D548 /* TextfieldWithValidator.swift */; };
 		75A6A38D25403B1F00ED89A6 /* PickrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A6A38C25403B1F00ED89A6 /* PickrUITests.swift */; };
@@ -174,6 +175,7 @@
 		75261A53254001EB00EAB89A /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
 		75261B782540064200EAB89A /* Mixpanel.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Mixpanel.xcodeproj; path = "../../../../Downloads/mixpanel-iphone-3.6.3/Mixpanel.xcodeproj"; sourceTree = "<group>"; };
 		75261B96254016AB00EAB89A /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
+		7544AE132542563900146EA6 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		75525EBA253EAABF0058A57B /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		759E7BF424F685F50093D548 /* TextfieldWithValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TextfieldWithValidator.swift; path = ../Extensions/TextfieldWithValidator.swift; sourceTree = "<group>"; };
 		75A6A38A25403B1F00ED89A6 /* PickrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PickrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -605,6 +607,7 @@
 				75C763E5253BBFE4009A52F9 /* View+Extension.swift */,
 				75C763F1253C8437009A52F9 /* Image+Extension.swift */,
 				75525EBA253EAABF0058A57B /* Color+Extension.swift */,
+				7544AE132542563900146EA6 /* Bundle+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -795,6 +798,7 @@
 				75C763B6251208B7009A52F9 /* CardActionButton.swift in Sources */,
 				75C763EA253BC0E7009A52F9 /* PickedCard.swift in Sources */,
 				75ACA2342504A7110092BC15 /* URLImageService.swift in Sources */,
+				7544AE142542563900146EA6 /* Bundle+Extension.swift in Sources */,
 				75ACA2512504A7120092BC15 /* ImageLoaderView.swift in Sources */,
 				75ACA24A2504A7120092BC15 /* DownloadCoordinator.swift in Sources */,
 				75A6A3AC25406C0400ED89A6 /* AccessibilityIdentifier.swift in Sources */,
@@ -988,6 +992,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"DecisionMaker/Preview Content\"";
 				DEVELOPMENT_TEAM = DTBHHX8RVL;
 				ENABLE_PREVIEWS = YES;
@@ -1011,6 +1016,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"DecisionMaker/Preview Content\"";
 				DEVELOPMENT_TEAM = DTBHHX8RVL;
 				ENABLE_PREVIEWS = YES;
