@@ -113,7 +113,9 @@ struct NewOptionListView: View {
                     }.alert(isPresented: $alertModel.flag, content: {
                         Alert(title: Text("Pickr this for you"),
                               message: Text(randomOption.title),
-                              dismissButton: .default(Text("OK")) { print("do something") })
+                              dismissButton: .default(Text("OK")) {
+                                model.addOptionPickedCount(optionID: randomOption.id)
+                            })
                     })
                 }
             }
