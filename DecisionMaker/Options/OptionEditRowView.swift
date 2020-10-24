@@ -59,10 +59,7 @@ struct OptionEditRowView: View {
                              expireAfter: Date(timeIntervalSinceNow: 31_556_926.0)) { proxy in
                         proxy.image.listThumbnailStyle
                     }
-                    
                 }
-            } else {
-                Image("placeholder").listThumbnailStyle
             }
             
             VStack(alignment: .leading) {

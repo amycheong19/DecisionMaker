@@ -31,7 +31,7 @@ struct PickedCard: View {
         }
         .contentShape(Rectangle())
         .animation(.flipCard, value: visibleSide)
-        .overlay(rateBar, alignment: .bottom)
+//        .overlay(rateBar, alignment: .bottom)
         .offset(x: 0, y: -50)
     }
     

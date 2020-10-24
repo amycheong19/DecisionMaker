@@ -16,7 +16,7 @@ struct NewOptionListView: View {
     @EnvironmentObject private var model: DecisionMakerModel
     @ObservedObject var alertModel = AlertModel()
     @Namespace private var namespace
-
+    
     //States
     @State private var editMode = EditMode.inactive
     @State var presentAddNewItem = false
@@ -35,7 +35,7 @@ struct NewOptionListView: View {
                     .disabled(disablePick)
                     .background(VisualEffectBlur().edgesIgnoringSafeArea(.all))
                     .accessibility(identifier: AI.OptionListView.pickrButton)
-             
+                
                 List {
                     ForEach(model.collection.options.indices, id: \.self) { index in
                         let option = model.collection.options[index]
@@ -50,7 +50,7 @@ struct NewOptionListView: View {
                         }.accessibility(identifier: AI.OptionListView.option(at: index))
                     }
                     .onDelete(perform: deleteOption)
-
+                    
                     // When user press on new option
                     if presentAddNewItem {
                         // Only for newly add option
@@ -69,7 +69,7 @@ struct NewOptionListView: View {
                     model.selectCollection(collection)
                     AnalyticsManager.shared.track(event: "Option List View")
                 }
-
+                
                 // Add Button
                 Button(action: addNewOption) {
                     HStack {
@@ -87,29 +87,43 @@ struct NewOptionListView: View {
             }
             .navigationBarTitle(collection.title)
             
-            // Picked Card
-            VisualEffectBlur()
-                .edgesIgnoringSafeArea(.all)
-                .opacity(alertModel.flag ? 1 : 0)
             
+            // Picked Card
             if let randomOption = randomOptions(), alertModel.flag {
+                
+                if let _ = randomOption.origin {
+                    VisualEffectBlur()
+                        .edgesIgnoringSafeArea(.all)
+                        .opacity(alertModel.flag ? 1 : 0)
+                    
                     PickedCard(option: randomOption, presenting: alertModel.flag,
                                closeAction: deselectIngredient)
                         .matchedGeometryEffect(id: randomOption.id, in: namespace,
                                                isSource: alertModel.flag)
                         .aspectRatio(0.75, contentMode: .fit)
-                        .shadow(color: Color.black.opacity(alertModel.flag ? 0.2 : 0), radius: 20, y: 10)
+                        .shadow(color: Color.black.opacity(alertModel.flag ? 0.2 : 0),
+                                radius: 20, y: 10)
                         .padding(20)
                         .opacity(alertModel.flag ? 1 : 0)
                         .zIndex(alertModel.flag ? 1 : 0)
-
+                    
+                } else {
+                    VStack{
+                        
+                    }.alert(isPresented: $alertModel.flag, content: {
+                        Alert(title: Text("Pickr this for you"),
+                              message: Text(randomOption.title),
+                              dismissButton: .default(Text("OK")) { print("do something") })
+                    })
                 }
+            }
         }
     }
-
+    
     private func addNewOption() {
-        state = .new
         presentAddNewItem.toggle()
+        state = presentAddNewItem ? .new : .existing
+
     }
     
     private func randomSelection() {
@@ -121,6 +135,8 @@ struct NewOptionListView: View {
         DispatchQueue.main.async {
             selectedID = option.id
         }
+        AnalyticsManager.shared.track(event: "Selected option", properties: AnalyticsManager.setOption(option: option))
+        
         return option
     }
     

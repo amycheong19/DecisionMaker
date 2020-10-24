@@ -53,7 +53,7 @@ struct FlipCardGraphic: View {
                 }
             }
         }
-        .frame(minWidth: 130, maxWidth: 300, maxHeight: 400)
+        .frame(minWidth: 130, maxWidth: 400, maxHeight: 500)
         .clipShape(shape)
         .overlay(
             shape

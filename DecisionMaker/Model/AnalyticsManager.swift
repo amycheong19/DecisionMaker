@@ -21,15 +21,31 @@ struct AnalyticsManager {
         case collectionName
         case collectionCount
         case optionsCount
+        
+        case optionID
+        case optionName
+        case optionPicked
     }
     
     static func setCollection(collection: Collection) -> [String: MixpanelType] {
-        return [AnalyticsManager.Tag.collectionID.rawValue: "\(collection.id)",
-                AnalyticsManager.Tag.collectionName.rawValue: "\(collection.title)",
-                AnalyticsManager.Tag.optionsCount.rawValue: "\(collection.options.count)"]
+        var tempArray  = [AnalyticsManager.Tag.collectionID.rawValue: "\(collection.id)",
+                           AnalyticsManager.Tag.collectionName.rawValue: "\(collection.title)",
+                           AnalyticsManager.Tag.optionsCount.rawValue: "\(collection.options.count)"]
+        
+        for (i, option) in collection.options.enumerated() {
+            tempArray["option\(i)"] = option.title
+        }
+        
+        return tempArray
     }
     
     static func setCollectionCount(collections: [Collection]) -> [String: MixpanelType] {
         return [AnalyticsManager.Tag.collectionCount.rawValue: "\(collections.count)"]
+    }
+    
+    static func setOption(option: Option) -> [String: MixpanelType] {
+        return [AnalyticsManager.Tag.optionID.rawValue: "\(option.id)",
+                AnalyticsManager.Tag.optionName.rawValue: "\(option.title)",
+                AnalyticsManager.Tag.optionPicked.rawValue: "\(option.picked)"]
     }
 }
