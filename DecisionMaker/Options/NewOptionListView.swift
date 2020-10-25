@@ -16,7 +16,7 @@ struct NewOptionListView: View {
     @EnvironmentObject private var model: DecisionMakerModel
     @ObservedObject var alertModel = AlertModel()
     @Namespace private var namespace
-    
+
     //States
     @State private var editMode = EditMode.inactive
     @State var presentAddNewItem = false
@@ -37,28 +37,21 @@ struct NewOptionListView: View {
                     .accessibility(identifier: AI.OptionListView.pickrButton)
                 
                 List {
-                    ForEach(model.collection.options.indices, id: \.self) { index in
-                        let option = model.collection.options[index]
-                        OptionEditRowView(rowModel: OptionEditRowViewModel(option: option, index: index), state: $state) {
-                            result in
-                            switch result {
-                            case .success(let option):
-                                state = .existing
-                                model.editOption(with: option)
-                            default: break
-                            }
-                        }.accessibility(identifier: AI.OptionListView.option(at: index))
+                    ForEach(model.collection.options) { option in
+//                        let option = model.collection.options[index]
+                        OptionEditRowView(rowModel: OptionEditRowViewModel(option: option), state: $state) { _ in }
+//                        .accessibility(identifier: AI.OptionListView.option(at: index))
                     }
                     .onDelete(perform: deleteOption)
-                    
+ 
                     // When user press on new option
                     if presentAddNewItem {
                         // Only for newly add option
-                        OptionEditRowView(rowModel: OptionEditRowViewModel(index: model.collection.options.count), state: $state) { result in
+                        OptionEditRowView(rowModel: OptionEditRowViewModel(), state: $state) { result in
                             switch result {
                             case .success(let option):
-                                debugPrint(option)
                                 model.addOption(with: option)
+                                HapticGenerator.successNotification()
                             default: break
                             }
                             state = .existing
@@ -125,10 +118,11 @@ struct NewOptionListView: View {
     private func addNewOption() {
         presentAddNewItem.toggle()
         state = presentAddNewItem ? .new : .existing
-
+        HapticGenerator.mediumNotification()
     }
     
     private func randomSelection() {
+        HapticGenerator.successNotification()
         alertModel.flag = true
     }
     
@@ -154,8 +148,9 @@ struct NewOptionListView: View {
     }
     
     private func deleteOption(indexSet: IndexSet){
-        indexSet.forEach{
-            model.removeOption($0)
+        indexSet.forEach {
+           HapticGenerator.changedNotification()
+           model.removeOption($0)
         }
     }
 }

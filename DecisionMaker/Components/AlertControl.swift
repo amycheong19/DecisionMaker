@@ -18,6 +18,7 @@ struct AlertControl: UIViewControllerRepresentable {
     @Binding var textString: String
     @Binding var show: Bool
     @Binding var mode: AlertMode
+    let generator = UINotificationFeedbackGenerator()
 
     var title: String = ""
     var message: String = ""
@@ -49,6 +50,7 @@ struct AlertControl: UIViewControllerRepresentable {
             })
             
             alert.addAction(UIAlertAction(title: "Submit", style: .default) { value in
+                self.generator.notificationOccurred(.success)
                 if mode == .add {
                     model.addCollection(with: textString)
                 } else {

@@ -21,8 +21,8 @@ struct CollectionList: View {
             Section(header: Text("The more options to pickr, the merrier! ☀️"),
                     footer: Text("Decision making, like coffee, \nneeds cooling process - George Washington ☕️")){
 
-                ForEach(model.collections.indices, id: \.self) { index in
-                    let collection = model.collections[index]
+                ForEach(model.collections) { collection in
+//                    let collection = model.collections[index]
                     
                     if self.editMode == .active {
                         Text(collection.title)
@@ -39,7 +39,7 @@ struct CollectionList: View {
                             selection: $selection) {
                             CollectionRow(collection: .constant(collection))
                         }
-                        .accessibility(identifier: AI.CollectionListView.collection(at: index))
+//                        .accessibility(identifier: AI.CollectionListView.collection(at: index))
                     }
                 }
                 .onDelete(perform: deleteCollection)
@@ -58,6 +58,7 @@ struct CollectionList: View {
     
     func deleteCollection(indexSet: IndexSet){
         indexSet.forEach{
+            HapticGenerator.changedNotification()
             model.removeCollection($0)
         }
     }

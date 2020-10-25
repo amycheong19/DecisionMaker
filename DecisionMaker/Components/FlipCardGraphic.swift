@@ -31,7 +31,6 @@ struct FlipCardGraphic: View {
     
     var body: some View {
         ZStack {
-            
             image
             
             if style != .cardBack {
@@ -66,36 +65,23 @@ struct FlipCardGraphic: View {
     
     var image: some View {
         GeometryReader { geo in
-            
-            if let urlString = option.origin?.urls.regular,
-               let url = URL(string: urlString) {
+            ZStack {
+                if let urlString = option.origin?.urls.regular,
+                   let url = URL(string: urlString) {
 
-                URLImage(url) { proxy in
-                    proxy.image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: geo.size.width, height: geo.size.height)
-                        .scaleEffect(displayingAsCard ? cardCrop.scale : thumbnailCrop.scale)
-                        .offset(displayingAsCard ? cardCrop.offset : thumbnailCrop.offset)
-                        .frame(width: geo.size.width, height: geo.size.height)
-                        .scaleEffect(x: style == .cardBack ? -1 : 1)
-                }
-            } else {
-                if let uiImage = UIImage(named: "placeholder") {
-                    
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: geo.size.width, height: geo.size.height)
-                        .scaleEffect(displayingAsCard ? cardCrop.scale : thumbnailCrop.scale)
-                        .offset(displayingAsCard ? cardCrop.offset : thumbnailCrop.offset)
-                        .frame(width: geo.size.width, height: geo.size.height)
-                        .scaleEffect(x: style == .cardBack ? -1 : 1)
+                    URLImage(url) { proxy in
+                        proxy.image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: geo.size.width, height: geo.size.height)
+                            .scaleEffect(displayingAsCard ? cardCrop.scale : thumbnailCrop.scale)
+                            .offset(displayingAsCard ? cardCrop.offset : thumbnailCrop.offset)
+                            .scaleEffect(x: style == .cardBack ? -1 : 1)
+                    }
                 }
             }
             
         }
-//        .accessibility(hidden: false)
     }
     
     var title: some View {

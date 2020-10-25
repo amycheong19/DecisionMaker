@@ -36,16 +36,21 @@ struct OptionEditRowView: View {
     var body: some View {
         
         HStack {
-                    
             Button(action: {
                 checked.toggle()
+                let impactLight = UIImpactFeedbackGenerator(style: .light)
+                impactLight.impactOccurred()
                 model.editOptionsToPick(option: rowModel.option, toggle: checked)
             }) {
                 Toggle("Complete", isOn: $checked)
                     .frame(width: 40)
-            }.onChange(of: model.checkedOptions, perform: { value in
+            }.onAppear {
                 checked = model.isChecked(option: rowModel.option)
-            })
+            }
+            .onChange(of: model.checkedOptions) { value in
+                debugPrint("onChange: \(value)")
+                checked = model.isChecked(option: rowModel.option)
+            }
             .disabled(state == .new)
             .buttonStyle(PlainButtonStyle())
             .toggleStyle(CircleToggleStyle())
@@ -119,7 +124,6 @@ struct OptionEditRowView: View {
                     }
                 }
             }
-            
             .padding(.vertical, 8.0)
             
             Spacer()
@@ -137,7 +141,7 @@ struct OptionEditRowView_Previews: PreviewProvider {
     static var previews: some View {
         
         Group {
-            OptionEditRowView(rowModel: OptionEditRowViewModel(option: .macdonald, index: 0), state: .constant(.new))
+            OptionEditRowView(rowModel: OptionEditRowViewModel(option: .macdonald), state: .constant(.new))
         }
         .padding(.horizontal)
         .previewLayout(.sizeThatFits)

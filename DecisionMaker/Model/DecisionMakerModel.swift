@@ -119,10 +119,6 @@ extension DecisionMakerModel {
         }
     }
     
-    func dislikePickedOption(option: Option, toggle: Bool) {
-        editOptionsToPick(option: option, toggle: false)
-    }
-    
     func addOptionPickedCount(optionID: String){
         guard let firstIndex = collection.options.firstIndex(where: { $0.id == optionID }) else { return }
         guard let checkIndex = checkedOptions.firstIndex(where: { $0.id == optionID }) else { return }
@@ -142,8 +138,13 @@ extension DecisionMakerModel {
     }
     
     func removeOption(_ i: Int) {
+        let option = collection.options[i]
         collection.options.remove(at: i)
-        checkedOptions.remove(at: i)
+        
+        if checkedOptions.contains(option) {
+            removeCheckedOptions(id: option.id)
+        }
+        
         saveOptions(with: collection)
     }
     
@@ -204,7 +205,6 @@ class OptionEditRowViewModel: ObservableObject {
     private var cancellable: AnyCancellable?
     @Published var searchText: String = ""
     @Published var option: Option
-    var index: Int
     
     static let sessionProcessingQueue = DispatchQueue(label: "SessionProcessingQueue")
     
@@ -212,9 +212,8 @@ class OptionEditRowViewModel: ObservableObject {
         Option(id: "", title: "")
     }
     
-    init(option: Option = OptionEditRowViewModel.newOption(), index: Int) {
+    init(option: Option = OptionEditRowViewModel.newOption()) {
         self.option = option
-        self.index = index
         searchText = option.title
     }
     
